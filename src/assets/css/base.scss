@@ -1,0 +1,78 @@
+html,
+body,
+ul,
+li,
+p,
+button {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+}
+
+html,
+body,#app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+li {
+    list-style: none;
+}
+
+a,
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.noHand {
+    cursor: not-allowed;
+}
+
+.ell {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    /*不换行*/
+    text-overflow: ellipsis;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/*清除浮动*/
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    content: '';
+}
+
+.opacity-0 {
+    opacity: 0;
+}

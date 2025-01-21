@@ -1,0 +1,61 @@
+.ivu-tree li ul li .ivu-tree-title {
+    display: inline-block!important;
+    vertical-align: middle;
+}
+
+.ivu-tree li .ivu-tree-title {
+    display: inline-block!important;
+    vertical-align: middle;
+}
+
+
+
+.ivu-checkbox {
+    z-index: 100;
+}
+
+.ivu-select-dropdown-list {
+    max-height: 200px;
+}
+
+.pagePublicStyle {
+    text-align: right;
+    padding: 13px 0;
+    margin-right: 30px;
+    
+}
+
+.pagePublicStyle .totalCount {
+    float: left;
+    line-height: 34px;
+    padding-left: 20px;
+}
+/* 处理分页器乱码问题*/
+.pagePublicStyle .ivu-page-item-jump-next:after,
+.ivu-page-item-jump-prev:after {
+    content: "\2022\2022\2022" !important;
+}
+
+/*处理input [type='number'] 上下箭头问题*/
+.ivu-input-number .ivu-input-number-handler-wrap {
+    display: none !important;
+    width: 0px !important;
+}
+
+/*select下拉框最大高度*/
+.ivu-select-dropdown{
+  /*max-height: 280px !important;*/ 
+}
+/*处理button点击样式*/
+.ivu-btn:focus{
+  box-shadow: none!important;
+  outline: none;
+}
+/*处理tooltip不换行样式*/
+.ivu-tooltip-inner{
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+.ivu-input-number{
+  width: 100% !important;
+}

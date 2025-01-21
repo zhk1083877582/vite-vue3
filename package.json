@@ -1,0 +1,35 @@
+{
+    "name": "vite-vue3-element",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --host",
+        "build:dev": "yarn cross-env VITE_ENV=dev vite build",
+        "build:test": "yarn cross-env VITE_ENV=test vite build",
+        "build:test2": "yarn cross-env VITE_ENV=test2 vite build",
+        "build:uat": "yarn cross-env VITE_ENV=uat vite build",
+        "build:prod": "cross-env VITE_ENV=prod vite build"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.3.1",
+        "@lr17/lr": "^1.0.8",
+        "element-plus": "^2.9.3",
+        "flyio": "0.6.14",
+        "moment": "^2.30.1",
+        "sass": "^1.83.4",
+        "pinia": "^2.0.30"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.1",
+        "@vitejs/plugin-vue-jsx": "^3.0.0",
+        "unplugin-auto-import": "^19.0.0",
+        "unplugin-icons": "^22.0.0",
+        "unplugin-vue-components": "^28.0.0",
+        "vite": "^6.0.5",
+        "cross-env": "^7.0.3",
+        "vue": "^3.2.45",
+        "vue-router": "^4.1.6",
+        "@vue-flow/core": "^1.41.6"
+    }
+}

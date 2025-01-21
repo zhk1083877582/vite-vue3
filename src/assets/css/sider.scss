@@ -1,0 +1,40 @@
+.ivu-layout-sider{
+  background-color: #1a202e;
+}
+.ivu-menu,
+.ivu-menu-item {
+  font-size: 14px;
+  /*background-color: #0e131d;*/ 
+}
+.ivu-menu-dark {
+  background: #1a202e;
+}
+.ivu-menu-opened .ivu-menu-submenu-title {
+  background: #0e131d!important;
+}
+.ivu-menu-item {
+  padding-left: 25px !important;
+  text-align: left;
+  color: #9098af;
+  /*background-color: #0e131d;*/ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ivu-menu-submenu .ivu-menu-item{
+  padding-left: 40px!important;
+}
+.ivu-menu-vertical .ivu-menu-submenu-title{
+  background-color: #1a202e!important;
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover{
+  background: #2D61F4
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu){
+  color:#FFFFFF
+}
+
+.menu-icon{
+ margin-right: 8px; 
+ font-size: 14px;
+}

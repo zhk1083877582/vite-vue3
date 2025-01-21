@@ -1,0 +1,57 @@
+.table {
+  min-width: 10px;
+}
+.el-table-v2__main {
+  border: 1px solid #e8eaec;
+  right: 0;
+  bottom: 0;
+}
+.el-table-v2__header {
+  color: #606266 !important;
+  background-color: #f8f8f9 !important;
+}
+
+.el-table-v2__header-cell {
+  color: #606266 !important;
+  background-color: #f8f8f9 !important;
+}
+
+.dt-table-header-title {
+  font-weight: 700;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)),
+    -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
+  background-repeat: no-repeat;
+  background-size: 1px 100%, 100% 1px;
+  background-position: right top, right bottom;
+}
+
+.el-table-v2__header-cell,
+.el-table-v2__row-cell {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)),
+    -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
+  background-repeat: no-repeat;
+  background-size: 1px 100%, 100% 1px;
+  background-position: right top, right bottom;
+}
+
+.el-table-v2__row,
+.el-table-v2__header-row {
+  border-bottom: none !important;
+}
+
+.el-table-v2__right {
+  top: 1px !important;
+  right: -6px !important;
+}
+
+.el-table-v2__left {
+  top: 1px !important;
+  left: 1px !important;
+}
+
+.f8 {
+  background-color: #f8f8f8;
+}
+.f1 {
+  background-color: #f1f1f1;
+}

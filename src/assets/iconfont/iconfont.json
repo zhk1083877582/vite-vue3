@@ -1,0 +1,121 @@
+{
+  "id": "3948573",
+  "name": "渠道报备后台管理图标库",
+  "font_family": "iconfont",
+  "css_prefix_text": "",
+  "description": "侧导航icon",
+  "glyphs": [
+    {
+      "icon_id": "38477926",
+      "name": "佣金",
+      "font_class": "yongjin",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "37434884",
+      "name": "流程审核",
+      "font_class": "liuchengshenhe",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "37434883",
+      "name": "流程审批",
+      "font_class": "liuchengshenpi",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "37434885",
+      "name": "业务报表",
+      "font_class": "yewubaobiao",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "37434882",
+      "name": "销售管理",
+      "font_class": "xiaoshouguanli",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "37429187",
+      "name": "房源报备",
+      "font_class": "fangyuanbaobei",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "37429182",
+      "name": "后台管理",
+      "font_class": "houtaiguanli",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "37429185",
+      "name": "营销工具_h&c@3x",
+      "font_class": "a-yingxiaogongju_hc3x",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "37429186",
+      "name": "机构门店管理",
+      "font_class": "jigoumendianguanli",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "37429183",
+      "name": "报备管理",
+      "font_class": "baobeiguanli",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "37429188",
+      "name": "项目管理",
+      "font_class": "xiangmuguanli",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "37429192",
+      "name": "项目报备",
+      "font_class": "xiangmubaobei",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "37429190",
+      "name": "项目名称",
+      "font_class": "xiangmumingcheng",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "37429191",
+      "name": "人员管理",
+      "font_class": "renyuanguanli",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "37429189",
+      "name": "房源管理",
+      "font_class": "fangyuanguanli",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "37429184",
+      "name": "电子合同管理",
+      "font_class": "dianzihetongguanli",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    }
+  ]
+}
