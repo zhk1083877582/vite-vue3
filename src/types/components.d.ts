@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    copy: typeof import('./../components/com/preview/index copy.vue')['default']
     DtFilter: typeof import('./../components/com/table/dt-filter.vue')['default']
     DtGrid: typeof import('./../components/com/table/dt-grid.vue')['default']
     DtHeader: typeof import('./../components/com/table/dt-header.vue')['default']
@@ -39,8 +40,11 @@ declare module 'vue' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElImage: typeof import('element-plus/es')['ElImage']
+    ElImageViewer: typeof import('element-plus/es')['ElImageViewer']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
+    ElLink: typeof import('element-plus/es')['ElLink']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPagination: typeof import('element-plus/es')['ElPagination']
@@ -66,6 +70,8 @@ declare module 'vue' {
     IEpWarningFilled: typeof import('~icons/ep/warning-filled')['default']
     IEpWarntrianglefilled: typeof import('~icons/ep/warntrianglefilled')['default']
     IEpWarnTriangleFilled: typeof import('~icons/ep/warn-triangle-filled')['default']
+    'Index copy': typeof import('./../components/com/preview/index copy.vue')['default']
+    Preview: typeof import('./../components/com/preview/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -496,7 +496,7 @@
         :dateFormat="option.dtTime.dateFormat"
     />
 
-    <!-- <div v-else-if="option.image" class="upload_img">
+    <div v-else-if="option.image" class="upload_img">
         <div v-if="!val || !val.length">-</div>
         <div style="display: flex; width: 100%; overflow: auto">
             <div v-for="(item, index) in val" :key="item.url">
@@ -506,10 +506,9 @@
                         :src="item.url + '?x-oss-process=image/resize,w_350'"
                     />
                     <div class="demo_upload_list_cover">
-                        <Icon
-                            type="ios-eye-outline"
-                            @click.native="preViewImgFun(val, index)"
-                        ></Icon>
+                        <el-icon @click="preViewImgFun(val, index)"
+                            ><View
+                        /></el-icon>
                     </div>
                 </div>
 
@@ -518,11 +517,10 @@
         </div>
         <dt-preview
             :images="preViewImg"
-            :showDownLoad="option.image.showDownLoad"
             :showIndex="showIndex"
             ref="preViewImage"
         />
-    </div> -->
+    </div>
 
     <!-- <div v-else-if="option.file">
         <div v-if="!val || !val.length">-</div>

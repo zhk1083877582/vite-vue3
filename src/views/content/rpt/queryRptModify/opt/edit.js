@@ -40,12 +40,23 @@ export class editOpt extends Opt {
         };
         return [
             {
+                title: "门头照",
+                key: "doorHeaderPhoto",
+                image: {
+                    showDownLoad: true,
+                },
+                data: {
+                    from: (info) =>
+                        info.doorHeaderPhoto ? info.doorHeaderPhotoArr : [],
+                },
+            },
+            {
                 title: "所属组织",
                 key: "orgIds",
                 tree: {
                     saveAll: true,
                     options: [],
-                    searchBtn: true,
+                    // searchBtn: true,
                 },
                 load: (o) => {
                     console.log("🚀 ~ addOpt ~ create ~ o:", o);

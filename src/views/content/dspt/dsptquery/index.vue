@@ -2,12 +2,22 @@
     <div>
         dsptquerydsptquerydsptquerydsptquery
         <el-button @click="handelClick">messageBox</el-button>
+        <dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
+        <dt-preview
+            ref="previewRef"
+            :images="preview.images"
+            :showIndex="preview.showIndex"
+        />
     </div>
 </template>
 
 <script setup>
 import dt from "@/config/dt";
+import { listOpt } from "./opt/columns.js";
+import apiMgr from "./biz/index.js";
 
+const [tableRef, previewRef] = [ref(), ref()];
+let [preview, listData] = [ref({ images: [], showIndex: 0 }), ref()];
 const handelClick = () => {
     dt.ui
         .messageBox({
@@ -25,6 +35,40 @@ const handelClick = () => {
             console.log("🚀 ~ handelClick ~ close:", close);
         });
 };
+
+const fn = {
+    toDetail: (data) => {
+        let index = listData.value.findIndex((item) => item.id == data.id);
+        onPreview(index);
+    },
+    delFun: (data) => {
+        // removeFun(data);
+    },
+};
+onMounted(() => {
+    tableRef.value.init(new listOpt(fn));
+    tableRef.value.fetch(true);
+});
+function onFetch(obj) {
+    return apiMgr
+        .getData()
+        .then((res) => {
+            console.log("🚀 ~ .then ~ res:", res);
+            listData.value = res.list;
+            return res;
+        })
+        .catch(() => {
+            totalNum.value = 0;
+        });
+}
+function onPreview(index) {
+    preview.value.images = listData.value.map((item) => item.originalUrl);
+    preview.value.showIndex = index;
+    console.log("🚀 ~ onPreview ~ preview:", preview);
+    nextTick(() => {
+        previewRef.value.show(true);
+    });
+}
 </script>
 
 <style lang="scss" scoped></style>

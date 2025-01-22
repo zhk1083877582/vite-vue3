@@ -7,7 +7,7 @@
         class="tree-select"
         :placeholder="selectPlaceholder"
     >
-        <el-input
+        <!-- <el-input
             v-model="searchContent"
             @on-search="searchTree"
             v-if="searchBtn"
@@ -16,7 +16,7 @@
             :prefix-icon="Search"
             search
             enter-button
-        />
+        /> -->
         <el-tree ref="treeList" show-checkbox :data="treeShowList"></el-tree>
         <el-option
             :value="item.id"

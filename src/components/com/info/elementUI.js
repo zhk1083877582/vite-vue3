@@ -7,11 +7,24 @@ const Message = {
             message: msg,
         });
     },
-    // error: dt.ui.Message.error,
-    // warning: dt.ui.Message.warning,
-    // info: dt.ui.Message.info,
-    // loading: dt.ui.Message.loading,
-    // close: dt.ui.Message.close,
+    error: (msg) => {
+        return ElMessage({
+            type: "error",
+            message: msg,
+        });
+    },
+    warning: (msg) => {
+        return ElMessage({
+            type: "warning",
+            message: msg,
+        });
+    },
+    info: (msg) => {
+        return ElMessage({
+            type: "info",
+            message: msg,
+        });
+    },
 };
 const messageBox = (opt) => {
     console.log("🚀 ~ messageBox ~ opt:", opt);
@@ -26,7 +39,7 @@ const messageBox = (opt) => {
 };
 const Modal = {};
 dt.ui = {
-    ElMessage,
+    Message,
     messageBox,
     Modal,
 };

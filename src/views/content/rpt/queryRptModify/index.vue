@@ -1,7 +1,7 @@
 <!-- 员工管理 -->
 <template>
     <div class="employee-list">
-        <dt-search ref="searchRef" :xl="4" :xlBtn="6">
+        <dt-search ref="searchRef" :xl="24" :xlBtn="20">
             <el-button
                 type="primary"
                 style="margin-right: 8px"
@@ -14,8 +14,25 @@
                 @click="showDtInfo"
                 >dt-info</el-button
             >
+            <el-button
+                type="primary"
+                style="margin-right: 8px"
+                @click="handelClick"
+                >click</el-button
+            >
         </dt-search>
-        <dt-grid ref="tableRef" :onFetch="onFetch" page />
+        <dt-grid ref="tableRef" :onFetch="onFetch" page>
+            <template #btn>
+                <div class="flex btn-content">
+                    <el-button type="primary" @click="gridBtnClickO">
+                        gridBtn1
+                    </el-button>
+                    <el-button type="primary" @click="gridBtnClickT">
+                        gridBtn1
+                    </el-button>
+                </div>
+            </template>
+        </dt-grid>
         <!--新建员工-->
         <dt-modal-edit
             ref="editRef"
@@ -77,15 +94,26 @@ const fun = {
         editInfo.value.authOrg = row.authOrg;
         editInfo.value.orgCompanyId = row.orgCompanyId;
         editInfo.value.orgIds = [];
+        editInfo.value.doorHeaderPhoto = [];
+        editInfo.value.doorHeaderPhotoArr = [
+            {
+                url: "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
+            },
+            {
+                url: "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
+            },
+        ];
         editRef.value.show(new editOpt({}, editInfo.value), editInfo.value);
     },
     onChangeStatus: (row) => {
-        dt.ui.Modal.confirm({
-            title: `${row.state == "1" ? "禁用" : "启用"}`,
-            content: `请确认,是否将员工设为${
-                row.state == "1" ? "禁用" : "启用"
-            }`,
-            onOk: () => {
+        dt.ui
+            .messageBox({
+                title: `${row.state == "1" ? "禁用" : "启用"}`,
+                message: `请确认,是否将员工设为${
+                    row.state == "1" ? "禁用" : "启用"
+                }`,
+            })
+            .then(() => {
                 employeeMgr
                     .disableUsers({
                         userIds: [row.id],
@@ -99,8 +127,28 @@ const fun = {
                         );
                         onSearch();
                     });
-            },
-        });
+            });
+        // dt.ui.Modal.confirm({
+        //     title: `${row.state == "1" ? "禁用" : "启用"}`,
+        //     content: `请确认,是否将员工设为${
+        //         row.state == "1" ? "禁用" : "启用"
+        //     }`,
+        //     onOk: () => {
+        //         employeeMgr
+        //             .disableUsers({
+        //                 userIds: [row.id],
+        //                 state: row.state == "1" ? 0 : 1,
+        //             })
+        //             .then((res) => {
+        //                 dt.ui.Message.success(
+        //                     `员工（${row.userName}）已被${
+        //                         row.state == "1" ? "禁用" : "启用"
+        //                     }`
+        //                 );
+        //                 onSearch();
+        //             });
+        //     },
+        // });
     },
 };
 
@@ -162,6 +210,15 @@ const funpay = {};
 function showDtInfo() {
     infoRef.value.show(new payOpt(funpay), detailInfo.value);
     console.log("🚀 ~ showDtInfo ~ infoRef.value:", infoRef.value);
+}
+function handelClick() {
+    dt.ui.Message.success({ msg: "1111" });
+}
+function gridBtnClickO() {
+    console.log("🚀 ~ gridBtnClickO ~ gridBtnClickO:");
+}
+function gridBtnClickT() {
+    console.log("🚀 ~ gridBtnClickT ~ gridBtnClickT:");
 }
 </script>
 

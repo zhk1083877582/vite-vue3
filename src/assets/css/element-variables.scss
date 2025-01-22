@@ -54,7 +54,7 @@
     --el-color-primary-light-7: #b3d8d7;
     --el-color-primary-light-8: #cce5e5;
     --el-color-primary-light-9: #e6f2f2;
-    --el-color-primary-dark-2: #0a6e6d;
+    --el-color-primary-dark-2: #5469f0;
     --el-color-success: #8bc34a;
     --el-color-success-light-3: #aed580;
     --el-color-success-light-5: #c5e1a5;
@@ -131,6 +131,7 @@
     --el-border: var(--el-border-width) var(--el-border-style)
         var(--el-border-color);
     --el-svg-monochrome-grey: var(--el-border-color);
+    --el-button-active-bg-color: var(--el-color-primary);
 }
 
 .modal-header {
