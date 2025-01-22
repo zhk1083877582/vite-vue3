@@ -46,6 +46,7 @@ export class searchOpt extends Opt {
                 title: "职位状态",
                 placeholder: "全部",
                 select: {
+                    multiple: true,
                     options: [
                         { key: "-1", value: "全部" },
                         { key: "1", value: "在职" },

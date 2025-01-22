@@ -97,10 +97,9 @@
             :value-format="option.date.valueFormat || 'YYYY-MM-DD'"
             @change="onChange"
             :editable="option.editable || false"
-            :transfer="
-                option.date.transfer != null ? option.date.transfer : false
+            :teleported="
+                option.date.teleported != null ? option.date.teleported : false
             "
-            split-panels
         />
         <div class="tips" v-html="option.tips"></div>
     </div>
@@ -125,6 +124,7 @@
                     ? option.TimePicker.teleported
                     : false
             "
+            append-to="body"
             split-panels
         />
         <div class="tips" v-html="option.tips"></div>
@@ -133,10 +133,12 @@
     <div v-else-if="option.select" style="width: 100%">
         <el-select
             ref="select"
-            label-in-value
-            :transfer="
-                option.select.transfer != null ? option.select.transfer : true
+            :teleported="
+                option.select.teleported != null
+                    ? option.select.teleported
+                    : false
             "
+            append-to="body"
             :model-value="toString(val)"
             :multiple="option.select.multiple"
             :clearable="option.select.clearable"
@@ -496,15 +498,30 @@
         :dateFormat="option.dtTime.dateFormat"
     />
 
-    <div v-else-if="option.image" class="upload_img">
+    <div v-else-if="option.image">
         <div v-if="!val || !val.length">-</div>
         <div style="display: flex; width: 100%; overflow: auto">
             <div v-for="(item, index) in val" :key="item.url">
                 <div class="demo_upload_list">
-                    <img
+                    <!-- <img
                         style="object-fit: cover"
                         :src="item.url + '?x-oss-process=image/resize,w_350'"
-                    />
+                        :alt="item.alt"
+                    /> -->
+                    <el-image
+                        style="width: 100px; height: 100px"
+                        :src="item.url + '?x-oss-process=image/resize,w_350'"
+                        :zoom-rate="1.2"
+                        :max-scale="7"
+                        :min-scale="0.2"
+                        fit="cover"
+                    >
+                        <template #error>
+                            <div class="image-slot">
+                                <el-icon><Picture /></el-icon>
+                            </div>
+                        </template>
+                    </el-image>
                     <div class="demo_upload_list_cover">
                         <el-icon @click="preViewImgFun(val, index)"
                             ><View
@@ -710,7 +727,6 @@ export default {
             }
             // 处理选择框
             if (editValue && (this.option.select || this.option.cascader)) {
-                console.log("🚀 ~ onChange ~ this.$refs.select:", this);
                 if (Array.isArray(editValue)) {
                     value = editValue.map((item) => {
                         return item;

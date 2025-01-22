@@ -24,6 +24,16 @@ export class listColumn extends Opt {
                         input: {},
                     },
                 },
+                cell: (info) => {
+                    return {
+                        img: {
+                            src: info.sealUrl,
+                            click: () => {
+                                this.preview(info.sealUrl);
+                            },
+                        },
+                    };
+                },
             },
             {
                 field: "workNo",
@@ -35,10 +45,27 @@ export class listColumn extends Opt {
                         key: "workNo",
                         placeholder: "请输入工号",
                         select: {
+                            multiple: true,
                             options: [
                                 { key: "123", value: "工号1" },
                                 { key: "456", value: "工号2" },
+                                { key: "789", value: "工号3" },
+                                { key: "901", value: "工号4" },
                             ],
+                        },
+                    },
+                },
+            },
+            {
+                field: "times",
+                minWidth: 160,
+                header: {
+                    filter: {
+                        field: "times",
+                        title: "时间",
+                        date: {
+                            type: "daterange",
+                            clearable: false,
                         },
                     },
                 },

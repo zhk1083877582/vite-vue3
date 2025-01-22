@@ -26,6 +26,8 @@ function getUserListFun(info) {
                 authOrgNames: "qweqweqweqwe",
                 positionStatus: 1,
                 state: 1,
+                sealUrl:
+                    "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
             },
             {
                 orgName: "123",
@@ -36,6 +38,8 @@ function getUserListFun(info) {
                 authOrgNames: "qweqweqweqwe",
                 positionStatus: 1,
                 state: 1,
+                sealUrl:
+                    "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
             },
             {
                 orgName: "123",

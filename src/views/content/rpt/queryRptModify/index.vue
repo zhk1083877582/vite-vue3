@@ -48,6 +48,7 @@
         >
             <!-- <dt-grid ref="tableRef" :onFetch="onFetch" /> -->
         </dt-modal-info>
+        <dt-preview ref="previewRef" :images="images" :showIndex="0" />
     </div>
 </template>
 
@@ -61,7 +62,13 @@ import employeeMgr from "./biz/index";
 import router from "@/router";
 import { payOpt } from "./opt/pay";
 
-const [tableRef, editRef, searchRef, infoRef] = [ref(), ref(), ref(), ref()];
+const [tableRef, editRef, searchRef, infoRef, previewRef] = [
+    ref(),
+    ref(),
+    ref(),
+    ref(),
+    ref(),
+];
 
 let searchInfo = ref({
     orgId: "",
@@ -70,6 +77,7 @@ let searchInfo = ref({
     state: "-1",
     settlementMonth: "",
     settlementStatus: "",
+    times: [],
 });
 let orgCheck = reactive({
     title: "",
@@ -84,7 +92,7 @@ onMounted(() => {
 });
 
 let editInfo = ref({});
-
+let images = ref([]);
 const fun = {
     onEdit: (row) => {
         editTitle.value = "编辑员工";
@@ -128,27 +136,10 @@ const fun = {
                         onSearch();
                     });
             });
-        // dt.ui.Modal.confirm({
-        //     title: `${row.state == "1" ? "禁用" : "启用"}`,
-        //     content: `请确认,是否将员工设为${
-        //         row.state == "1" ? "禁用" : "启用"
-        //     }`,
-        //     onOk: () => {
-        //         employeeMgr
-        //             .disableUsers({
-        //                 userIds: [row.id],
-        //                 state: row.state == "1" ? 0 : 1,
-        //             })
-        //             .then((res) => {
-        //                 dt.ui.Message.success(
-        //                     `员工（${row.userName}）已被${
-        //                         row.state == "1" ? "禁用" : "启用"
-        //                     }`
-        //                 );
-        //                 onSearch();
-        //             });
-        //     },
-        // });
+    },
+    preview: (src) => {
+        images.value = [src];
+        previewRef.value.show();
     },
 };
 

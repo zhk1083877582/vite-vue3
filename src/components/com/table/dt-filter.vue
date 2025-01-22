@@ -103,7 +103,7 @@ function onMouseover(e, opt) {
 
 function onMouseleave(e) {
     e.stopPropagation();
-    timeout = setTimeout(() => (current.value = null), 1000);
+    timeout = setTimeout(() => (current.value = null), 5000);
 }
 
 function onClose(key) {

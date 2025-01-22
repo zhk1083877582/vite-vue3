@@ -55,16 +55,30 @@ export class Filter {
                 label = val.length > 0 ? val : null;
             }
         } else if (opt.select || opt.cascader) {
+            let options = opt.select.options;
             if (Array.isArray(val)) {
                 label = "";
                 val.forEach((v, i) => {
-                    label += v.label;
-                    if (i != val.length - 1) {
-                        label += ",";
-                    }
+                    options.some((item) => {
+                        if (val && item.key == v) {
+                            label += item.value;
+                            if (i != val.length - 1) {
+                                label += ",";
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
                 });
             } else {
-                label = val;
+                let options = opt.select.options;
+                options.some((item) => {
+                    if (val && item.key == val) {
+                        label = item.value;
+                        return true;
+                    }
+                    return false;
+                });
             }
         }
         this.conditions[key].label = label;

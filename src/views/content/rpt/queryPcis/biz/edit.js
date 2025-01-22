@@ -111,10 +111,10 @@ export class editOpt extends Opt {
                     },
                     load: (o) => {
                         o.select.options = [
-                            { key: "1", value: "1" },
-                            { key: "2", value: "2" },
-                            { key: "3", value: "3" },
-                            { key: "4", value: "4" },
+                            { key: "1", value: "1111" },
+                            { key: "2", value: "2222" },
+                            { key: "3", value: "3333" },
+                            { key: "4", value: "4444" },
                         ];
                     },
                     rules: [ruleOpt.required("select1不能为空", "array")],
@@ -269,6 +269,12 @@ export class editOpt extends Opt {
                         console.log("🚀 ~ editOpt ~ create ~ tag:", tag);
                     },
                 },
+            },
+            {
+                title: "Image",
+                key: "imglist",
+                // visible: false, //垫付
+                image: {},
             },
             {
                 title: "cascader",

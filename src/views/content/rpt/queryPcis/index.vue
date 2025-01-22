@@ -19,6 +19,16 @@ const [msgRef, menuMsgInfo] = [
         regionId: [],
         switch1: null,
         dtTime: null,
+        imglist: [
+            {
+                url: "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
+                alt: "图片1",
+            },
+            {
+                url: "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
+                alt: "图片1",
+            },
+        ],
     }),
 ];
 onMounted(() => {
@@ -60,6 +70,18 @@ const times = reactive({ time1: null, value2: null });
 const timeChange = (val) => {
     console.log(val);
 };
+const [selectValue, selectOptions] = [
+    ref(1),
+    ref([
+        { key: 1, value: "Option A", desc: "Option A - 230506" },
+        { key: 2, value: "Option B", desc: "Option B - 230506" },
+        { key: 3, value: "Option C", desc: "Option C - 230506" },
+        { key: 4, value: "Option A", desc: "Option A - 230507" },
+    ]),
+];
+const selectChange = (val) => {
+    console.log("🚀 ~ selectChange ~ val:", val);
+};
 </script>
 
 <template>
@@ -89,6 +111,19 @@ const timeChange = (val) => {
             type="daterange"
             @change="timeChange"
         />
+        <el-select
+            v-model="selectValue"
+            placeholder="Select"
+            style="width: 240px"
+            @change="selectChange"
+        >
+            <el-option
+                v-for="item in selectOptions"
+                :key="item.key"
+                :label="item.value"
+                :value="item"
+            />
+        </el-select>
     </div>
 </template>
 
