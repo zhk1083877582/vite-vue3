@@ -17,19 +17,20 @@
         "element-plus": "^2.9.3",
         "flyio": "0.6.14",
         "moment": "^2.30.1",
-        "sass": "^1.83.4",
-        "pinia": "^2.0.30"
+        "nprogress": "^0.2.0",
+        "pinia": "^2.0.30",
+        "sass": "^1.83.4"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.2.1",
         "@vitejs/plugin-vue-jsx": "^3.0.0",
+        "@vue-flow/core": "^1.41.6",
+        "cross-env": "^7.0.3",
         "unplugin-auto-import": "^19.0.0",
         "unplugin-icons": "^22.0.0",
         "unplugin-vue-components": "^28.0.0",
         "vite": "^6.0.5",
-        "cross-env": "^7.0.3",
         "vue": "^3.2.45",
-        "vue-router": "^4.1.6",
-        "@vue-flow/core": "^1.41.6"
+        "vue-router": "^4.1.6"
     }
 }

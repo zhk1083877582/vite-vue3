@@ -1,5 +1,19 @@
 import dt from "@/config/dt";
 import { initDynamicRoutes, getFirstAvailableRoute } from "../utils";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css"; //这个样式必须引入
+NProgress.configure({
+    // 动画方式
+    easing: "ease",
+    // 递增进度条的速度
+    speed: 500,
+    // 是否显示加载ico
+    showSpinner: false,
+    // 自动递增间隔
+    trickleSpeed: 200,
+    // 初始化时的最小百分比
+    minimum: 0.3,
+});
 
 // 标记路由是否已经初始化
 let routesInitialized = false;
@@ -7,7 +21,7 @@ let dynamicRoutes = []; // 保存动态路由配置
 
 export function createAuthGuard(router) {
     router.beforeEach(async (to, from, next) => {
-        // dt.ui.LoadingBar.start()
+        NProgress.start();
 
         // 检查用户是否已登录
         const isAuthenticated = dt.session.get("dt-auth");
@@ -101,6 +115,7 @@ export function createAuthGuard(router) {
 
     router.afterEach(() => {
         // dt.ui.LoadingBar.finish();
+        NProgress.done();
     });
 }
 
