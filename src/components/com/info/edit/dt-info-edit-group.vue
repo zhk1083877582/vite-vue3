@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="width: 100%">
         <el-row
             :gutter="8"
             v-for="(group, idx) in Array.isArray(option.group[0])
