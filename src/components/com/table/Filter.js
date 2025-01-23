@@ -73,7 +73,7 @@ export class Filter {
             } else {
                 let options = opt.select.options;
                 options.some((item) => {
-                    if (val && item.key == val) {
+                    if (val && String(item.key) == val) {
                         label = item.value;
                         return true;
                     }

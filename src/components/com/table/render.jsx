@@ -1,25 +1,50 @@
 import dt from "@/config/dt";
 import { h } from "vue";
+import { ElIcon } from "element-plus";
+import { ArrowDownBold } from "@element-plus/icons-vue"; // 确保从正确的位置导入图标
 
 function arrow(opt) {
     let filter = opt.node;
     return [
         h("div", [
             h("span", opt.title),
-            h("i", {
-                class: "iconfont yongjin",
-                style: {
-                    marginLeft: "5px",
+            h(
+                ElIcon,
+                {
+                    style: {
+                        marginLeft: "5px",
+                        display: "inline-block",
+                    },
+                    onMouseover: (e) => {
+                        filter.onMouseover(e, opt);
+                    },
+                    onMouseleave: (e) => {
+                        filter.onMouseleave(e);
+                    },
                 },
-                onMouseover: (e) => {
-                    filter.onMouseover(e, opt);
-                },
-                onMouseleave: (e) => {
-                    filter.onMouseleave(e);
-                },
-            }),
+                {
+                    default: () => h(ArrowDownBold), // 使用具体的图标组件
+                }
+            ),
         ]),
     ];
+    // return [
+    //     h("div", [
+    //         h("span", opt.title),
+    //         h("i", {
+    //             class: "iconfont yongjin",
+    //             style: {
+    //                 marginLeft: "5px",
+    //             },
+    //             onMouseover: (e) => {
+    //                 filter.onMouseover(e, opt);
+    //             },
+    //             onMouseleave: (e) => {
+    //                 filter.onMouseleave(e);
+    //             },
+    //         }),
+    //     ]),
+    // ];
 }
 
 function hGroup(title, width, cells) {
