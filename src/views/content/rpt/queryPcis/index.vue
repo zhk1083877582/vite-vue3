@@ -29,12 +29,18 @@ const [msgRef, menuMsgInfo] = [
                 alt: "图片1",
             },
         ],
+        switch1: false,
+        visibleSelect: null,
     }),
 ];
+const fun = {
+    infoData: menuMsgInfo.value,
+    updateEdit: () => {
+        msgRef.value.resetValidate(["visibleSelect"]);
+    },
+};
 onMounted(() => {
-    console.log("🚀 ~ onMounted ~ new editOpt():", new editOpt());
-
-    msgRef.value.init(new editOpt(), menuMsgInfo.value);
+    msgRef.value.init(new editOpt(fun), menuMsgInfo.value);
 });
 const radio1 = ref();
 const handleChange = (val, data) => {
@@ -82,10 +88,25 @@ const [selectValue, selectOptions] = [
 const selectChange = (val) => {
     console.log("🚀 ~ selectChange ~ val:", val);
 };
+
+function saveFun() {
+    msgRef.value
+        .validate()
+        .then((res) => {
+            console.log("🚀 ~ msgRef.value.validate ~ res:", res);
+            if (res) {
+                console.log("🚀 ~ msgRef.value.validate ~ res:", menuMsgInfo);
+            }
+        })
+        .catch((err) => {
+            console.log("🚀 ~ msgRef.value.validate ~ err:", err);
+        });
+}
 </script>
 
 <template>
     <div>
+        <el-button @click="saveFun">save</el-button>
         <!-- <el-date-picker v-model="value1" type="date" @change="handelChange" /> -->
         <dt-info ref="msgRef"></dt-info>
         <!-- <el-radio-group v-model="radio1" @change="handelChange">

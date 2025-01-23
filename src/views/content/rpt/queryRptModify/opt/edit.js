@@ -19,6 +19,12 @@ function getNameOrPhone(workNo, params) {
     });
 }
 export class editOpt extends Opt {
+    removeData() {
+        return Promise.resolve([
+            { key: "111", value: "1111lable" },
+            { key: "222", value: "2222lable" },
+        ]);
+    }
     create() {
         let authOrgEdit = {
             title: "数据权限",
@@ -111,19 +117,12 @@ export class editOpt extends Opt {
                 select: {
                     filterable: true,
                     options: [],
-                    remote: (key) => {},
+                    remote: (key) => {
+                        return this.removeData();
+                    },
                 },
                 change: (d) => {
-                    let obj = userData.find((item) => item.userId == d.value);
-                    d.info.orgCompanyId = obj.companyId;
-                    d.info.companyName = obj.companyName;
-                    d.info.orgDivisionId = obj.divisionId;
-                    d.info.phone = obj.phone;
-                    d.info.userName = obj.userName;
-                    d.info.workNo = obj.workNo;
-                    if (d.info.dataAuth == 3) {
-                        d.info.dataAuthStr = d.info.companyName;
-                    }
+                    console.log("🚀 ~ editOpt ~ create ~ d:", d);
                 },
                 rules: [ruleOpt.required("员工不能为空")],
             },

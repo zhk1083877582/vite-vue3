@@ -168,13 +168,15 @@ export default {
             }
         },
         resetValidate(tarKeyArr) {
-            // 重置部分表单验证
-            for (let item of this.$refs.form.fields) {
-                //form为表单的ref名称，fields为该表单下需要验证的所有字段，tarKeyArr为需要重置的所有字段
-                if (tarKeyArr.indexOf(item.prop) !== -1) {
-                    item.resetField();
+            this.$nextTick(() => {
+                // 重置部分表单验证
+                for (let item of this.$refs.form.fields) {
+                    //form为表单的ref名称，fields为该表单下需要验证的所有字段，tarKeyArr为需要重置的所有字段
+                    if (tarKeyArr.indexOf(item.prop) !== -1) {
+                        item.resetField();
+                    }
                 }
-            }
+            });
         },
         optLength(opts) {
             let num = 0;

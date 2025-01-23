@@ -144,6 +144,7 @@
             :clearable="option.select.clearable"
             :placeholder="option.placeholder"
             @change="onChange"
+            :remote="option.select.remote ? true : false"
             :remote-method="option.select.remote ? onRemote : null"
             :on-query-change="option.select.query"
             :disabled="option.disabled"

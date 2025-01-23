@@ -176,26 +176,7 @@ function addEmployee() {
 }
 
 function onOk(data) {
-    let authOrg =
-        data.dataAuth == 2
-            ? data.authOrg.join(",")
-            : data.dataAuth == 3
-            ? data.orgCompanyId
-            : null;
-    let params = {
-        ...data,
-        roleIds: data.roleIds.split(","),
-        authOrg,
-    };
-    employeeMgr.userFun(params).then((res) => {
-        if (params.modalType == "edit") {
-            dt.ui.Message.success("编辑人员成功");
-        } else {
-            dt.ui.Message.success("新增人员成功");
-        }
-        editRef.value.hide();
-        onSearch();
-    });
+    console.log("🚀 ~ onOk ~ data:", data);
 }
 const funpay = {};
 function showDtInfo() {

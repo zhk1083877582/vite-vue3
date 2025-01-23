@@ -48,8 +48,6 @@
 <script setup>
 import { RouterView } from "vue-router";
 import tabs from "./components/tabs.vue";
-import navigation from "./components/navigation.vue";
-import sider from "./components/sider.vue";
 import elMenu from "./components/el-menu.vue";
 
 import { ref, watch } from "vue";

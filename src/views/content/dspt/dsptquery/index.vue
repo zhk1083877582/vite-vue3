@@ -2,6 +2,7 @@
     <div>
         dsptquerydsptquerydsptquerydsptquery
         <el-button @click="handelClick">messageBox</el-button>
+        <el-icon><Search /></el-icon>
         <dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
         <dt-preview
             ref="previewRef"

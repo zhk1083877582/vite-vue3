@@ -2,11 +2,50 @@ import { Opt } from "@/components/com/Opt.js";
 import ruleOpt from "@/option/rule.js";
 
 export class editOpt extends Opt {
-    constructor() {
-        super();
+    constructor(vm) {
+        super(vm);
+        this.info = this.infoData;
+        console.log(this, "1111");
     }
+    switchRules() {
+        return this.infoData.switch1
+            ? [
+                  ruleOpt.required(`visibleSelect不能为空`, "array"),
+                  ruleOpt.check(`visibleSelect不能为空`, (value) => {
+                      console.log(
+                          "🚀 ~ editOpt ~ ruleOpt.check ~ value:",
+                          value,
+                          this
+                      );
 
+                      let flag = true;
+                      flag = this.infoData.visibleSelect == "";
+                      return flag;
+                  }),
+              ]
+            : [];
+    }
     create() {
+        let part1 = reactive({
+            key: "visibleSelect",
+            placeholder: "select1",
+            visible: false,
+            select: {
+                options: [],
+                multiple: true,
+                maxTagCount: 2,
+            },
+            load: (o) => {
+                o.select.options = [
+                    { key: "1", value: "1111" },
+                    { key: "2", value: "2222" },
+                    { key: "3", value: "3333" },
+                    { key: "4", value: "4444" },
+                ];
+            },
+            // rules: [ruleOpt.required("select1不能为空", "array")],
+        });
+
         return [
             [
                 {
@@ -54,7 +93,7 @@ export class editOpt extends Opt {
                     },
                     // disabled: true,
                     placeholder: "日期",
-                    rules: [ruleOpt.required("日期不能为空", "date")],
+                    // rules: [ruleOpt.required("日期不能为空", "date")],
                 },
                 {
                     title: "日期2",
@@ -64,7 +103,7 @@ export class editOpt extends Opt {
                     },
                     // disabled: true,
                     placeholder: "日期",
-                    rules: [ruleOpt.required("日期不能为空", "array")],
+                    // rules: [ruleOpt.required("日期不能为空", "array")],
                 },
             ],
             [
@@ -77,7 +116,7 @@ export class editOpt extends Opt {
                     },
                     // disabled: true,
                     placeholder: "日期",
-                    rules: [ruleOpt.required("日期不能为空", "array")],
+                    // rules: [ruleOpt.required("日期不能为空", "array")],
                 },
                 {
                     title: "时间",
@@ -95,7 +134,7 @@ export class editOpt extends Opt {
                     // disabled: true,
 
                     placeholder: "时间",
-                    rules: [ruleOpt.required("时间不能为空", "array")],
+                    // rules: [ruleOpt.required("时间不能为空", "array")],
                 },
             ],
 
@@ -117,7 +156,7 @@ export class editOpt extends Opt {
                             { key: "4", value: "4444" },
                         ];
                     },
-                    rules: [ruleOpt.required("select1不能为空", "array")],
+                    // rules: [ruleOpt.required("select1不能为空", "array")],
                 },
                 {
                     title: "select2",
@@ -136,7 +175,7 @@ export class editOpt extends Opt {
                             { key: "4", value: "4" },
                         ];
                     },
-                    rules: [ruleOpt.required("select2不能为空")],
+                    // rules: [ruleOpt.required("select2不能为空")],
                 },
             ],
             [
@@ -155,7 +194,7 @@ export class editOpt extends Opt {
                             },
                         ],
                     },
-                    rules: [ruleOpt.required("radio1", "number")],
+                    // rules: [ruleOpt.required("radio1", "number")],
                 },
                 {
                     title: "checkBox",
@@ -172,14 +211,14 @@ export class editOpt extends Opt {
                             { key: "4", value: "4" },
                         ];
                     },
-                    rules: [
-                        {
-                            type: "array",
-                            required: true,
-                            message: "checkBox1不能为空",
-                            trigger: "blur,change",
-                        },
-                    ],
+                    // rules: [
+                    //     {
+                    //         type: "array",
+                    //         required: true,
+                    //         message: "checkBox1不能为空",
+                    //         trigger: "blur,change",
+                    //     },
+                    // ],
                 },
             ],
             {
@@ -326,16 +365,31 @@ export class editOpt extends Opt {
             },
             {
                 title: "switch1",
-                key: "switch1",
-                switch: {
-                    // openText: "上传",
-                    // closeText: "后补",
-                    size: "large",
-                },
-                tips: "switch1",
-                change: (v) => {
-                    console.log("🚀 ~ editOpt ~ create ~ v:", v);
-                },
+                key: "visibleSelect",
+                group: [
+                    {
+                        key: "switch1",
+                        col: 4,
+                        switch: {
+                            // openText: "上传",
+                            // closeText: "后补",
+                            size: "large",
+                        },
+                        tips: "switch1",
+                        change: (v) => {
+                            console.log(
+                                "🚀 ~ editOpt ~ create ~ v:",
+                                v,
+                                this.switchRules()
+                            );
+                            part1.visible = v.value;
+                            this.updateEdit();
+                            this.opts[10].rules = this.switchRules();
+                        },
+                    },
+                    part1,
+                ],
+                rules: [],
             },
             {
                 title: "dt-time",
@@ -349,6 +403,7 @@ export class editOpt extends Opt {
                 rules: [
                     ruleOpt.timeInterval(2),
                     ruleOpt.check("不支持选择单边日期", (value) => {
+                        if (!value) return false;
                         return (value[0] == "") ^ (value[1] == "");
                     }),
                 ],
