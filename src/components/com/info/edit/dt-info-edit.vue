@@ -244,7 +244,6 @@
 
     <div v-else-if="option.uploadImg" class="upload_img">
         <div class="upload_img_line">
-            <!-- :action="option.uploadImg.api.reqUrl" -->
             <el-upload
                 style="
                     width: 100px;
@@ -271,7 +270,7 @@
                 :headers="option.uploadImg.api.headers"
                 :data="option.uploadImg.api.data"
                 :max-size="option.uploadImg.maxSize"
-                :accept="option.uploadImg.accept"
+                :accept="option.uploadImg.accept || 'image/*'"
                 :on-change="onUploadChange"
                 :on-success="onUploadSuccess"
                 :on-remove="onUploadRemove"
@@ -731,14 +730,13 @@ export default {
         },
         onUploadSuccess(res, file, list, fileList) {
             console.log(res, file, list, fileList, "upload");
-            this.onChange(list);
-            // if (res.code != "200") {
-            //     console.log(res);
-            //     dt.ui.Message.error(res.msg || "上传失败，请重新上传");
-            //     this.$refs.upload.fileList = [];
-            // } else {
-            //     this.onChange(list);
-            // }
+            if (res.code != "200") {
+                console.log(res);
+                dt.ui.Message.error(res.msg || "上传失败，请重新上传");
+                this.option.uploadImg.files = [];
+            } else {
+                this.onChange(list);
+            }
         },
         onUploadBefore(file) {
             console.log("🚀 ~ onUploadBefore ~ file:", file);
@@ -755,27 +753,13 @@ export default {
             if (
                 this.option.upload &&
                 this.option.upload.maxlength &&
-                this.$refs.upload.fileList.length >=
+                this.option.uploadImg.files.length >=
                     this.option.upload.maxlength
             ) {
                 dt.ui.Message.error("文件超多最大限制上传个数");
                 return false;
             }
-            if (opt.checkFilesLength) {
-                this.$refs.uploadImg.fileList = [];
-            }
-            if (this.option.showUploadIcon) {
-                this.$refs.uploadImg.fileList = [];
-            }
-            // if (
-            //     this.option.uploadImg &&
-            //     this.option.uploadImg.maxlength &&
-            //     this.$refs.uploadImg.fileList.length >=
-            //         this.option.uploadImg.maxlength
-            // ) {
-            //     dt.ui.Message.error("图片超多最大限制上传个数");
-            //     return false;
-            // }
+
             if (opt.before) {
                 if (opt.format) {
                     let tmp = file.name.split(".");
@@ -838,9 +822,9 @@ export default {
                     title: "确认删除此附件？",
                 })
                 .then(() => {
-                    this.$refs.upload.fileList.splice(index, 1);
+                    this.option.uploadImg.files.splice(index, 1);
                     list.splice(index, 1);
-                    this.onChange(this.$refs.upload.fileList);
+                    this.onChange(this.option.uploadImg.files);
                 });
         },
         preViewImgFun(images, index) {
@@ -852,23 +836,13 @@ export default {
         },
         preViewImgRemove(images, index) {
             let isVideo = this.option.uploadImg?.type == "video";
-            // dt.ui.Modal.confirm({
-            //     title: `确认删除此${isVideo ? "视频" : "图片"}附件？`,
-            //     onOk: () => {
-            //         this.$refs.uploadImg.fileList.splice(index, 1);
-            //         images.splice(index, 1);
-            //         this.onChange(images);
-            //     },
-            // });
             dt.ui
                 .messageBox({
                     title: `提示`,
                     message: `确认删除此${isVideo ? "视频" : "图片"}附件？`,
                 })
                 .then(() => {
-                    // this.$refs.uploadImg.fileList.splice(index, 1);
-                    // this.$refs.uploadImg.handleRemove;
-
+                    this.option.uploadImg.files.splice(index, 1);
                     images.splice(index, 1);
                     this.onChange(images);
                 });

@@ -37,7 +37,7 @@ class DtAuth extends Auth {
             deviceNo,
         };
         if (this.info) {
-            header["Authorization-tospur"] = this.info.authorization;
+            header["Authorization"] = this.info.authorization;
             header.userId = this.info.userId;
         }
         return header;

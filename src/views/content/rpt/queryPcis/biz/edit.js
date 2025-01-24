@@ -1,7 +1,6 @@
 import { Opt } from "@/components/com/Opt.js";
 import ruleOpt from "@/option/rule.js";
 import toolMgr from "@/biz/file.js";
-
 function accessory(info) {
     let api = toolMgr.upload();
     let files = [];
@@ -38,16 +37,16 @@ function accessory(info) {
             data: {
                 to: (v) => {
                     console.log("🚀 ~ accessory ~ v:", v);
-                    let images = v.map((item) => {
+                    let imglist = v.map((item) => {
                         return {
-                            // name: item.name,
+                            name: item.name,
                             url: item.response
-                                ? URL.createObjectURL(item.file.raw)
+                                ? item.response.data.imageURL
                                 : item.url,
                         };
                     });
                     // info.editChannelAttach(images);
-                    return { images };
+                    return { imglist };
                 },
             },
         },
