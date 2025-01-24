@@ -1,5 +1,5 @@
 import dt from "@/config/dt";
-import { ElMessageBox, ElMessage } from "element-plus";
+import { ElMessageBox, ElMessage, ElCheckbox } from "element-plus";
 const Message = {
     success: (msg) => {
         return ElMessage({

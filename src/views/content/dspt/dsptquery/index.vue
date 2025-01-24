@@ -3,7 +3,8 @@
         dsptquerydsptquerydsptquerydsptquery
         <el-button @click="handelClick">messageBox</el-button>
         <el-icon><Search /></el-icon>
-        <dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
+        <dt-grid ref="tableRef" :onFetch="onFetch" :checkbox="checkbox" page>
+        </dt-grid>
         <dt-preview
             ref="previewRef"
             :images="preview.images"
@@ -19,6 +20,19 @@ import apiMgr from "./biz/index.js";
 
 const [tableRef, previewRef] = [ref(), ref()];
 let [preview, listData] = [ref({ images: [], showIndex: 0 }), ref()];
+const checkbox = {
+    isDisabled: (row) => {
+        if (!row) return false;
+        return row?.id != "84";
+    },
+    onOne: (row, flag) => {
+        console.log("🚀 ~ row, flag:", row, flag);
+    },
+    onAll: (flag) => {
+        console.log("🚀 ~ flag:", flag);
+    },
+    // radio: true,
+};
 const handelClick = () => {
     dt.ui
         .messageBox({

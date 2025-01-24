@@ -7,6 +7,11 @@ export class listOpt extends Opt {
     create() {
         return [
             {
+                type: "checkbox",
+                title: "",
+                fixed: "left",
+            },
+            {
                 title: "创建人",
                 field: "createUserName",
                 minWidth: 120,

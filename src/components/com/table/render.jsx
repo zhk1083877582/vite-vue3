@@ -1,6 +1,6 @@
 import dt from "@/config/dt";
 import { h } from "vue";
-import { ElIcon } from "element-plus";
+import { ElIcon, ElCheckbox } from "element-plus";
 import { ArrowDownBold } from "@element-plus/icons-vue"; // 确保从正确的位置导入图标
 
 function arrow(opt) {
@@ -68,20 +68,33 @@ function hGroup(title, width, cells) {
 function checkbox(opt, field, row) {
     if (field && row) {
         return (
-            <el-check-box
-                v-model={row[field]}
+            <ElCheckbox
+                modelValue={row[field]}
                 style={{ marginLeft: "10px" }}
-                onClick={() => opt.click(row)}
+                onClick={() => {
+                    if (opt.disabled(row)) {
+                        return false;
+                    } else {
+                        return opt.click(row);
+                    }
+                }}
                 disabled={opt.disabled ? opt.disabled(row) : false}
             />
         );
     } else {
+        console.log("🚀 ~ checkbox ~ opt, field, no-row:", opt, field);
         return (
-            <el-check-box
-                v-model={opt.value}
+            <ElCheckbox
+                modelValue={opt.value}
                 indeterminate={opt.indeterminate}
                 style={{ marginLeft: "10px" }}
-                onClick={() => opt.click()}
+                onClick={() => {
+                    if (opt.disabled()) {
+                        return false;
+                    } else {
+                        return opt.click();
+                    }
+                }}
                 disabled={opt.disabled ? opt.disabled() : false}
             />
         );
