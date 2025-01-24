@@ -62,6 +62,7 @@ declare module 'vue' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElTree: typeof import('element-plus/es')['ElTree']
     ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     HelloWorld: typeof import('./../components/test1/HelloWorld.vue')['default']
     IEpAlarmClock: typeof import('~icons/ep/alarm-clock')['default']
     IEpInfoFilled: typeof import('~icons/ep/info-filled')['default']

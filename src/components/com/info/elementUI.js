@@ -25,6 +25,13 @@ const Message = {
             message: msg,
         });
     },
+    loading: (msg) => {
+        return ElMessage({
+            type: "info",
+            message: msg,
+            icon: "Loading",
+        });
+    },
 };
 const messageBox = (opt) => {
     console.log("🚀 ~ messageBox ~ opt:", opt);

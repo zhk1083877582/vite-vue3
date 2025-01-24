@@ -24,7 +24,7 @@ export function createAuthGuard(router) {
         NProgress.start();
 
         // 检查用户是否已登录
-        const isAuthenticated = dt.session.get("dt-auth");
+        const isAuthenticated = dt.session.get("dt_auth");
         // console.log("Authentication status:", isAuthenticated);
 
         // 错误页面直接放行

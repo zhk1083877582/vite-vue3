@@ -15,13 +15,51 @@ export class listOpt extends Opt {
                 title: "创建人",
                 field: "createUserName",
                 minWidth: 120,
+                cell: (item) => {
+                    return {
+                        edit: {
+                            key: "createUserName",
+                            placeholder: "请输入创建人",
+                            input: {
+                                // type: "number",
+                                // precision: 2,
+                                blur: (val) => {
+                                    console.log(
+                                        "🚀 ~ listOpt ~ create ~ val:",
+                                        item,
+                                        val
+                                    );
+                                    // this.onBlur(item);
+                                },
+                            },
+                        },
+                    };
+                },
             },
             {
                 title: "创建时间",
                 field: "createTime",
                 minWidth: 160,
-                cell: {
-                    text: {},
+                cell: (item) => {
+                    return {
+                        edit: {
+                            key: "createTime",
+                            placeholder: "请选择日期和时间",
+                            date: {
+                                type: "datetime",
+                                valueFormat: "YYYY-MM-DD HH:mm:ss",
+                                clearable: false,
+                                change: (val) => {
+                                    console.log(
+                                        "🚀 ~ listOpt ~ create ~ val:",
+                                        item,
+                                        val
+                                    );
+                                    // this.onBlur(item);
+                                },
+                            },
+                        },
+                    };
                 },
                 header: {
                     filter: dateOpt.range({
@@ -33,8 +71,32 @@ export class listOpt extends Opt {
             },
             {
                 title: "海报状态",
-                field: "delFlagName",
+                field: "delFlag",
                 minWidth: 100,
+                cell: (item) => {
+                    return {
+                        edit: {
+                            key: "delFlag",
+                            placeholder: "请选择海报状态",
+                            select: {
+                                teleported: true,
+                                options: [
+                                    { key: false, value: "正常" },
+                                    { key: true, value: "已删除" },
+                                ],
+                            },
+                            change: (val) => {
+                                item.delFlagName =
+                                    val.value == "false" ? "正常" : "已删除";
+                                console.log(
+                                    "🚀 ~ listOpt ~ create ~ val:",
+                                    item.delFlagName,
+                                    val
+                                );
+                            },
+                        },
+                    };
+                },
                 header: {
                     filter: {
                         title: "海报状态",
@@ -55,6 +117,7 @@ export class listOpt extends Opt {
                 fixed: "right",
                 width: 120,
                 cell: (info) => {
+                    console.log("🚀 ~ listOpt ~ create ~ info:", info);
                     return {
                         btn: [
                             {

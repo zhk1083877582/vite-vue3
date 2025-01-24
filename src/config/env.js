@@ -20,8 +20,9 @@ const env = {
 
 let config = {
     id: 36,
-    name: "demo1",
-    version: import.meta.env.VITE_BUILD_VERSION,
+    name: "DT-CHANNEL-CMS",
+    // version: import.meta.env.VITE_BUILD_VERSION,
+    version: "master", //import.meta.env.VITE_BUILD_VERSION,
     buildTime: import.meta.env.VITE_BUILD_TIME,
     deviceType: 4,
     env: import.meta.env.VITE_ENV,

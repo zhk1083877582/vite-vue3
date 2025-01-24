@@ -242,68 +242,47 @@
         </template>
     </div>
 
-    <!-- <div v-else-if="option.uploadImg" class="upload_img">
+    <div v-else-if="option.uploadImg" class="upload_img">
         <div class="upload_img_line">
-            <Upload
-                ref="uploadImg"
+            <!-- :action="option.uploadImg.api.reqUrl" -->
+            <el-upload
+                style="
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    margin-right: 5px;
+                "
                 v-show="
+                    !info ||
                     !info[option.key] ||
-                    option.showUploadIcon ||
-                    info[option.key]?.length < option.uploadImg.maxlength
+                    !option.uploadImg.maxlength ||
+                    (option.uploadImg.maxlength &&
+                        info[option.key].length < option.uploadImg.maxlength)
                 "
+                ref="uploadImg"
+                v-model:file-list="option.uploadImg.files"
                 :format="option.uploadImg.format"
-                :disabled="
-                    option.disabled ||
-                    (!!option.uploadImg.percent &&
-                        option.uploadImg.percent < 100)
-                "
+                :disabled="option.disabled"
                 :on-format-error="onFormatError"
                 :action="option.uploadImg.api.reqUrl"
                 :name="option.uploadImg.api.data.fileName"
                 :multiple="option.uploadImg.multiple"
                 :headers="option.uploadImg.api.headers"
                 :data="option.uploadImg.api.data"
-                :default-file-list="option.uploadImg.files"
                 :max-size="option.uploadImg.maxSize"
                 :accept="option.uploadImg.accept"
+                :on-change="onUploadChange"
                 :on-success="onUploadSuccess"
                 :on-remove="onUploadRemove"
                 :on-preview="onUploadPreview"
                 :on-error="onUploadError"
-                :show-upload-list="option.uploadImg.show"
+                :show-file-list="option.uploadImg.show"
                 :before-upload="onUploadBefore"
+                list-type="picture-card"
             >
-                <div
-                    style="
-                        width: 100px;
-                        height: 100px;
-                        line-height: 100px;
-                        text-align: center;
-                        border: 1px dashed #dadada;
-                        cursor: pointer;
-                        margin-right: 10px;
-                    "
-                >
-                    <Icon
-                        v-if="
-                            !option.uploadImg.percent ||
-                            option.uploadImg.percent == 100
-                        "
-                        type="ios-add"
-                        :size="30"
-                    />
-                    <i-circle
-                        v-else
-                        :percent="option.uploadImg.percent"
-                        :size="70"
-                        style="margin-top: 13px"
-                    >
-                        <span style="font-size: 18px"
-                            >{{ option.uploadImg.percent }}%</span
-                        >
-                    </i-circle>
-                </div>
-            </Upload>
+                <el-icon><Plus /></el-icon>
+            </el-upload>
 
             <div class="list_img_warp" :style="option.uploadImg.style">
                 <div
@@ -336,51 +315,25 @@
                                     : 'transparent',
                             }"
                         >
-                            <Icon
-                                type="ios-eye-outline"
+                            <el-icon
                                 v-if="!isVideoUrl(item.url)"
                                 @click.native="
                                     preViewImgFun(info[option.key], index)
                                 "
-                            ></Icon>
-                            <Icon
-                                type="md-arrow-dropright-circle"
-                                v-if="isVideoUrl(item.url)"
-                                @click.native="
-                                    preViewImgFun(info[option.key], index)
-                                "
-                            ></Icon>
-                            <Icon
-                                type="ios-trash-outline"
+                                ><View
+                            /></el-icon>
+                            <el-icon
                                 v-if="!option.uploadImg.hideDel"
                                 @click.native="
                                     preViewImgRemove(info[option.key], index)
                                 "
-                            ></Icon>
+                                ><Delete
+                            /></el-icon>
                         </div>
                     </div>
-                    <div
-                        class="list-cover-marker"
-                        v-if="option.uploadImg.hasCover"
-                    >
-                        <Radio
-                            class="editBtn"
-                            v-model="item.cover"
-                            true-value="1"
-                            false-value="2"
-                            @on-change="handleSetCover(info[option.key], index)"
-                            :disabled="option.uploadImg.hideDel"
-                        >
-                            {{
-                                item.cover == 1
-                                    ? option.uploadImg.trueRadioTxt
-                                    : option.uploadImg.falseRadioTxt
-                            }}
-                        </Radio>
-                    </div>
+
                     <dt-preview
                         :images="preViewImg"
-                        :showDownLoad="option.uploadImg.showDownLoad"
                         :showIndex="showIndex"
                         ref="preViewImage"
                     />
@@ -391,7 +344,7 @@
         <div style="color: #bebebe">
             {{ option.placeholder }}
         </div>
-    </div> -->
+    </div>
 
     <!-- <div v-else-if="option.upload">
         <Upload
@@ -773,21 +726,22 @@ export default {
                 this.option.change(change);
             }
         },
+        onUploadChange(file, filelist) {
+            console.log("🚀 ~ onUploadChange ~ file,filelist:", file, filelist);
+        },
         onUploadSuccess(res, file, list, fileList) {
             console.log(res, file, list, fileList, "upload");
-            if (res.code != "200") {
-                console.log(res);
-                dt.ui.Message.destroy();
-                dt.ui.Message.error(res.msg || "上传失败，请重新上传");
-                this.$refs.upload.fileList = [];
-            } else {
-                this.onChange(list);
-                setTimeout(() => {
-                    dt.ui.Message.destroy();
-                }, 1000);
-            }
+            this.onChange(list);
+            // if (res.code != "200") {
+            //     console.log(res);
+            //     dt.ui.Message.error(res.msg || "上传失败，请重新上传");
+            //     this.$refs.upload.fileList = [];
+            // } else {
+            //     this.onChange(list);
+            // }
         },
         onUploadBefore(file) {
+            console.log("🚀 ~ onUploadBefore ~ file:", file);
             let opt = this.option.upload || this.option.uploadImg;
             let maxSize = opt.maxSize || 20480;
             if (file.size / 1024 > maxSize) {
@@ -813,15 +767,15 @@ export default {
             if (this.option.showUploadIcon) {
                 this.$refs.uploadImg.fileList = [];
             }
-            if (
-                this.option.uploadImg &&
-                this.option.uploadImg.maxlength &&
-                this.$refs.uploadImg.fileList.length >=
-                    this.option.uploadImg.maxlength
-            ) {
-                dt.ui.Message.error("图片超多最大限制上传个数");
-                return false;
-            }
+            // if (
+            //     this.option.uploadImg &&
+            //     this.option.uploadImg.maxlength &&
+            //     this.$refs.uploadImg.fileList.length >=
+            //         this.option.uploadImg.maxlength
+            // ) {
+            //     dt.ui.Message.error("图片超多最大限制上传个数");
+            //     return false;
+            // }
             if (opt.before) {
                 if (opt.format) {
                     let tmp = file.name.split(".");
@@ -834,19 +788,20 @@ export default {
                 return opt.before(file);
             }
 
-            dt.ui.Message.loading({
-                content: "上传中",
-                duration: 0,
-            });
-
+            dt.ui.Message.loading("上传中");
             return true;
         },
         onUploadError(error, file, list, fileList) {
-            dt.ui.Message.destroy();
+            console.log(
+                "🚀 ~ onUploadError ~ error, file, list, fileList:",
+                error,
+                file,
+                list,
+                fileList
+            );
             dt.ui.Message.error(error.message || "上传失败，请重新上传");
         },
         onFormatError() {
-            dt.ui.Message.destroy();
             let opt = this.option.upload || this.option.uploadImg;
             if (opt.formatErr) {
                 opt.formatErr();
@@ -878,14 +833,15 @@ export default {
             this.$refs.upload.post(file);
         },
         removeFileFun(list, index) {
-            dt.ui.Modal.confirm({
-                title: "确认删除此附件？",
-                onOk: () => {
+            dt.ui
+                .messageBox({
+                    title: "确认删除此附件？",
+                })
+                .then(() => {
                     this.$refs.upload.fileList.splice(index, 1);
                     list.splice(index, 1);
                     this.onChange(this.$refs.upload.fileList);
-                },
-            });
+                });
         },
         preViewImgFun(images, index) {
             this.preViewImg = images.map((item) => item.url);
@@ -896,51 +852,26 @@ export default {
         },
         preViewImgRemove(images, index) {
             let isVideo = this.option.uploadImg?.type == "video";
-            dt.ui.Modal.confirm({
-                title: `确认删除此${isVideo ? "视频" : "图片"}附件？`,
-                onOk: () => {
-                    this.$refs.uploadImg.fileList.splice(index, 1);
+            // dt.ui.Modal.confirm({
+            //     title: `确认删除此${isVideo ? "视频" : "图片"}附件？`,
+            //     onOk: () => {
+            //         this.$refs.uploadImg.fileList.splice(index, 1);
+            //         images.splice(index, 1);
+            //         this.onChange(images);
+            //     },
+            // });
+            dt.ui
+                .messageBox({
+                    title: `提示`,
+                    message: `确认删除此${isVideo ? "视频" : "图片"}附件？`,
+                })
+                .then(() => {
+                    // this.$refs.uploadImg.fileList.splice(index, 1);
+                    // this.$refs.uploadImg.handleRemove;
+
                     images.splice(index, 1);
                     this.onChange(images);
-                },
-            });
-        },
-        handleSetCover(images, index) {
-            console.log(images, index);
-            images.forEach((item, indexL) => {
-                item.cover = "2";
-                if (indexL == index) {
-                    item.cover = "1";
-                }
-            });
-        },
-        dragstart(index) {
-            console.log("start index ===>>> ", index);
-            this.dragIndex = index;
-        },
-
-        // dragenter 和 dragover 事件的默认行为是拒绝接受任何被拖放的元素 因此，我们要在这两个拖放事件中使用`preventDefault`来阻止浏览器的默认行为
-        dragenter(e, index, filelist) {
-            e.preventDefault();
-            this.enterIndex = index;
-            if (this.timeout !== null) {
-                clearTimeout(this.timeout);
-            }
-            // 拖拽事件的防抖
-            this.timeout = setTimeout(() => {
-                if (this.dragIndex !== index) {
-                    const source = filelist[this.dragIndex];
-                    filelist.splice(this.dragIndex, 1);
-                    this.$refs.uploadImg.fileList.splice(this.dragIndex, 1);
-                    filelist.splice(index, 0, source);
-                    this.$refs.uploadImg.fileList.splice(index, 0, source);
-                    this.onChange(filelist);
-                    this.dragIndex = index;
-                }
-            }, 100);
-        },
-        dragover(e, index) {
-            e.preventDefault();
+                });
         },
     },
 };
@@ -951,10 +882,6 @@ export default {
     width: 100%;
     height: 1px;
     background-color: #ccc;
-}
-.ivu-input-number,
-.ivu-date-picker {
-    width: 100%;
 }
 
 .list_img_warp {
@@ -1025,20 +952,10 @@ export default {
     margin: 0 2px;
 }
 
-.ivu-input-number-input[disabled],
-.ivu-input[disabled] {
-    color: #333;
-}
-
 .tips span {
     color: red;
 }
 
-.ivu-radio-group-button .ivu-radio-wrapper-disabled.ivu-radio-wrapper-checked {
-    border-color: #2d8cf0;
-    background-color: #2d8cf0;
-    box-shadow: -1px 0 0 0 #2d8cf0;
-}
 .dt_tips_label_warp {
     background-color: rgba(254, 252, 236, 1);
     width: auto;
@@ -1064,5 +981,9 @@ export default {
     padding: 20px 20px;
     line-height: 30px;
     font-size: 16px;
+}
+.el-upload {
+    width: 100% !important;
+    height: 100% !important;
 }
 </style>

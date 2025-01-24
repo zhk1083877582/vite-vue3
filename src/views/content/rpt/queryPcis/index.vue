@@ -22,11 +22,11 @@ const [msgRef, menuMsgInfo] = [
         imglist: [
             {
                 url: "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
-                alt: "图片1",
+                name: "图片1",
             },
             {
                 url: "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
-                alt: "图片1",
+                name: "图片2",
             },
         ],
         switch1: false,

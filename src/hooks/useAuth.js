@@ -11,7 +11,7 @@ export function useAuth() {
     const login = async (credentials) => {
         try {
             loading.value = true;
-            dt.session.set("dt-auth", { userName: "admin", Password: "111" });
+            dt.session.set("dt_auth", { userName: "admin", Password: "111" });
             dt.ui.Message.success("登录成功");
             // server.config(true);
             // 初始化动态路由并跳转到第一个可用路由
@@ -25,7 +25,7 @@ export function useAuth() {
             return true;
             // const res = await dt.server.post("/login", credentials);
             // if (res.code === 200) {
-            //     dt.session.set("dt-auth", res.data.token);
+            //     dt.session.set("dt_auth", res.data.token);
             //     dt.ui.Message.success("登录成功");
 
             //     // 初始化动态路由并跳转到第一个可用路由

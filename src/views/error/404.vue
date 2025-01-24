@@ -23,7 +23,7 @@ const router = useRouter();
 
 const handleBack = async () => {
     // 检查是否已登录
-    const isAuthenticated = dt.session.get("dt-auth");
+    const isAuthenticated = dt.session.get("dt_auth");
     if (!isAuthenticated) {
         router.push("/login");
         return;

@@ -1,6 +1,58 @@
 import { Opt } from "@/components/com/Opt.js";
 import ruleOpt from "@/option/rule.js";
+import toolMgr from "@/biz/file.js";
 
+function accessory(info) {
+    let api = toolMgr.upload();
+    let files = [];
+    if (info.infoData.imglist && info.infoData.imglist.length > 0) {
+        info.infoData.imglist.forEach((item) => {
+            if (item) {
+                files.push({
+                    name: item.name,
+                    url: item.url,
+                });
+            }
+        });
+    }
+    console.log(files, "files");
+    return [
+        {
+            title: "upload",
+            key: "imglist",
+            uploadImg: {
+                title: "",
+                api,
+                files,
+                multiple: false,
+                preview: (file) => {
+                    toolMgr.downloadFile(file.url, file.name);
+                },
+                show: false,
+                maxlength: 10,
+                format: ["jpg", "jpeg", "png"],
+                style: {
+                    display: "inline-block",
+                },
+            },
+            data: {
+                to: (v) => {
+                    console.log("🚀 ~ accessory ~ v:", v);
+                    let images = v.map((item) => {
+                        return {
+                            // name: item.name,
+                            url: item.response
+                                ? URL.createObjectURL(item.file.raw)
+                                : item.url,
+                        };
+                    });
+                    // info.editChannelAttach(images);
+                    return { images };
+                },
+            },
+        },
+    ];
+}
 export class editOpt extends Opt {
     constructor(vm) {
         super(vm);
@@ -47,6 +99,7 @@ export class editOpt extends Opt {
         });
 
         return [
+            accessory(this),
             [
                 {
                     title: "number格式",
