@@ -24,15 +24,14 @@ function accessory(info) {
                 api,
                 files,
                 multiple: false,
+                hideDel: true,
                 preview: (file) => {
                     toolMgr.downloadFile(file.url, file.name);
                 },
                 show: false,
                 maxlength: 10,
                 format: ["jpg", "jpeg", "png"],
-                style: {
-                    display: "inline-block",
-                },
+                style: {},
             },
             data: {
                 to: (v) => {

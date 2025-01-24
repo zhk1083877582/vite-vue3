@@ -863,6 +863,8 @@ export default {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
+    width: 100%;
+    flex: 1;
 }
 
 .upload_img {
