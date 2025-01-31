@@ -1,56 +1,58 @@
 import { Opt } from "@/components/com/Opt.js";
 import ruleOpt from "@/option/rule.js";
+import uploadOpt from "@/option/upload.js";
+
 import toolMgr from "@/biz/file.js";
-function accessory(info) {
-    let api = toolMgr.upload();
-    let files = [];
-    if (info.infoData.imglist && info.infoData.imglist.length > 0) {
-        info.infoData.imglist.forEach((item) => {
-            if (item) {
-                files.push({
-                    name: item.name,
-                    url: item.url,
-                });
-            }
-        });
-    }
-    console.log(files, "files");
-    return [
-        {
-            title: "upload",
-            key: "imglist",
-            uploadImg: {
-                title: "",
-                api,
-                files,
-                multiple: false,
-                hideDel: true,
-                preview: (file) => {
-                    toolMgr.downloadFile(file.url, file.name);
-                },
-                show: false,
-                maxlength: 10,
-                format: ["jpg", "jpeg", "png"],
-                style: {},
-            },
-            data: {
-                to: (v) => {
-                    console.log("🚀 ~ accessory ~ v:", v);
-                    let imglist = v.map((item) => {
-                        return {
-                            name: item.name,
-                            url: item.response
-                                ? item.response.data.imageURL
-                                : item.url,
-                        };
-                    });
-                    // info.editChannelAttach(images);
-                    return { imglist };
-                },
-            },
-        },
-    ];
-}
+// function accessory(info) {
+//     let api = toolMgr.upload();
+//     let files = [];
+//     if (info.infoData.imglist && info.infoData.imglist.length > 0) {
+//         info.infoData.imglist.forEach((item) => {
+//             if (item) {
+//                 files.push({
+//                     name: item.name,
+//                     url: item.url,
+//                 });
+//             }
+//         });
+//     }
+//     console.log(files, "files");
+//     return [
+//         {
+//             title: "upload",
+//             key: "imglist",
+//             uploadImg: {
+//                 title: "",
+//                 api,
+//                 files,
+//                 multiple: false,
+//                 hideDel: true,
+//                 preview: (file) => {
+//                     toolMgr.downloadFile(file.url, file.name);
+//                 },
+//                 show: false,
+//                 maxlength: 10,
+//                 format: ["jpg", "jpeg", "png"],
+//                 style: {},
+//             },
+//             data: {
+//                 to: (v) => {
+//                     console.log("🚀 ~ accessory ~ v:", v);
+//                     let imglist = v.map((item) => {
+//                         return {
+//                             name: item.name,
+//                             url: item.response
+//                                 ? item.response.data.imageURL
+//                                 : item.url,
+//                         };
+//                     });
+//                     // info.editChannelAttach(images);
+//                     return { imglist };
+//                 },
+//             },
+//         },
+//     ];
+// }
 export class editOpt extends Opt {
     constructor(vm) {
         super(vm);
@@ -62,12 +64,6 @@ export class editOpt extends Opt {
             ? [
                   ruleOpt.required(`visibleSelect不能为空`, "array"),
                   ruleOpt.check(`visibleSelect不能为空`, (value) => {
-                      console.log(
-                          "🚀 ~ editOpt ~ ruleOpt.check ~ value:",
-                          value,
-                          this
-                      );
-
                       let flag = true;
                       flag = this.infoData.visibleSelect == "";
                       return flag;
@@ -97,7 +93,61 @@ export class editOpt extends Opt {
         });
 
         return [
-            accessory(this),
+            uploadOpt.image(
+                {
+                    title: "upload",
+                    key: "imglist",
+                    multiple: false,
+                    hideDel: false,
+                    preview: (file) => {
+                        // toolMgr.downloadFile(file.url, file.name);
+                    },
+                    show: false,
+                    maxlength: 10,
+                },
+                this.infoData
+            ),
+            {
+                title: "盖章单",
+                key: "filesData",
+                placeholder: "(最大支持50M文件，若文件过大请压缩或分多个文件)",
+                visible: true,
+                upload: {
+                    maxSize: 51200,
+                    title: "附件上传",
+                    api: toolMgr.unloadFile(),
+                    files: [],
+                    multiple: true,
+                    showDel: true,
+                    accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel",
+                    preview: (file) => {
+                        toolMgr.downloadFile(file.url, file.name);
+                    },
+                },
+                data: {
+                    to: (v) => {
+                        console.log("🚀 ~ editOpt ~ create ~ v:", v);
+                        return {
+                            filesData: v.map((item) => {
+                                return {
+                                    name: item.name,
+                                    url:
+                                        item.response?.data.imageURL ??
+                                        item.url,
+                                };
+                            }),
+                        };
+                    },
+                },
+                rules: [
+                    {
+                        required: true,
+                        message: "请上传filesData",
+                        type: "array",
+                        trigger: "blur",
+                    },
+                ],
+            },
             [
                 {
                     title: "number格式",
@@ -450,6 +500,24 @@ export class editOpt extends Opt {
                     dateFormat: "YYYY-MM",
                     transfer: false,
                     clearable: true,
+                },
+                rules: [
+                    ruleOpt.timeInterval(2),
+                    ruleOpt.check("不支持选择单边日期", (value) => {
+                        if (!value) return false;
+                        return (value[0] == "") ^ (value[1] == "");
+                    }),
+                ],
+            },
+            {
+                title: "dt-time",
+                key: "dtTime2",
+                dtTime: {
+                    dateType: "datetime",
+                    dateFormat: "YYYY-MM-DD HH:mm:ss",
+                    transfer: false,
+                    clearable: true,
+                    isStartOption: false,
                 },
                 rules: [
                     ruleOpt.timeInterval(2),

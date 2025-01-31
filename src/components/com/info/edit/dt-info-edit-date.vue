@@ -95,7 +95,7 @@ export default {
                             : this.dateType == "date"
                             ? new Date(this.startTime)
                             : moment(new Date(this.startTime));
-                    return date < Date.now() || date < data;
+                    return date < data;
                 },
             },
         };

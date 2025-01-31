@@ -6,7 +6,7 @@ const api = {
 };
 
 // 上传文件
-function upload(data = {}) {
+function unloadFile(data = {}) {
     data.fileName = "multipartFile";
     let upload = api.upload();
     upload.setData(data);
@@ -64,6 +64,6 @@ function downloadFile(url, fileName, encode, suffix, noHomologous) {
 }
 
 export default {
-    upload,
+    unloadFile,
     downloadFile,
 };

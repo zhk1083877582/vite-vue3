@@ -19,6 +19,7 @@ const [msgRef, menuMsgInfo] = [
         regionId: [],
         switch1: null,
         dtTime: null,
+        dtTime2: null,
         imglist: [
             {
                 url: "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
@@ -43,6 +44,12 @@ const [msgRef, menuMsgInfo] = [
         ],
         switch1: false,
         visibleSelect: null,
+        filesData: [
+            {
+                name: "hft/b5c39449335744a19a804068dd95921b.xlsx",
+                url: "https://images.tospurfang.com/hft/b5c39449335744a19a804068dd95921b.xlsx",
+            },
+        ],
     }),
 ];
 const fun = {

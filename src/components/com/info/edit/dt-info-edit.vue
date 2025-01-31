@@ -345,8 +345,8 @@
         </div>
     </div>
 
-    <!-- <div v-else-if="option.upload">
-        <Upload
+    <div v-else-if="option.upload">
+        <el-upload
             ref="upload"
             v-show="
                 !info ||
@@ -355,6 +355,7 @@
                 (option.upload.maxlength &&
                     info[option.key].length < option.upload.maxlength)
             "
+            v-model:file-list="info[option.key]"
             :format="option.upload.format"
             :disabled="option.disabled"
             :on-format-error="onFormatError"
@@ -372,14 +373,14 @@
             :show-upload-list="option.upload.show"
             :before-upload="onUploadBefore"
         >
-            <Button :disabled="option.upload.disabled">{{
+            <el-button :disabled="option.upload.disabled">{{
                 option.upload.title
-            }}</Button>
+            }}</el-button>
             <div style="color: #bebebe">
                 {{ option.placeholder }}
             </div>
-        </Upload>
-        <div
+        </el-upload>
+        <!-- <div
             v-if="option.upload.showDel"
             style="max-height: 200px; overflow-y: scroll"
         >
@@ -388,18 +389,18 @@
                 :key="index"
                 style="display: flex"
             >
-                <p>{{ item.name }}</p>
+                <p>{{ item.fileName }}</p>
                 <p v-if="item.tip" style="margin-left: 20px">{{ item.tip }}</p>
-                <Button
+                <el-button
                     type="text"
                     style="color: #2d8cf0"
                     @click="removeFileFun(info[option.key], index)"
                 >
                     删除
-                </Button>
+                </el-button>
             </div>
-        </div>
-    </div> -->
+        </div> -->
+    </div>
 
     <el-cascader
         v-else-if="option.cascader"
@@ -449,6 +450,7 @@
         :clearable="option.dtTime.clearable"
         :dateType="option.dtTime.dateType"
         :dateFormat="option.dtTime.dateFormat"
+        :isStartOption="option.dtTime.isStartOption"
     />
 
     <div v-else-if="option.image">
@@ -733,7 +735,8 @@ export default {
             if (res.code != "200") {
                 console.log(res);
                 dt.ui.Message.error(res.msg || "上传失败，请重新上传");
-                this.option.uploadImg.files = [];
+                let opt = this.$refs.uploadImg || this.$refs.upload;
+                opt.handleRemove(file);
             } else {
                 this.onChange(list);
             }
@@ -799,7 +802,7 @@ export default {
         onUploadPreview(file) {
             let opt = this.option.upload || this.option.uploadImg;
             if (opt.preview) {
-                if (file.response.code == 200) {
+                if (file?.response?.code == 200) {
                     file.url = file.response.data.imageURL;
                 }
                 opt.preview(file);
