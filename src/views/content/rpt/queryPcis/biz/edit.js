@@ -111,16 +111,18 @@ export class editOpt extends Opt {
                 title: "盖章单",
                 key: "filesData",
                 placeholder: "(最大支持50M文件，若文件过大请压缩或分多个文件)",
-                visible: true,
                 upload: {
                     maxSize: 51200,
                     title: "附件上传",
                     api: toolMgr.unloadFile(),
                     files: [],
                     multiple: true,
-                    showDel: true,
+                    disabled:true,
+                    showDel: false,
+                    showList:true,
                     accept: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel",
                     preview: (file) => {
+                        console.log("🚀 ~ editOpt ~ create ~ file:", file)
                         toolMgr.downloadFile(file.url, file.name);
                     },
                 },

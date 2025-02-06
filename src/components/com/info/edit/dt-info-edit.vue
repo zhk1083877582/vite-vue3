@@ -344,8 +344,59 @@
             {{ option.placeholder }}
         </div>
     </div>
-
     <div v-else-if="option.upload">
+        <el-upload
+            ref="upload"
+            class="upload-file"
+            v-show="info ||info[option.key] 
+            "
+            v-model:file-list="info[option.key]"
+            :format="option.upload.format"
+            :disabled="option.upload.disabled||(option.upload.maxlength &&info[option.key].length < option.upload.maxlength)"
+            :on-format-error="onFormatError"
+            :action="option.upload.api.reqUrl"
+            :name="option.upload.api.data.fileName"
+            :multiple="option.upload.multiple"
+            :headers="option.upload.api.headers"
+            :data="option.upload.api.data"
+            :max-size="option.upload.maxSize"
+            :accept="option.upload.accept"
+            :on-success="onUploadSuccess"
+            :on-remove="onUploadRemove"
+            :on-preview="onUploadPreview"
+            :show-file-list="option.upload.showList"
+            :before-upload="onUploadBefore"
+        >
+            <el-button :disabled="option.upload.disabled">{{
+                option.upload.title
+            }}</el-button>
+            <div style="color: #bebebe">
+                {{ option.placeholder }}
+            </div>
+        </el-upload>
+        <div
+            v-if="option.upload.showDel"
+            style="max-height: 200px; overflow-y: auto;"
+        >
+            <div
+                v-for="(item, index) in info[option.key]?.filter((itm) => itm)"
+                :key="index"
+                style="display: flex;justify-content: space-between;"
+            >
+                <p>{{ item.name }}</p>
+                <p v-if="item.tip" style="margin-left: 20px">{{ item.tip }}</p>
+                <el-button
+                    type="text"
+                    style="color: #2d8cf0"
+                    @click="removeFileFun(info[option.key], index)"
+                >
+                    删除
+                </el-button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div v-else-if="option.upload">
         <el-upload
             ref="upload"
             v-show="
@@ -380,7 +431,7 @@
                 {{ option.placeholder }}
             </div>
         </el-upload>
-        <!-- <div
+        <div
             v-if="option.upload.showDel"
             style="max-height: 200px; overflow-y: scroll"
         >
@@ -399,8 +450,8 @@
                     删除
                 </el-button>
             </div>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
 
     <el-cascader
         v-else-if="option.cascader"
@@ -964,5 +1015,8 @@ export default {
 .el-upload {
     width: 100% !important;
     height: 100% !important;
+}
+.upload-file .el-upload {
+   justify-content: flex-start;
 }
 </style>
