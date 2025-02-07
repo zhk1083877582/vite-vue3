@@ -13,7 +13,7 @@ const handelclick = (name) => {
 <template>
   <el-sub-menu v-if="item.child?.length" :index="item.cOpCnm" popper-class="my-menu-popper">
     <template #title>
-      <el-icon :class="[item.cOpImg, 'iconfont', 'menu-icon']"></el-icon>
+      <el-icon v-show="item.cOpImg" :class="[item.cOpImg, 'iconfont', 'menu-icon']"></el-icon>
       <span>{{ item.cOpCnm }}</span>
     </template>
     <el-menu-sub v-for="i in item.child" :key="i.name" :item="i" />
