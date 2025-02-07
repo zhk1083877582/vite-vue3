@@ -10,9 +10,9 @@ import "./server/version";
 dt.tool = tool;
 
 function init(app) {
-    components.init(app);
+  components.init(app);
 }
 
 export default {
-    init,
+  init,
 };

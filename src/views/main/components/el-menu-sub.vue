@@ -1,13 +1,13 @@
 <script setup>
-  import router from '@/router'
-  import { extractPath } from '@/router/utils'
-  const props = defineProps({
-    item: Object
-  })
+import router from '@/router'
+import { extractPath } from '@/router/utils'
+const props = defineProps({
+  item: Object
+})
 
-  const handelclick = (name) => {
-    if (name) router.push(name)
-  }
+const handelclick = (name) => {
+  if (name) router.push(name)
+}
 </script>
 
 <template>
@@ -25,11 +25,11 @@
 </template>
 
 <style scoped lang="scss">
-  @import url('@/assets/css/sider.scss');
+@import url('@/assets/css/sider.scss');
 </style>
 <style lang="scss">
-  .my-menu-popper {
-    // overflow-y: auto;
-    // max-height: 80vh;
-  }
+.my-menu-popper {
+  // overflow-y: auto;
+  // max-height: 80vh;
+}
 </style>

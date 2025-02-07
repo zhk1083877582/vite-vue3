@@ -4,8 +4,8 @@ import { userStore } from '@/store/user'
 
 const api = {
   functionMenuSave: server.api().post('/hft-portal/functionMenu/save'),
-  functionMenuDelete:server.api().get('/hft-portal/functionMenu/delete'),
-  functionMenuUpdate:server.api().post('/hft-portal/functionMenu/update')
+  functionMenuDelete: server.api().get('/hft-portal/functionMenu/delete'),
+  functionMenuUpdate: server.api().post('/hft-portal/functionMenu/update')
 }
 
 function functionMenuSave(info) {

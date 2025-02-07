@@ -35,11 +35,36 @@ export default defineConfig({
         Icons({
             // 自动安装图标库
             autoInstall: true,
-        }),
+        })
     ],
     resolve: {
         alias: {
             "@": pathSrc,
+        },
+    },
+    build: {
+        // 添加构建优化配置
+        chunkSizeWarningLimit: 1500,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    // 将 Vue 相关库打包在一起
+                    'vue-vendor': ['vue', 'vue-router', 'pinia'],
+                    // 将 Element Plus 单独打包
+                    'element-plus': ['element-plus'],
+                },
+                // 用于从代码分割的 chunk 中提取 CSS
+                chunkFileNames: 'assets/js/[name]-[hash].js',
+                entryFileNames: 'assets/js/[name]-[hash].js',
+                assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+            },
+        },
+        // 启用 gzip 压缩
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
         },
     },
     css: {
