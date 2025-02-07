@@ -24,11 +24,6 @@ export class listOpt extends Opt {
                 // type: "number",
                 // precision: 2,
                 blur: (val) => {
-                  console.log(
-                    "🚀 ~ listOpt ~ create ~ val:",
-                    item,
-                    val
-                  );
                   // this.onBlur(item);
                 },
               },
@@ -50,11 +45,6 @@ export class listOpt extends Opt {
                 valueFormat: "YYYY-MM-DD HH:mm:ss",
                 clearable: false,
                 change: (val) => {
-                  console.log(
-                    "🚀 ~ listOpt ~ create ~ val:",
-                    item,
-                    val
-                  );
                   // this.onBlur(item);
                 },
               },
@@ -88,11 +78,6 @@ export class listOpt extends Opt {
               change: (val) => {
                 item.delFlagName =
                   val.value == "false" ? "正常" : "已删除";
-                console.log(
-                  "🚀 ~ listOpt ~ create ~ val:",
-                  item.delFlagName,
-                  val
-                );
               },
             },
           };
@@ -117,7 +102,6 @@ export class listOpt extends Opt {
         fixed: "right",
         width: 120,
         cell: (info) => {
-          console.log("🚀 ~ listOpt ~ create ~ info:", info);
           return {
             btn: [
               {
