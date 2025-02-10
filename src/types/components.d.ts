@@ -67,6 +67,7 @@ declare module 'vue' {
     Preview: typeof import('./../components/com/preview/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SortHeader: typeof import('./../components/com/sortHeader/index.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

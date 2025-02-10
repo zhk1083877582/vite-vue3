@@ -84,6 +84,11 @@ export class listColumn extends Opt {
         field: "roleNames",
         title: "角色",
         minWidth: 110,
+        sort: {
+          key: 'clockCountSort',
+          asc: 1,
+          desc: 2
+        }
         // header: {
         //     filter: {
         //         title: "角色类型",

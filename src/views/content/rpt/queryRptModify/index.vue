@@ -41,7 +41,7 @@ const [tableRef, editRef, searchRef, infoRef, previewRef] = [
   ref(),
   ref(),
   ref(),
-  ref(),
+  ref()
 ];
 
 let searchInfo = ref({
