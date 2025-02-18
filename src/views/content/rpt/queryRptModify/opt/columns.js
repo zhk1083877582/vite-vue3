@@ -46,6 +46,7 @@ export class listColumn extends Opt {
             placeholder: "请输入工号",
             select: {
               multiple: true,
+              teleported: false,
               options: [
                 { key: "123", value: "工号1" },
                 { key: "456", value: "工号2" },
@@ -66,6 +67,7 @@ export class listColumn extends Opt {
             date: {
               type: "daterange",
               clearable: false,
+              teleported: false
             },
           },
         },

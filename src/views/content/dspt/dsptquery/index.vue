@@ -20,36 +20,38 @@
 
 	const [tableRef, previewRef, sortRef, editRef] = [ref(), ref(), ref(), ref()];
 	let [preview, listData] = [ref({ images: [], showIndex: 0 }), ref()];
+	let checkRow = ref();
 	const checkbox = {
-		isDisabled: row => {
-			if (!row) return false;
-			return row?.id != "84";
-		},
+		// isDisabled: row => {
+		// 	if (!row) return false;
+		// 	return row?.id != "84";
+		// },
 		onOne: (row, flag) => {
 			console.log("🚀 ~ row, flag:", row, flag);
+			checkRow.value = row;
 		},
 		onAll: flag => {
 			console.log("🚀 ~ flag:", flag);
-		}
-		// radio: true,
+		},
+		radio: true
 	};
 	const handelClick = () => {
-		dt.ui
-			.messageBox({
-				title: "123",
-				message: "sadasdas",
-				showCancelButton: true,
-				confirmButtonText: "确2定11",
-				cancelButtonText: "取消222",
-				type: "warning"
-			})
-			.then(res => {
-				console.log("🚀 ~ handelClick ~ res:", res);
-			})
-			.catch(close => {
-				console.log("🚀 ~ handelClick ~ close:", close);
-			});
-		editRef.value.show();
+		// dt.ui
+		// 	.messageBox({
+		// 		title: "123",
+		// 		message: "sadasdas",
+		// 		showCancelButton: true,
+		// 		confirmButtonText: "确2定11",
+		// 		cancelButtonText: "取消222",
+		// 		type: "warning"
+		// 	})
+		// 	.then(res => {
+		// 		console.log("🚀 ~ handelClick ~ res:", res);
+		// 	})
+		// 	.catch(close => {
+		// 		console.log("🚀 ~ handelClick ~ close:", close);
+		// 	});
+		console.log("🚀 ~ index.vue:56 ~ handelClick ~ handelClick:", checkRow.value);
 	};
 
 	const fn = {

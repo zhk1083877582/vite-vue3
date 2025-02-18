@@ -114,7 +114,7 @@
 				}
 			},
 			onOK() {
-				if (this.Opt) {
+				if (this.info) {
 					this.$refs.info.validate().then(res => {
 						if (res) {
 							this.$emit("ok", {

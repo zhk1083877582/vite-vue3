@@ -1,9 +1,26 @@
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
 	$colors: (
 		"primary": (
-			"base": #ef15c7
+			"base": #1e65ff
 		)
 	)
 );
 
 @use "element-plus/theme-chalk/src/index.scss" as *;
+
+.el-dialog {
+	padding: 0;
+}
+.el-dialog__header {
+	padding: var(--el-dialog-padding-primary);
+	border-bottom: 1px solid #ccc;
+}
+
+.el-dialog__body {
+	padding: var(--el-dialog-padding-primary);
+}
+
+.el-dialog__footer {
+	padding: var(--el-dialog-padding-primary);
+	border-top: 1px solid #ccc;
+}

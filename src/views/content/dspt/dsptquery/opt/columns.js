@@ -41,9 +41,10 @@ export class listOpt extends Opt {
               key: "createTime",
               placeholder: "请选择日期和时间",
               date: {
-                type: "datetime",
-                valueFormat: "YYYY-MM-DD HH:mm:ss",
+                type: "date",
+                valueFormat: "YYYY-MM-DD",
                 clearable: false,
+                teleported: true,
                 change: (val) => {
                   // this.onBlur(item);
                 },

@@ -277,29 +277,29 @@ function select(opt) {
         return arr;
     }, []);
     return [
-        h(
-            "el-select",
-            {
-                props: {
-                    value: opt.data[opt.key],
-                    multiple: opt.multiple,
-                    placeholder: opt.placeholder || "请选择",
-                    transfer: true,
-                },
-                style: {
-                    width: opt.width || null,
-                },
-                // ～～～
-                on: {
-                    "on-change": (e) => {
-                        opt.data[opt.key] = e;
-                        if (opt.change) opt.change(opt.key);
-                    },
-                },
-            },
-            options
-        ),
-    ];
+			h(
+				"el-select",
+				{
+					props: {
+						value: opt.data[opt.key],
+						multiple: opt.multiple,
+						placeholder: opt.placeholder || "请选择",
+						teleported: false
+					},
+					style: {
+						width: opt.width || null
+					},
+					// ～～～
+					on: {
+						"on-change": e => {
+							opt.data[opt.key] = e;
+							if (opt.change) opt.change(opt.key);
+						}
+					}
+				},
+				options
+			)
+		];
 }
 // Tooltip
 function Tooltip(opts = {}) {

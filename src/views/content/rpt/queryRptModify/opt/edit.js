@@ -224,7 +224,7 @@ export class addOpt extends Opt {
           console.log("🚀 ~ addOpt ~ create ~ val:", val);
           // _this.changeSeal(val);
         },
-        // rules: [ruleOpt.required("treeselect不能为空", "array")],
+        rules: [ruleOpt.required("treeselect不能为空", "array")],
       },
       {
         title: "cascader",
@@ -305,7 +305,7 @@ export class addOpt extends Opt {
             d.info.dataAuthStr = d.info.companyName;
           }
         },
-        // rules: [ruleOpt.required("员工不能为空")],
+        rules: [ruleOpt.required("员工不能为空")],
       },
       {
         title: "日期",
@@ -315,7 +315,7 @@ export class addOpt extends Opt {
         },
         // disabled: true,
         placeholder: "日期",
-        // rules: [ruleOpt.required("日期不能为空", "date")],
+        rules: [ruleOpt.required("日期不能为空", "date")],
       },
       {
         title: "时间1",
