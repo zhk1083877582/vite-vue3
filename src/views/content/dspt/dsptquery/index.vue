@@ -36,21 +36,21 @@
 		radio: true
 	};
 	const handelClick = () => {
-		// dt.ui
-		// 	.messageBox({
-		// 		title: "123",
-		// 		message: "sadasdas",
-		// 		showCancelButton: true,
-		// 		confirmButtonText: "确2定11",
-		// 		cancelButtonText: "取消222",
-		// 		type: "warning"
-		// 	})
-		// 	.then(res => {
-		// 		console.log("🚀 ~ handelClick ~ res:", res);
-		// 	})
-		// 	.catch(close => {
-		// 		console.log("🚀 ~ handelClick ~ close:", close);
-		// 	});
+		dt.ui
+			.messageBox({
+				title: "123",
+				message: "sadasdas",
+				showCancelButton: true,
+				confirmButtonText: "确2定11",
+				cancelButtonText: "取消222",
+				type: "warning"
+			})
+			.then(res => {
+				console.log("🚀 ~ handelClick ~ res:", res);
+			})
+			.catch(close => {
+				console.log("🚀 ~ handelClick ~ close:", close);
+			});
 		console.log("🚀 ~ index.vue:56 ~ handelClick ~ handelClick:", checkRow.value);
 	};
 

@@ -85,7 +85,6 @@
 		},
 		methods: {
 			init(Opt, info) {
-				console.log("🚀 ~ init ~ Opt, info:", Opt.options(), info);
 				this.opts = Opt.options();
 				this.infos = info || Opt.info;
 				this.key++;
@@ -125,7 +124,6 @@
 				}
 			},
 			onChange(data) {
-				console.log(data);
 				if (!this.isClear) {
 					if (data.option?.rules) {
 						setTimeout(() => {

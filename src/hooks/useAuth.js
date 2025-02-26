@@ -2,7 +2,29 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import dt from "@/config/dt";
 import { initDynamicRoutes, getFirstAvailableRoute } from "@/router/utils";
-// import server from "@/config/server";
+import server from "@/config/server";
+let api = {
+  roles: () => {
+    return server.api().post('/hft-portal/v1/user/noToken/roles/byPhone').auth(false).config(true)
+  },
+  imgCode: () => {
+    return server.api().post('/hft-portal/noToken/getImgCode').auth(false).config(true)
+  },
+  code: () => {
+    return server.api().post('/hft-portal/noToken/sendMessage').auth(false).config(false)
+  },
+  login: () => {
+    return server
+      .api()
+      .post('/hft-sc-oauth2/oauth/token?grant_type=password&client_id=hft')
+      .auth(false)
+      .config(true)
+  },
+  info: () => {
+    return server.api().post('/hft-portal/web/getOauthInfo')
+  }
+}
+console.log("🚀 ~ useAuth.js:73 ~ login ~ api:", server.config)
 
 export function useAuth() {
   const router = useRouter();
@@ -17,11 +39,11 @@ export function useAuth() {
       // 初始化动态路由并跳转到第一个可用路由
       await initDynamicRoutes(router);
       const firstRoute = await getFirstAvailableRoute(router);
-      if (firstRoute) {
-        router.push({ name: firstRoute.name });
-      } else {
-        router.push("/");
-      }
+      // if (firstRoute) {
+      //   router.push({ name: firstRoute.name });
+      // } else {
+      //   router.push("/");
+      // }
       return true;
       // const res = await dt.server.post("/login", credentials);
       // if (res.code === 200) {

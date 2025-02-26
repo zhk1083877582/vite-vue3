@@ -6,7 +6,7 @@
 	const items = ref([]);
 	const [current, currentName, temp, flag] = [ref(), ref(), ref(), ref(false)];
 
-	const remindArr = ref(["contract/contractStart/startSign", "commission/rootManage/settlement/submit", "commission/proManage/settlement/submit", "commission/proManage/channelCost/submit"]);
+	const remindArr = ref(["contract/contractStart/startSign", "commission/rootManage/settlement/submit", "/rpt/queryRptModify"]);
 	watch(
 		() => router.currentRoute.value,
 		route => {
@@ -46,7 +46,7 @@
 				current.value = items.value.filter(itm => itm.name == res)[0];
 				flag.value = false;
 			} else {
-				isRemind(res);
+				// isRemind(res);
 			}
 		}
 	);
@@ -84,39 +84,52 @@
 
 	dt.notify.on("closeCurrent", () => onClose(currentName.value));
 
-	const beforeRemove = () => {
+	const beforeRemove = name => {
 		if (remindArr.value.includes(current.value.name)) {
 			return new Promise((resolve, reject) => {
-				dt.ui.Modal.confirm({
-					title: `提示`,
-					content: `关闭后未提交内容将会清空，是否确认关闭？`,
-					onOk: () => {
+				dt.ui
+					.messageBox({
+						title: "提示",
+						message: "关闭后未提交内容将会清空，是否确认关闭？",
+						showCancelButton: true,
+						confirmButtonText: "确定",
+						cancelButtonText: "取消",
+						type: "warning"
+					})
+					.then(res => {
 						flag.value = true;
+						onClose(name);
 						resolve();
-					},
-					onCancel: () => {
+					})
+					.catch(close => {
 						flag.value = false;
 						reject();
-					}
-				});
+					});
 			});
+		} else {
+			onClose(name);
 		}
 	};
 
 	function isRemind(res) {
 		console.log("🚀 ~ isRemind ~ res:", res);
 		if (remindArr.value.includes(current.value.name)) {
-			dt.ui.Modal.confirm({
-				title: `提示`,
-				content: `离开后未提交内容将会清空，是否确认离开？`,
-				onOk: () => {
+			dt.ui
+				.messageBox({
+					title: "提示",
+					message: "离开后未提交内容将会清空，是否确认离开？",
+					showCancelButton: true,
+					confirmButtonText: "确定",
+					cancelButtonText: "取消",
+					type: "warning"
+				})
+				.then(res => {
 					temp.value = res;
 					current.value = items.value.filter(itm => itm.name == res)[0];
-				},
-				onCancel: () => {
+				})
+				.catch(close => {
 					currentName.value = temp.value;
-				}
-			});
+				});
 		} else {
 			temp.value = res;
 			current.value = items.value.filter(itm => itm.name == res)[0];
@@ -127,11 +140,15 @@
 <template>
 	<div style="padding: 8px 5px; overflow-x: hidden; overflow-y: hidden; width: 100%; left: 40px">
 		<div style="display: flex">
-			<el-tabs type="card" :closable="items.length > 1" @tab-remove="onClose" v-model="currentName" :before-remove="beforeRemove">
+			<el-tabs type="card" :closable="items.length > 1" @tab-remove="beforeRemove" v-model="currentName">
 				<el-tab-pane v-for="i in items" :key="i.name" :name="i.name" :label="i.meta.title"></el-tab-pane>
 			</el-tabs>
 		</div>
 	</div>
 </template>
 
-<style scoped lang="sass"></style>
+<style scoped lang="scss">
+	:deep(.el-tabs__header) {
+		margin: 0;
+	}
+</style>

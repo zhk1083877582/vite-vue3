@@ -472,7 +472,6 @@
 				}
 			},
 			onChange(val, data) {
-				console.log("🚀 ~ onChange ~ val, data:", val, data);
 				// val 结果数据 data 较全的数据
 				let value = val;
 				// 编辑数据（数据较全）

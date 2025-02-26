@@ -34,7 +34,6 @@ const Message = {
     },
 };
 const messageBox = (opt) => {
-    console.log("🚀 ~ messageBox ~ opt:", opt);
     return ElMessageBox({
         title: opt.title,
         message: opt.message,
