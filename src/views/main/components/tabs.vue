@@ -43,7 +43,6 @@
 	watch(
 		() => currentName.value,
 		res => {
-			console.log("🚀 ~ tabs.vue:46 ~ res:", res);
 			if (remindArr.value.includes(res) || flag.value) {
 				temp.value = res;
 				current.value = items.value.filter(itm => itm.name == res)[0];
@@ -66,7 +65,6 @@
 	// )
 
 	function onClose(name) {
-		console.log("🚀 ~ tabs.vue:71 ~ onClose ~ name:", name);
 		// let index = items.value.findIndex(itm => itm.name == name);
 		// items.value.splice(index, 1);
 		const tabs = items.value;
@@ -115,7 +113,6 @@
 	};
 
 	function isRemind(res) {
-		console.log("🚀 ~ isRemind ~ res:", res);
 		if (remindArr.value.includes(current.value.name)) {
 			dt.ui
 				.messageBox({

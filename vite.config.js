@@ -22,6 +22,7 @@ export default defineConfig({
       dts: path.resolve(pathSrc, "types", "auto-imports.d.ts"), // 指定自动导入函数TS类型声明文件路径
     }),
     Components({
+      dts: path.resolve(pathSrc, "types", "components.d.ts"), // 指定自动导入组件TS类型声明文件路径
       resolvers: [
         // 自动导入 Element Plus 组件
         ElementPlusResolver({ importStyle: "sass" }),
@@ -30,7 +31,6 @@ export default defineConfig({
           enabledCollections: ["ep"], // element-plus图标库，其他图标库 https://icon-sets.iconify.design/
         }),
       ],
-      dts: path.resolve(pathSrc, "types", "components.d.ts"), // 指定自动导入组件TS类型声明文件路径
     }),
     Icons({
       // 自动安装图标库

@@ -29,21 +29,16 @@
 </template>
 
 <script setup>
-	import { ref, onMounted, watch, nextTick } from "vue";
-	import { Expand, Fold } from "@element-plus/icons-vue";
 	import { ElMenu } from "element-plus";
-	import "element-plus/dist/index.css";
 	import elMenuSub from "./el-menu-sub.vue";
 	import { useRouter } from "vue-router";
 	import routerJson from "@/router/routerJson";
+
 	const isCollapse = ref(false);
 	const menuHeight = ref(window.innerHeight);
-
 	const router = useRouter();
-
 	const menuItems = ref([]);
 	let [current, opens] = [ref(), ref()];
-	const menuRef = ref();
 
 	onMounted(async () => {
 		const response = await routerJson.routerList();
@@ -57,12 +52,6 @@
 		route => {
 			current.value = route.meta.menuName || route.meta.name;
 			opens.value = route.meta.cOpRoot.split("/");
-			nextTick(() => {
-				nextTick(() => {
-					// menuRef.value.updateOpened();
-					// menuRef.value.updateActiveName();
-				});
-			});
 		},
 		{ immediate: true }
 	);

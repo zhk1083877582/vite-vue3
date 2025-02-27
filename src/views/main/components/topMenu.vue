@@ -20,7 +20,7 @@
                                 :type="subMenu.cOpImg"
                                 v-if="!subMenu.cOpImg?.includes('fa')"
                             /> -->
-							<i :class="subMenu.cOpImg"></i>
+							<!-- <i :class="subMenu.cOpImg"></i> -->
 							{{ subMenu.cOpCnm }}
 						</div>
 						<div class="group-items">
@@ -34,7 +34,7 @@
 								@click="handleItemClick(item)"
 							>
 								<!-- <Icon :type="item.cOpImg" v-if="!item.cOpImg?.includes('fa')" /> -->
-								<i :class="item.cOpImg"></i>
+								<!-- <i :class="item.cOpImg"></i> -->
 								{{ item.cOpCnm }}
 							</div>
 						</div>
@@ -90,7 +90,7 @@
 	const handleMouseLeave = () => {
 		hoverTimer = setTimeout(() => {
 			showSubMenu.value = false;
-			activeName.value = "";
+			// activeName.value = "";
 		}, 200);
 	};
 
@@ -102,8 +102,8 @@
 
 	// 处理鼠标离开子菜单
 	const handleSubMenuLeave = () => {
-		// showSubMenu.value = false;
-		// activeName.value = "";
+		showSubMenu.value = false;
+		activeName.value = "";
 	};
 
 	// 处理菜单项点击
@@ -134,14 +134,15 @@
 		left: 0;
 		right: 0;
 		top: 35px;
-		background: #f8f8f9;
+		background: #000911;
+		opacity: 0.8;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
 	}
 
 	// 子菜单内容区
 	.sub-menu {
-		max-height: 300px;
+		max-height: 500px;
 		overflow-y: auto;
 		padding: 10px;
 		display: flex;
@@ -163,12 +164,16 @@
 		}
 
 		.sub-menu-group {
-			min-width: 200px;
+			width: 100%;
 			margin-bottom: 5px;
+			border-bottom: 1px solid #9d9d9d;
+			&:last-of-type {
+				border: 0;
+			}
 			.group-title {
 				font-size: 16px;
 				font-weight: 600;
-				color: #17233d;
+				color: #fff;
 				margin-bottom: 12px;
 				display: flex;
 				align-items: center;
@@ -181,7 +186,9 @@
 
 			.group-items {
 				display: flex;
-				flex-direction: column;
+				// flex-direction: column;
+				flex-wrap: wrap;
+				justify-content: space-between;
 
 				.menu-item {
 					padding: 5px;
@@ -190,21 +197,24 @@
 					display: flex;
 					align-items: center;
 					gap: 8px;
-					color: #515a6e;
+					color: #fff;
 					transition: all 0.3s;
-					font-size: 14px;
+					font-size: 13px;
+					flex: 1 1 50%; /* 使每个子元素占据容器宽度的50%，即每行两个 */
+					box-sizing: border-box; /* 确保padding和border不会影响宽度计算 */
 					i {
-						font-size: 14px;
+						font-size: 13px;
 					}
 
 					&:hover {
-						background: #e8eaec;
+						// background: #e8eaec;
 						color: #2d8cf0;
 					}
 
 					&.active {
-						background: #2d8cf0;
-						color: #fff;
+						// background: #2d8cf0;
+						// color: #fff;
+						color: #2d8cf0;
 					}
 				}
 			}
