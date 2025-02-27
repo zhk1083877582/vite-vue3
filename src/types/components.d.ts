@@ -28,6 +28,8 @@ declare module 'vue' {
     DtTableHeader: typeof import('./../components/com/table/dt-table-header.vue')['default']
     DtTreeIcon: typeof import('./../components/com/table/dt-tree-icon.vue')['default']
     ElAutoResizer: typeof import('element-plus/es')['ElAutoResizer']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCascader: typeof import('element-plus/es')['ElCascader']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
