@@ -1,10 +1,4 @@
 <template>
-	<!-- <el-breadcrumb separator="/">
-		<el-breadcrumb-item v-for="(item, index) in breadcrumbItems" :key="index">
-			{{ item }}
-		</el-breadcrumb-item>
-	</el-breadcrumb> -->
-
 	<el-menu
 		active-text-color="#ffd04b"
 		background-color="#1a202e"
@@ -37,7 +31,7 @@
 <script setup>
 	import { ref, onMounted, watch, nextTick } from "vue";
 	import { Expand, Fold } from "@element-plus/icons-vue";
-	import { ElMenu, ElBreadcrumb, ElBreadcrumbItem } from "element-plus";
+	import { ElMenu } from "element-plus";
 	import "element-plus/dist/index.css";
 	import elMenuSub from "./el-menu-sub.vue";
 	import { useRouter } from "vue-router";
@@ -50,7 +44,7 @@
 	const menuItems = ref([]);
 	let [current, opens] = [ref(), ref()];
 	const menuRef = ref();
-	const breadcrumbItems = ref([]);
+
 	onMounted(async () => {
 		const response = await routerJson.routerList();
 		if (response.code === 200) {
@@ -63,7 +57,6 @@
 		route => {
 			current.value = route.meta.menuName || route.meta.name;
 			opens.value = route.meta.cOpRoot.split("/");
-			breadcrumbItems.value = [...opens.value, route.meta.title];
 			nextTick(() => {
 				nextTick(() => {
 					// menuRef.value.updateOpened();

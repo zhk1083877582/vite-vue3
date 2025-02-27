@@ -5,8 +5,8 @@
 	import dt from "@/config/dt";
 	const items = ref([]);
 	const [current, currentName, temp, flag] = [ref(), ref(), ref(), ref(false)];
-
-	const remindArr = ref(["contract/contractStart/startSign", "commission/rootManage/settlement/submit", "/rpt/queryRptModify"]);
+	const breadcrumbItems = ref([]);
+	const remindArr = ref([]);
 	watch(
 		() => router.currentRoute.value,
 		route => {
@@ -18,6 +18,8 @@
 			};
 			current.value = item;
 			currentName.value = route.name;
+			let cOpRootList = route.meta.cOpRoot.split("/");
+			breadcrumbItems.value = [...cOpRootList, route.meta.title];
 			if (route.meta.name) {
 				let has = null;
 				items.value.some(itm => {
@@ -41,12 +43,13 @@
 	watch(
 		() => currentName.value,
 		res => {
+			console.log("🚀 ~ tabs.vue:46 ~ res:", res);
 			if (remindArr.value.includes(res) || flag.value) {
 				temp.value = res;
 				current.value = items.value.filter(itm => itm.name == res)[0];
 				flag.value = false;
 			} else {
-				// isRemind(res);
+				isRemind(res);
 			}
 		}
 	);
@@ -138,6 +141,11 @@
 </script>
 
 <template>
+	<el-breadcrumb separator="/">
+		<el-breadcrumb-item v-for="(item, index) in breadcrumbItems" :key="index">
+			{{ item }}
+		</el-breadcrumb-item>
+	</el-breadcrumb>
 	<div style="padding: 8px 5px; overflow-x: hidden; overflow-y: hidden; width: 100%; left: 40px">
 		<div style="display: flex">
 			<el-tabs type="card" :closable="items.length > 1" @tab-remove="beforeRemove" v-model="currentName">
