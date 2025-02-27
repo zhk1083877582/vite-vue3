@@ -1,4 +1,3 @@
-<!--  -->
 <template>
 	<div class="navigation">
 		<img src="@/assets/images/logo.png" />
@@ -18,5 +17,6 @@
 		display: flex;
 		justify-content: space-between;
 		background-color: #fff;
+		border-bottom: 1px solid #ccc;
 	}
 </style>

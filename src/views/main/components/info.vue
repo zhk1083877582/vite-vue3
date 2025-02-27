@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<div @click="choiceType">设置</div>
-		<div @click="logout">退出</div>
+	<div class="info-warp">
+		<div style="cursor: pointer" class="setting" @click="choiceType">设置</div>
+		<div style="cursor: pointer" @click="logout">退出</div>
 	</div>
 </template>
 
@@ -19,4 +19,13 @@
 	};
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+	.info-warp {
+		display: flex;
+		line-height: 34px;
+		padding: 0 10px;
+	}
+	.setting {
+		margin: 0 5px;
+	}
+</style>

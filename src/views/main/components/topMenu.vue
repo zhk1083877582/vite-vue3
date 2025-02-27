@@ -5,7 +5,7 @@
 		<el-menu mode="horizontal" :ellipsis="false" :active-name="activeName">
 			<el-menu-item v-for="menu in menuList" :key="menu.cOpCde" :name="menu.cOpCde" @mouseenter.native="handleMouseEnter(menu)" @mouseleave.native="handleMouseLeave">
 				<!-- <i :type="menu.cOpImg" v-if="!menu.cOpImg?.includes('fa')" /> -->
-				<i :class="menu.cOpImg"></i>
+				<!-- <i :class="menu.cOpImg"></i> -->
 				{{ menu.cOpCnm }}
 			</el-menu-item>
 		</el-menu>
@@ -102,8 +102,8 @@
 
 	// 处理鼠标离开子菜单
 	const handleSubMenuLeave = () => {
-		showSubMenu.value = false;
-		activeName.value = "";
+		// showSubMenu.value = false;
+		// activeName.value = "";
 	};
 
 	// 处理菜单项点击
@@ -122,10 +122,9 @@
 	.menu {
 		background: #fff;
 		position: relative;
-
-		.ivu-menu-horizontal {
-			height: 50px;
-			line-height: 50px;
+		:deep(.el-menu--horizontal) {
+			height: 34px;
+			border: 0;
 		}
 	}
 
@@ -134,7 +133,7 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 51px;
+		top: 35px;
 		background: #f8f8f9;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
