@@ -90,6 +90,15 @@ function routerList() {
                   nOpOrder: 0,
                 },
                 {
+                  cOpAct: "/dspt/dsptquery/detail",
+                  menuPath: '/dspt/dsptquery',
+                  cOpCnm: "调度任务详情",
+                  cOpType: "0",
+                  cParentCde: "007002001",
+                  child: [],
+                  nOpOrder: 0,
+                },
+                {
                   cOpAct: "/index/dspt-Taskchg/taskquery",
                   cOpCde: "007002001002",
                   cOpCnm: "直接改派",
@@ -1306,6 +1315,35 @@ function routerList() {
     },
   });
 }
+
+function delMenupath(data) {
+  // 先过滤掉带 menuPath 的项
+  let filtered = data.filter(item => !item.menuPath);
+  // 然后递归处理子菜单
+  filtered.forEach(item => {
+    if (item.child && item.child.length > 0) {
+      delMenupath(item.child);
+    }
+  });
+
+  // 用过滤后的数组替换原数组的内容
+  data.length = 0;
+  data.push(...filtered);
+
+  return data;
+}
+
+function getMenulist() {
+  return routerList().then(res => {
+    console.log("🚀 ~ routerJson.js:1330 ~ response ~ res:", res);
+    let response = res.data.child;
+    console.log("🚀 ~ routerJson.js:1343 ~ routerList ~ delMenupath(response);:", delMenupath(response))
+
+    return Promise.resolve(delMenupath(response))
+  });
+}
+
 export default {
   routerList,
+  getMenulist
 };

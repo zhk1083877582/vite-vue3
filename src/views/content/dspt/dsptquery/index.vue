@@ -17,6 +17,7 @@
 	import dt from "@/config/dt";
 	import { listOpt } from "./opt/columns.js";
 	import apiMgr from "./biz/index.js";
+	import router from "@/router";
 
 	const [tableRef, previewRef, sortRef, editRef] = [ref(), ref(), ref(), ref()];
 	let [preview, listData] = [ref({ images: [], showIndex: 0 }), ref()];
@@ -36,22 +37,29 @@
 		radio: true
 	};
 	const handelClick = () => {
-		dt.ui
-			.messageBox({
-				title: "123",
-				message: "sadasdas",
-				showCancelButton: true,
-				confirmButtonText: "确2定11",
-				cancelButtonText: "取消222",
-				type: "warning"
-			})
-			.then(res => {
-				console.log("🚀 ~ handelClick ~ res:", res);
-			})
-			.catch(close => {
-				console.log("🚀 ~ handelClick ~ close:", close);
-			});
-		console.log("🚀 ~ index.vue:56 ~ handelClick ~ handelClick:", checkRow.value);
+		router.goRoot("/dspt/dsptquery/detail", { id: "111" });
+		// router.goRoot({
+		// 	path: "/index/dspt/dsptquery/detail",
+		// 	query: {
+		// 		id: "111"
+		// 	}
+		// });
+		// dt.ui
+		// 	.messageBox({
+		// 		title: "123",
+		// 		message: "sadasdas",
+		// 		showCancelButton: true,
+		// 		confirmButtonText: "确2定11",
+		// 		cancelButtonText: "取消222",
+		// 		type: "warning"
+		// 	})
+		// 	.then(res => {
+		// 		console.log("🚀 ~ handelClick ~ res:", res);
+		// 	})
+		// 	.catch(close => {
+		// 		console.log("🚀 ~ handelClick ~ close:", close);
+		// 	});
+		// console.log("🚀 ~ index.vue:56 ~ handelClick ~ handelClick:", checkRow.value);
 	};
 
 	const fn = {

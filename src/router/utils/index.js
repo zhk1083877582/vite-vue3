@@ -39,6 +39,7 @@ export async function initDynamicRoutes(router) {
               title: key.title,
               code: key.cOpCde,
               cOpRoot: key.cOpRoot,
+              menuPath: key.menuPath
             },
             component: vues[vuePath],
           });
@@ -83,6 +84,7 @@ export function flattenRoutes(routes) {
           cOpCde: item.cOpCde,
           component: item.cOpAct,
           cOpRoot: currentNames.join("/"), // 拼接后的 cOpRoot
+          menuPath: item.menuPath ? item.menuPath : ''
         });
       }
 

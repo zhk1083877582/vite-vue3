@@ -25,6 +25,14 @@ const router = createRouter({
     },
   ],
 });
+router.goRoot = (name, query) => {
+  // 跳转根菜单
+  if (name) {
+    router.push({ name, query })
+  } else {
+    return
+  }
+}
 
 // 创建路由守卫
 createAuthGuard(router);

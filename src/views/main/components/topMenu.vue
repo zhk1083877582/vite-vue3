@@ -102,8 +102,8 @@
 
 	// 处理鼠标离开子菜单
 	const handleSubMenuLeave = () => {
-		showSubMenu.value = false;
-		activeName.value = "";
+		// showSubMenu.value = false;
+		// activeName.value = "";
 	};
 
 	// 处理菜单项点击

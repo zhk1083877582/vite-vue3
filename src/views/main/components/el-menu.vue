@@ -41,16 +41,15 @@
 	let [current, opens] = [ref(), ref()];
 
 	onMounted(async () => {
-		const response = await routerJson.routerList();
-		if (response.code === 200) {
-			menuItems.value = response.data.child; // 假设菜单数据在 `child` 属性中
-		}
+		routerJson.getMenulist().then(res => {
+			menuItems.value = res; // 假设菜单数据在 `child` 属性中
+		});
 	});
 
 	watch(
 		() => router.currentRoute.value,
 		route => {
-			current.value = route.meta.menuName || route.meta.name;
+			current.value = route.meta.menuPath ? route.meta.menuPath : route.meta.menuName || route.meta.name;
 			opens.value = route.meta.cOpRoot.split("/");
 		},
 		{ immediate: true }
