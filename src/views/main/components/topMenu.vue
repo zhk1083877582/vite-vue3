@@ -29,7 +29,7 @@
 								:key="item.cOpCde"
 								class="menu-item"
 								:class="{
-									active: activeSubItem === item.cOpCde
+									active: activeSubItem == formatPath(item.cOpAct) || activeSubItem == item.menuPath
 								}"
 								@click="handleItemClick(item)"
 							>
@@ -59,17 +59,14 @@
 	watch(
 		() => router.currentRoute.value,
 		route => {
-			activeSubItem.value = route.meta.code;
+			activeSubItem.value = route.meta.menuPath ? route.meta.menuPath : route.meta.menuName || route.meta.name;
 		},
 		{ immediate: true }
 	);
 	// 获取菜单数据
 	onMounted(() => {
-		routerJson.routerList().then(res => {
-			if (res.code === 200) {
-				// return res.data.child || [];
-				menuList.value = res.data.child || [];
-			}
+		routerJson.getMenulist().then(res => {
+			menuList.value = res; // 假设菜单数据在 `child` 属性中
 		});
 	});
 
@@ -78,6 +75,7 @@
 
 	// 处理鼠标进入一级菜单
 	const handleMouseEnter = menu => {
+		console.log("🚀 ~ topMenu.vue:84 ~ menu:", menu);
 		if (hoverTimer) clearTimeout(hoverTimer);
 		activeName.value = menu.cOpCde;
 		currentSubMenus.value = menu?.child || [];
@@ -102,16 +100,19 @@
 
 	// 处理鼠标离开子菜单
 	const handleSubMenuLeave = () => {
-		// showSubMenu.value = false;
-		// activeName.value = "";
+		showSubMenu.value = false;
+		activeName.value = "";
 	};
+	function formatPath(path) {
+		return path.replace(/^(\/)?index\//, "/");
+	}
 
 	// 处理菜单项点击
 	const handleItemClick = item => {
 		if (item.cOpAct) {
-			activeSubItem.value = item.cOpCde;
+			activeSubItem.value = item.menuPath ? item.menuPath : formatPath(item.cOpAct);
 			// 处理路径，移除 index/ 前缀
-			const path = item.cOpAct.replace(/^(\/)?index\//, "/");
+			const path = formatPath(item.cOpAct);
 			router.push(path);
 			showSubMenu.value = false;
 		}
