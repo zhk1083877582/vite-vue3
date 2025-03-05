@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import dt from '@/config/dt'
 import router from '@/router'
-// import codeMgr from '@/biz/code'
+import { codeStore } from '@/store/code'
 
 const key_user = 'user_info'
 const key_history = 'user_history'
@@ -13,7 +13,7 @@ export const userStore = defineStore('user', {
       role: dt.session.get(key_role),
       info: dt.session.get(key_user),
       history: dt.storage.get(key_history) || { accounts: [] },
-      menuType: 'left'
+      menuType: 'top'
     }
   },
   getters: {
@@ -33,15 +33,15 @@ export const userStore = defineStore('user', {
     login(item) {
       this.info = item
       dt.session.set(key_user, item)
-      if (this.history.accounts.indexOf(item.login.searchKey) < 0) {
-        this.history.accounts.push(item.login.searchKey)
-      }
-      dt.storage.set(key_history, this.history)
-      // codeStore()
-      //   .updateCode(true)
-      //   .then(() => {
-      //     router.goRoot()
-      //   })
+      // if (this.history.accounts.indexOf(item.login.searchKey) < 0) {
+      //   this.history.accounts.push(item.login.searchKey)
+      // }
+      // dt.storage.set(key_history, this.history)
+      codeStore()
+        .updateCode(true)
+        .then(() => {
+          router.goRoot()
+        })
     },
     logout() {
       this.info = null

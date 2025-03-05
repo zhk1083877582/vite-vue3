@@ -3,10 +3,10 @@
 	<div class="menu">
 		<!-- 一级菜单 -->
 		<el-menu mode="horizontal" :ellipsis="false" :active-name="activeName">
-			<el-menu-item v-for="menu in menuList" :key="menu.cOpCde" :name="menu.cOpCde" @mouseenter.native="handleMouseEnter(menu)" @mouseleave.native="handleMouseLeave">
+			<el-menu-item v-for="menu in menuStore().items" :key="menu.name" :name="menu.name" @mouseenter.native="handleMouseEnter(menu)" @mouseleave.native="handleMouseLeave">
 				<!-- <i :type="menu.cOpImg" v-if="!menu.cOpImg?.includes('fa')" /> -->
 				<!-- <i :class="menu.cOpImg"></i> -->
-				{{ menu.cOpCnm }}
+				{{ menu.title }}
 			</el-menu-item>
 		</el-menu>
 
@@ -14,28 +14,28 @@
 		<transition name="slide-fade">
 			<div v-show="showSubMenu && currentSubMenus.length" class="sub-menu-wrapper" @mouseenter="handleSubMenuEnter" @mouseleave="handleSubMenuLeave">
 				<div class="sub-menu">
-					<div class="sub-menu-group" v-for="subMenu in currentSubMenus" :key="subMenu.cOpCde">
+					<div class="sub-menu-group" v-for="subMenu in currentSubMenus" :key="subMenu.name">
 						<div class="group-title">
 							<!-- <Icon
                                 :type="subMenu.cOpImg"
                                 v-if="!subMenu.cOpImg?.includes('fa')"
                             /> -->
 							<!-- <i :class="subMenu.cOpImg"></i> -->
-							{{ subMenu.cOpCnm }}
+							{{ subMenu.title }}
 						</div>
 						<div class="group-items">
 							<div
-								v-for="item in subMenu.child"
-								:key="item.cOpCde"
+								v-for="item in subMenu.children"
+								:key="item.name"
 								class="menu-item"
 								:class="{
-									active: activeSubItem == formatPath(item.cOpAct) || activeSubItem == item.menuPath
+									active: activeSubItem == item.name || activeSubItem == item.menuPath
 								}"
 								@click="handleItemClick(item)"
 							>
 								<!-- <Icon :type="item.cOpImg" v-if="!item.cOpImg?.includes('fa')" /> -->
 								<!-- <i :class="item.cOpImg"></i> -->
-								{{ item.cOpCnm }}
+								{{ item.title }}
 							</div>
 						</div>
 					</div>
@@ -48,13 +48,13 @@
 <script setup>
 	import { ref, onMounted, watch } from "vue";
 	import { useRouter } from "vue-router";
-	import routerJson from "@/router/routerJson";
+	import { menuStore } from "@/store/menu";
+
 	const router = useRouter();
 	const activeName = ref("007001");
 	const activeSubItem = ref("");
 	const showSubMenu = ref(false);
 	let hoverTimer = null;
-	const menuList = ref([]);
 
 	watch(
 		() => router.currentRoute.value,
@@ -63,12 +63,6 @@
 		},
 		{ immediate: true }
 	);
-	// 获取菜单数据
-	onMounted(() => {
-		routerJson.getMenulist().then(res => {
-			menuList.value = res; // 假设菜单数据在 `child` 属性中
-		});
-	});
 
 	// 当前显示的子菜单
 	const currentSubMenus = ref([]);
@@ -77,8 +71,8 @@
 	const handleMouseEnter = menu => {
 		console.log("🚀 ~ topMenu.vue:84 ~ menu:", menu);
 		if (hoverTimer) clearTimeout(hoverTimer);
-		activeName.value = menu.cOpCde;
-		currentSubMenus.value = menu?.child || [];
+		activeName.value = menu.name;
+		currentSubMenus.value = menu?.children || [];
 		showSubMenu.value = true;
 		const dom = document.querySelector(".sub-menu");
 		dom.scroll(0, 0);
@@ -103,17 +97,13 @@
 		showSubMenu.value = false;
 		activeName.value = "";
 	};
-	function formatPath(path) {
-		return path.replace(/^(\/)?index\//, "/");
-	}
 
 	// 处理菜单项点击
 	const handleItemClick = item => {
-		if (item.cOpAct) {
-			activeSubItem.value = item.menuPath ? item.menuPath : formatPath(item.cOpAct);
-			// 处理路径，移除 index/ 前缀
-			const path = formatPath(item.cOpAct);
-			router.push(path);
+		console.log("🚀 ~ topMenu.vue:114 ~ item:", item);
+		if (item.name) {
+			activeSubItem.value = item.name;
+			router.push("/" + item.name);
 			showSubMenu.value = false;
 		}
 	};
@@ -139,6 +129,7 @@
 		opacity: 0.8;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
+		min-width: 400px;
 	}
 
 	// 子菜单内容区

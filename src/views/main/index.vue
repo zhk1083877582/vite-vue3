@@ -17,7 +17,7 @@
 					width: contentWidth - 200 + 'px'
 				}"
 			>
-				<tabs />
+				<!-- <tabs /> -->
 				<div
 					class="contain"
 					:style="{
@@ -39,13 +39,18 @@
 
 <script setup>
 	import { RouterView } from "vue-router";
-	import tabs from "./components/tabs.vue";
+	// import tabs from "./components/tabs.vue";
 	import elMenu from "./components/el-menu.vue";
 	// import sider from './components/sider.vue'
 	import navigation from "./components/navigation.vue";
-	import { ref, watch } from "vue";
+	import { onMounted, ref, watch } from "vue";
 	import router from "@/router";
 	import { userStore } from "@/store/user";
+	import { menuStore } from "@/store/menu";
+	onMounted(() => {
+		// menuStore().item;
+		console.log("🚀 ~ index.vue:53 ~ onMounted ~ menuStore().item:", menuStore().update());
+	});
 	const contentHeight = ref(window.innerHeight);
 	const contentWidth = ref(window.innerWidth);
 	window.addEventListener("resize", () => {
