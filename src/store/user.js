@@ -12,8 +12,7 @@ export const userStore = defineStore('user', {
     return {
       role: dt.session.get(key_role),
       info: dt.session.get(key_user),
-      history: dt.storage.get(key_history) || { accounts: [] },
-      menuType: 'top'
+      history: dt.storage.get(key_history) || { accounts: [] }
     }
   },
   getters: {
@@ -22,9 +21,7 @@ export const userStore = defineStore('user', {
     }
   },
   actions: {
-    choiceMenuType(type) {
-      this.menuType = type
-    },
+
     choiceRole(item) {
       item.key = dt.dictInfo().roleType.find((i) => i.key == item.roleId)?.dictLabelEn
       this.role = item
@@ -60,9 +57,9 @@ export const userStore = defineStore('user', {
   }
 })
 
-// setTimeout(() => {
-//   codeStore().bingUpdateFunc(codeMgr.update)
-//   if (userStore().isLogin) {
-//     codeStore().updateCode(true)
-//   }
-// }, 1000)
+setTimeout(() => {
+  // codeStore().bingUpdateFunc(codeMgr.update)
+  if (userStore().isLogin) {
+    codeStore().updateCode(true)
+  }
+}, 1000)

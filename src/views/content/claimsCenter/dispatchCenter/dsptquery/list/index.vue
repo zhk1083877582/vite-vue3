@@ -1,6 +1,5 @@
 <template>
 	<div>
-		dsptquerydsptquerydsptquerydsptquery
 		<el-button @click="handelClick">messageBox</el-button>
 		<el-button @click="onFieldSort">排序</el-button>
 		<el-icon>
@@ -37,7 +36,7 @@
 		radio: true
 	};
 	const handelClick = () => {
-		router.goRoot("/dspt/dsptquery/detail", { id: "111" });
+		router.goRoot("claimsCenter/dispatchCenter/dsptquery/detail", { id: "111" });
 		// router.goRoot({
 		// 	path: "/index/dspt/dsptquery/detail",
 		// 	query: {

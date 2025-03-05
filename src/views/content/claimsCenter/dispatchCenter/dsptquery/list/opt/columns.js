@@ -61,14 +61,14 @@ export class listOpt extends Opt {
         },
       },
       {
-        title: "海报状态",
+        title: "状态",
         field: "delFlag",
         minWidth: 100,
         cell: (item) => {
           return {
             edit: {
               key: "delFlag",
-              placeholder: "请选择海报状态",
+              placeholder: "请选择状态",
               select: {
                 teleported: true,
                 options: [

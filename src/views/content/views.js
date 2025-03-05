@@ -1,3 +1,3 @@
 export default {
-  root: ['rpt', 'dspt']
+  root: ['homePage', 'reportCaseCenter', 'claimsCenter', 'claimsAssist']
 }

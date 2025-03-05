@@ -1,6 +1,4 @@
 <script setup>
-	import router from "@/router";
-	import { extractPath } from "@/router/utils";
 	const props = defineProps({
 		item: Object
 	});
@@ -14,9 +12,8 @@
 		</template>
 		<el-menu-sub v-for="i in item.children" :key="i.name" :item="i" />
 	</el-sub-menu>
-	<!-- : -->
 	<el-menu-item v-else :index="item.name">
-		<span :class="[item.icon, 'iconfont', 'menu-icon']"></span>
+		<el-icon :class="[item.icon, 'iconfont', 'menu-icon']"></el-icon>
 		<span>{{ item.title }}</span>
 	</el-menu-item>
 </template>
@@ -26,7 +23,5 @@
 </style>
 <style lang="scss">
 	.my-menu-popper {
-		// overflow-y: auto;
-		// max-height: 80vh;
 	}
 </style>

@@ -2,8 +2,16 @@
 <template>
 	<div class="menu">
 		<!-- 一级菜单 -->
-		<el-menu mode="horizontal" :ellipsis="false" :active-name="activeName">
-			<el-menu-item v-for="menu in menuStore().items" :key="menu.name" :name="menu.name" @mouseenter.native="handleMouseEnter(menu)" @mouseleave.native="handleMouseLeave">
+		<el-menu mode="horizontal" :ellipsis="false" :active-name="activeName" style="background: transparent">
+			<el-menu-item
+				style="margin-left: 10px"
+				v-for="menu in menuStore().items"
+				:key="menu.name"
+				:name="menu.name"
+				@mouseenter.native="handleMouseEnter(menu)"
+				@mouseleave.native="handleMouseLeave"
+				@click="handleMenuClick(menu)"
+			>
 				<!-- <i :type="menu.cOpImg" v-if="!menu.cOpImg?.includes('fa')" /> -->
 				<!-- <i :class="menu.cOpImg"></i> -->
 				{{ menu.title }}
@@ -46,7 +54,7 @@
 </template>
 
 <script setup>
-	import { ref, onMounted, watch } from "vue";
+	import { ref, watch } from "vue";
 	import { useRouter } from "vue-router";
 	import { menuStore } from "@/store/menu";
 
@@ -107,14 +115,22 @@
 			showSubMenu.value = false;
 		}
 	};
+	const handleMenuClick = item => {
+		if (item.children && item.children.length > 0) {
+			return;
+		} else {
+			activeSubItem.value = item.name;
+			router.push("/" + item.name);
+		}
+	};
 </script>
 
 <style lang="scss" scoped>
 	.menu {
-		background: #fff;
+		background: #f2f2f2;
 		position: relative;
 		:deep(.el-menu--horizontal) {
-			height: 34px;
+			height: 46px;
 			border: 0;
 		}
 	}
@@ -124,7 +140,7 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 35px;
+		top: 46px;
 		background: #000911;
 		opacity: 0.8;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

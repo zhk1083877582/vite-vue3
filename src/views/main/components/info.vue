@@ -8,21 +8,21 @@
 <script setup>
 	import dt from "@/config/dt";
 	import router from "@/router";
-	import { userStore } from "@/store/user";
+	import { menuStore } from "@/store/menu";
 	const logout = () => {
 		dt.session.remove("dt_auth");
 		router.replace("/login");
 	};
 	const choiceType = () => {
-		let type = userStore().menuType == "top" ? "left" : "top";
-		userStore().choiceMenuType(type);
+		let type = menuStore().menuType == "top" ? "left" : "top";
+		menuStore().choiceMenuType(type);
 	};
 </script>
 
 <style lang="scss" scoped>
 	.info-warp {
 		display: flex;
-		line-height: 34px;
+		line-height: 40px;
 		padding: 0 10px;
 	}
 	.setting {

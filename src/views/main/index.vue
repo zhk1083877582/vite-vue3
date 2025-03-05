@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<navigation />
 		<div
 			style="background: white; display: flex"
 			:style="{
@@ -9,19 +8,23 @@
 			}"
 		>
 			<!-- <sider /> -->
-			<el-menu v-if="userStore().menuType == 'left'" />
+			<el-menu v-if="menuStore().menuType == 'left'" />
 			<div
-				style="padding: 10px; flex: 1"
+				style="flex: 1"
 				:style="{
 					height: contentHeight + 'px',
 					width: contentWidth - 200 + 'px'
 				}"
 			>
+				<navigation />
+
 				<!-- <tabs /> -->
 				<div
 					class="contain"
 					:style="{
-						height: contentHeight - 114 + 'px',
+						padding: '10px',
+						flex: '1',
+						height: contentHeight - 80 + 'px',
 						overflowY: 'auto'
 					}"
 				>
@@ -45,11 +48,9 @@
 	import navigation from "./components/navigation.vue";
 	import { onMounted, ref, watch } from "vue";
 	import router from "@/router";
-	import { userStore } from "@/store/user";
 	import { menuStore } from "@/store/menu";
 	onMounted(() => {
-		// menuStore().item;
-		console.log("🚀 ~ index.vue:53 ~ onMounted ~ menuStore().item:", menuStore().update());
+		// console.log("🚀 ~ index.vue:53 ~ onMounted ~ menuStore().item:", menuStore().update());
 	});
 	const contentHeight = ref(window.innerHeight);
 	const contentWidth = ref(window.innerWidth);

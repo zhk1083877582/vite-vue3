@@ -9,7 +9,10 @@ export const menuStore = defineStore('menu', {
     return {
       types: {},
       type: dt.session.get(key_menu_type) ?? 'root',
-      dic: {}
+      dic: {},
+      menuType: 'left',
+      menuIsCollapse: false
+
     }
   },
   getters: {
@@ -25,6 +28,12 @@ export const menuStore = defineStore('menu', {
     }
   },
   actions: {
+    choiceMenuType(type) {
+      this.menuType = type
+    },
+    changeCollapse() {
+      this.menuIsCollapse = !this.menuIsCollapse
+    },
     update() {
       let dic = {}
       this.types = {}

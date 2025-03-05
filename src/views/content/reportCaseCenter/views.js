@@ -3,33 +3,34 @@ export default {
     root: {
       title: '报案中心',
       code: '',
-      icon: 'icon-houtaiguanli',
+      icon: 'houtaiguanli',
       children: [
         {
           title: '报案',
+          icon: 'houtaiguanli',
           code: '',
-          children: ['queryPcis', 'queryRptModify', 'batchClaim', 'queryRpt']
+          children: ['reportCase/queryPcis/list', 'reportCase/queryRptModify/list', 'reportCase/batchClaim/list', 'reportCase/queryRpt/list']
         }
       ]
     }
   },
   views: [
     {
-      path: 'queryPcis',
+      path: 'reportCase/queryPcis/list',
       code: '',
       title: '新增报案'
     },
     {
-      path: 'queryRptModify',
+      path: 'reportCase/queryRptModify/list',
       code: '',
       title: '暂存报案查询'
     },
     {
-      path: 'batchClaim',
+      path: 'reportCase/batchClaim/list',
       code: '',
       title: '批量理赔'
     }, {
-      path: 'queryRpt',
+      path: 'reportCase/queryRpt/list',
       code: '',
       title: '已报案查询'
     },
