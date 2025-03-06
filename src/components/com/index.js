@@ -3,6 +3,7 @@ import modal from "./modal";
 import table from "./table";
 import preview from "./preview";
 import sortHeader from './sortHeader'
+import orgModal from './orgModal'
 
 function init(app) {
   preview.init(app);
@@ -10,6 +11,7 @@ function init(app) {
   modal.init(app);
   table.init(app);
   sortHeader.init(app)
+  orgModal.init(app)
 }
 
 export default {

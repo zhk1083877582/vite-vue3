@@ -13,7 +13,7 @@
 		<el-menu-sub v-for="i in item.children" :key="i.name" :item="i" />
 	</el-sub-menu>
 	<el-menu-item v-else :index="item.name">
-		<el-icon :class="[item.icon, 'iconfont', 'menu-icon']"></el-icon>
+		<el-icon v-show="item.icon" :class="[item.icon, 'iconfont', 'menu-icon']"></el-icon>
 		<span>{{ item.title }}</span>
 	</el-menu-item>
 </template>

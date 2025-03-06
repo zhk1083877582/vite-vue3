@@ -46,12 +46,10 @@
 	import elMenu from "./components/el-menu.vue";
 	// import sider from './components/sider.vue'
 	import navigation from "./components/navigation.vue";
-	import { onMounted, ref, watch } from "vue";
+	import { nextTick, ref, watch } from "vue";
 	import router from "@/router";
 	import { menuStore } from "@/store/menu";
-	onMounted(() => {
-		// console.log("🚀 ~ index.vue:53 ~ onMounted ~ menuStore().item:", menuStore().update());
-	});
+
 	const contentHeight = ref(window.innerHeight);
 	const contentWidth = ref(window.innerWidth);
 	window.addEventListener("resize", () => {
@@ -60,10 +58,16 @@
 	});
 
 	const meta = ref();
-
+	let currentObj = ref();
 	watch(
 		() => router.currentRoute.value,
 		route => {
+			nextTick(() => {
+				// console.log("🚀 ~ index.vue:66 ~  menuStore().dic[router.currentRoute.value.name]:", menuStore().dic[router.currentRoute.value.name]);
+				// currentObj.value = menuStore().dic[router.currentRoute.value.name];
+				// console.log("🚀 ~ index.vue:67 ~ currentObj.value:", currentObj.value.root + "/" + currentObj.value.title);
+			});
+
 			meta.value = route.meta;
 		},
 		{ immediate: true }

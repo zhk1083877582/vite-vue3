@@ -3,15 +3,15 @@
 		<dt-search ref="searchRef" :xl="4" :xlBtn="8">
 			<el-button type="primary" style="margin-right: 8px" @click="addEmployee">添加人员</el-button>
 			<el-button type="primary" style="margin-right: 8px" @click="showDtInfo">dt-info</el-button>
-			<el-button type="primary" style="margin-right: 8px" @click="handelClick">click</el-button>
+			<!-- <el-button type="primary" style="margin-right: 8px" @click="handelClick">click</el-button> -->
 		</dt-search>
 		<dt-grid ref="tableRef" :onFetch="onFetch" page>
-			<template #btn>
+			<!-- <template #btn>
 				<div class="flex btn-content">
 					<el-button type="primary" @click="gridBtnClickO"> gridBtn1 </el-button>
 					<el-button type="primary" @click="gridBtnClickT"> gridBtn1 </el-button>
 				</div>
-			</template>
+			</template> -->
 		</dt-grid>
 		<!--新建员工-->
 		<dt-modal-edit ref="editRef" :title="editTitle" @ok="onOk" :label-width="120"></dt-modal-edit>

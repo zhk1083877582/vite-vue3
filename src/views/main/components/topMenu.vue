@@ -216,13 +216,13 @@
 
 					&:hover {
 						// background: #e8eaec;
-						color: #2d8cf0;
+						color: var(--el-color-primary);
 					}
 
 					&.active {
 						// background: #2d8cf0;
 						// color: #fff;
-						color: #2d8cf0;
+						color: var(--el-color-primary);
 					}
 				}
 			}
