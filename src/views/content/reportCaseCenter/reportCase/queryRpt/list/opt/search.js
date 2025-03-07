@@ -9,6 +9,7 @@ export class searchOpt extends Opt {
     return [
       {
         title: "机构部门",
+        key: "orgId",
         groupNum: '0',
         group: [
           {

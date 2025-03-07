@@ -47,7 +47,6 @@ router.setBeforeHandle = (func) => {
 
 let goLoginResolve = null
 router.beforeEach((to, _, next) => {
-  console.log("🚀 ~ index.js:49 ~ router.beforeEach ~ to:", to)
   NProgress.start();
   function goNext() {
     if (!to.name) {

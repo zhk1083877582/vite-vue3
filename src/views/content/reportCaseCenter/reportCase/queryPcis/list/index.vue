@@ -1,5 +1,14 @@
+<template>
+	<div>
+		<el-button @click="saveFun">save</el-button>
+		<el-button @click="changeColorFun">changeColorFun</el-button>
+		<el-button @click="todetail">detail</el-button>
+		<dt-info ref="msgRef"></dt-info>
+	</div>
+</template>
 <script setup>
 	import { onMounted, reactive } from "vue";
+	import router from "@/router";
 	import { editOpt } from "./biz/edit";
 	import { settingStore } from "@/store/setting";
 	const [msgRef, menuMsgInfo] = [
@@ -123,27 +132,9 @@
 	function changeColorFun() {
 		settingStore().setElementThemeColor("#e6a23c");
 	}
+	function todetail() {
+		router.goRoot("reportCaseCenter/reportCase/queryPcis/detail", { id: "123123" });
+	}
 </script>
-
-<template>
-	<div>
-		<el-button @click="saveFun">save</el-button>
-		<el-button @click="changeColorFun">changeColorFun</el-button>
-		<!-- <el-date-picker v-model="value1" type="date" @change="handelChange" /> -->
-		<dt-info ref="msgRef"></dt-info>
-		<!-- <el-radio-group v-model="radio1" @change="handelChange">
-        <el-radio value="1" size="large">Option 1</el-radio>
-        <el-radio value="2" size="large">Option 2</el-radio>
-    </el-radio-group> -->
-
-		<el-cascader ref="cascaderRef" v-model="selectedValue" :options="options" :props="{ value: 'id', label: 'name', children: 'children' }" @change="handleChange"></el-cascader>
-		<el-time-picker v-model="times.time1" placeholder="Arbitrary time" @change="timeChange" />
-
-		<el-date-picker v-model="times.value2" type="daterange" @change="timeChange" />
-		<el-select v-model="selectValue" placeholder="Select" style="width: 240px" @change="selectChange">
-			<el-option v-for="item in selectOptions" :key="item.key" :label="item.value" :value="item" />
-		</el-select>
-	</div>
-</template>
 
 <style scoped lang="scss"></style>

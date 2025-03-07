@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ContentWarp: typeof import('./../components/com/contentWarp/index.vue')['default']
     copy: typeof import('./../components/com/preview/index copy.vue')['default']
     DtFilter: typeof import('./../components/com/table/dt-filter.vue')['default']
     DtGrid: typeof import('./../components/com/table/dt-grid.vue')['default']

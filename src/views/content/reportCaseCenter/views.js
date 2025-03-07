@@ -18,20 +18,30 @@ export default {
     {
       path: 'reportCase/queryPcis/list',
       code: '',
+      bread: '报案/新增报案查询',
       title: '新增报案'
+    },
+    {
+      path: 'reportCase/queryPcis/detail',
+      menuPath: 'reportCase/queryPcis/list',
+      code: '',
+      bread: '报案/新增报案详情',
     },
     {
       path: 'reportCase/queryRptModify/list',
       code: '',
+      bread: '报案/暂存报案查询',
       title: '暂存报案查询'
     },
     {
       path: 'reportCase/batchClaim/list',
       code: '',
+      bread: '报案/批量理赔',
       title: '批量理赔'
     }, {
       path: 'reportCase/queryRpt/list',
       code: '',
+      bread: '报案/已报案查询',
       title: '已报案查询'
     },
   ]

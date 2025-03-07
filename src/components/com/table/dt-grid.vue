@@ -4,8 +4,9 @@
 		:style="{
 			justifyContent: filterItems.length > 0 ? 'space-between' : 'flex-end'
 		}"
+		v-if="filterItems.length > 0"
 	>
-		<dt-filter v-if="filterItems.length > 0" v-model="filterInfo" ref="filterRef" @filter="search" :filter="filter" />
+		<dt-filter v-model="filterInfo" ref="filterRef" @filter="search" :filter="filter" />
 		<slot name="btn"></slot>
 	</div>
 

@@ -19,15 +19,9 @@
 				<navigation />
 
 				<!-- <tabs /> -->
-				<div
-					class="contain"
-					:style="{
-						padding: '10px',
-						flex: '1',
-						height: contentHeight - 80 + 'px',
-						overflowY: 'auto'
-					}"
-				>
+				<div class="contain" :style="{ height: contentHeight - 90 + 'px' }">
+					<!-- 面包屑 -->
+					<!-- <breadcrumb /> -->
 					<RouterView v-slot="{ Component }">
 						<component :is="Component" v-if="!meta.keep" :key="meta.name" />
 						<KeepAlive>
@@ -46,6 +40,7 @@
 	import elMenu from "./components/el-menu.vue";
 	// import sider from './components/sider.vue'
 	import navigation from "./components/navigation.vue";
+	import Breadcrumb from "./components/Breadcrumb/index.vue";
 	import { nextTick, ref, watch } from "vue";
 	import router from "@/router";
 	import { menuStore } from "@/store/menu";
@@ -77,5 +72,9 @@
 	@import url("@/assets/css/sider.scss");
 	.contain {
 		padding: 10px;
+		flex: 1;
+		overflow: hidden;
+		overflow-y: auto;
+		box-sizing: border-box;
 	}
 </style>

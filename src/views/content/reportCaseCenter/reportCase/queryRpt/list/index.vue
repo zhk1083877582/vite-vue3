@@ -99,11 +99,7 @@
 
 	function onFetch(data) {
 		let params = {
-			...data,
-			positionStatus: data.positionStatus == "-1" ? "" : data.positionStatus,
-			state: data.state == "-1" ? "" : data.state,
-			roleIds: data.roleIds == "-1" ? [] : data.roleIds.split(","),
-			orgId: data.orgId == "-1" ? "" : data.orgId
+			...data
 		};
 		console.log("🚀 ~ onFetch ~ params:", params);
 
@@ -146,9 +142,10 @@
 	function getOrglist(data) {
 		let list = [{ key: data.id, value: data.name }];
 		orglist.value = list;
-		searchInfo.value.orgId = data.id;
 		nextTick(() => {
-			searchRef.value.init(tableRef.value, new searchOpt(searchFun), searchInfo.value);
+			searchInfo.value.orgId = data.id;
+			console.log("🚀 ~ index.vue:151 ~ nextTick ~ searchInfo.value:", searchInfo.value);
+			searchRef.value.update(new searchOpt(searchFun), searchInfo.value);
 		});
 	}
 </script>

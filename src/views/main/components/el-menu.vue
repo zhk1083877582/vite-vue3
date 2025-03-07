@@ -4,7 +4,6 @@
 		background-color="#1a202e"
 		text-color="#fff"
 		:default-active="current"
-		:default-openeds="opens"
 		:unique-opened="true"
 		@select="onClick"
 		:class="menuStore().menuIsCollapse ? '' : 'my-menu'"
@@ -77,7 +76,7 @@
 		() => router.currentRoute.value,
 		route => {
 			current.value = route.meta.menuName || route.meta.name;
-			checkCurrent();
+			// checkCurrent();
 		},
 		{ immediate: true }
 	);

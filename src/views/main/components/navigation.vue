@@ -10,18 +10,23 @@
 				</el-icon>
 			</div>
 		</div>
+
 		<div v-show="menuStore().menuType == 'top'" style="display: flex">
 			<img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; margin: 8px 15px 0 0" />
 			<topMenu />
 		</div>
 		<info />
 	</div>
+	<!-- 面包屑 -->
+	<breadcrumb />
 </template>
 
 <script setup>
 	import topMenu from "./topMenu.vue";
 	import info from "./info.vue";
 	import { menuStore } from "@/store/menu";
+	import Breadcrumb from "./Breadcrumb/index.vue";
+
 	const showMenu = () => {
 		menuStore().changeCollapse();
 	};

@@ -1,8 +1,7 @@
 <!-- 首页 -->
 <template>
 	<el-row :gutter="20">
-		<el-col :span="16"
-			><div class="grid-content ep-bg-purple" />
+		<el-col :span="16">
 			<div style="display: flex; justify-content: space-between">
 				<div style="line-height: 32px" class="new-cl">最新任务（近一个月）</div>
 				<el-button>更多</el-button>

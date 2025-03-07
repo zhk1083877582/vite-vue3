@@ -4,6 +4,7 @@ import table from "./table";
 import preview from "./preview";
 import sortHeader from './sortHeader'
 import orgModal from './orgModal'
+import contentWarp from './contentWarp'
 
 function init(app) {
   preview.init(app);
@@ -12,6 +13,7 @@ function init(app) {
   table.init(app);
   sortHeader.init(app)
   orgModal.init(app)
+  contentWarp.init(app)
 }
 
 export default {
