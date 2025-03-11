@@ -5,7 +5,7 @@ import { handleElementThemeColor, colourBlend } from '@/utils'
 export const settingStore = defineStore('setting', {
   state: () => {
     return {
-      menuType: 'LEFT',
+      menuType: 'TOP',
       systemThemeColor: '#5D87FF',
       SystemMainColor: [
         '#5D87FF',
@@ -23,9 +23,10 @@ export const settingStore = defineStore('setting', {
   actions: {
     initSettingState() {
       let sys = dt.storage.get('setting_info')
-      this.menuType = sys.menuType
-      this.systemThemeColor = sys.systemThemeColor
-      if (sys.systemThemeColor) {
+      console.log("🚀 ~ setting.js:26 ~ initSettingState ~ sys:", sys)
+      if (sys) {
+        this.menuType = sys?.menuType
+        this.systemThemeColor = sys?.systemThemeColor
         this.setElementThemeColor(sys.systemThemeColor)
       } else {
         let ElementPlusTheme = '#5D87FF'

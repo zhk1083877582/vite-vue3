@@ -1,3 +1,5 @@
+import { KeepAlive } from "vue";
+
 export default {
   menus: {
     root: {
@@ -12,7 +14,8 @@ export default {
       path: 'myWork',
       code: '',
       bread: '我的平台/我的工作',
-      title: '我的工作'
+      title: '我的工作',
+      keep: true
     },
     {
       path: 'myTask',

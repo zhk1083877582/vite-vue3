@@ -1,13 +1,32 @@
 <!-- 机构部门 -->
 <template>
-	<el-dialog :model-value="visible" title="机构部门" @closed="closed" style="min-height: 620px" :close-on-click-modal="false" :close-on-press-escape="false" top="50px">
+	<el-dialog
+		:model-value="visible"
+		title="机构部门"
+		@closed="closed"
+		style="min-height: 620px"
+		:close-on-click-modal="false"
+		:close-on-press-escape="false"
+		top="50px"
+	>
 		<!-- <el-input v-model="filterText" class="search" :suffix-icon="Search"></el-input> -->
 		<el-input v-model="filterText">
 			<template #append>
 				<el-button :icon="Search" />
 			</template>
 		</el-input>
-		<el-tree ref="treeRef" :props="treeProps" class="tree" :filter-node-method="filterNode" @node-click="selectOrg" node-key="parentId" lazy :load="loadNode" :expand-on-click-node="false"> </el-tree>
+		<el-tree
+			ref="treeRef"
+			:props="treeProps"
+			class="tree"
+			:filter-node-method="filterNode"
+			@node-click="selectOrg"
+			node-key="parentId"
+			lazy
+			:load="loadNode"
+			:expand-on-click-node="false"
+		>
+		</el-tree>
 	</el-dialog>
 </template>
 

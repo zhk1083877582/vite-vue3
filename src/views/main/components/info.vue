@@ -18,7 +18,6 @@
 					popper-style="border: 1px solid var(--art-border-dashed-color); border-radius: calc(var(--custom-radius) / 2 + 4px); padding: 5px 16px; 5px 16px;"
 				>
 					<template #reference>
-						<!-- <img class="cover" src="@imgs/user/avatar.png" /> -->
 						<el-icon><UserFilled /></el-icon>
 					</template>
 					<template #default>
@@ -35,9 +34,6 @@
 				</el-popover>
 			</div>
 		</div>
-
-		<!-- <div style="cursor: pointer" @click="logout">退出</div>
-      -->
 	</div>
 </template>
 
@@ -65,7 +61,6 @@
 	.btn-box {
 		display: flex;
 		.btn {
-			margin: 0 5px;
 			display: block;
 			display: flex;
 			align-items: center;

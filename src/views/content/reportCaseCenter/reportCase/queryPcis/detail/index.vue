@@ -15,11 +15,11 @@
 				</div>
 			</el-col>
 			<el-col :span="4">
-				<el-affix :offset="120">
+				<el-affix :offset="120" style="width: 100%">
 					<div class="btns-cl">
 						<el-button type="primary" class="btn">保存</el-button>
 						<el-button type="primary" class="btn">提交</el-button>
-						<el-button type="primary" class="btn">返回</el-button>
+						<el-button type="primary" class="btn" @click="goBack">返回</el-button>
 						<el-button type="primary" class="btn">大案上报</el-button>
 					</div>
 				</el-affix>
@@ -29,6 +29,7 @@
 </template>
 
 <script setup>
+	import router from "@/router";
 	import reportMsg from "./components/reportMsg.vue";
 	import underwriteMsg from "./components/underwriteMsg.vue";
 	import caseExplain from "./components/caseExplain.vue";
@@ -41,6 +42,9 @@
 	]);
 	const removeTab = () => {};
 	const changeTab = () => {};
+	const goBack = () => {
+		router.go(-1);
+	};
 	onMounted(() => {
 		reportMsgRef.value.init();
 	});
@@ -51,7 +55,7 @@
 		padding: 10px;
 		box-shadow: var(--dt-box-shadow);
 		.btn {
-			width: 180px;
+			width: 100%;
 			margin-top: 10px;
 			margin-left: 0px;
 		}

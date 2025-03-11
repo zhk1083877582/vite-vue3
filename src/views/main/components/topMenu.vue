@@ -82,7 +82,6 @@
 
 	// 处理鼠标进入一级菜单
 	const handleMouseEnter = menu => {
-		console.log("🚀 ~ topMenu.vue:84 ~ menu:", menu);
 		if (hoverTimer) clearTimeout(hoverTimer);
 		activeName.value = menu.name;
 		currentSubMenus.value = menu?.children || [];

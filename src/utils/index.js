@@ -81,7 +81,6 @@ export function getDarkColor(color, level) {
 
 // 处理 Element Plus 主题颜色
 export function handleElementThemeColor(theme, isDark = false) {
-  console.log("🚀 ~ index.js:39 ~ handleElementThemeColor ~ document.documentElement:", document.documentElement.style)
   const elStyle = document.documentElement.style
   elStyle.setProperty('--el-color-primary', theme)
   for (let i = 1; i <= 9; i++) {

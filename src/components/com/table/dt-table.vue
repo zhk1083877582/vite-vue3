@@ -12,7 +12,8 @@
 					v-model:sort-state="sortState"
 					@column-sort="onSort"
 					:expand-column-key="treeKey"
-					:header-height="headerGroups.length ? 96 : 48"
+					:header-height="headerGroups.length ? 80 : 40"
+					:row-height="45"
 					fixed
 				>
 					<template #empty style="height: 100%">

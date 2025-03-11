@@ -38,6 +38,7 @@
 		searchRef.value.update(new searchOpt(searchFun), searchInfo.value);
 	}
 	onMounted(() => {
+		console.log(123123);
 		searchRef.value.init(tableRef.value, new searchOpt(searchFun), searchInfo.value);
 		tableRef.value.init(new listColumn(fun));
 		tableRef.value.fetch();
