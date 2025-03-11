@@ -26,6 +26,7 @@
         "@vitejs/plugin-vue-jsx": "^3.0.0",
         "@vue-flow/core": "^1.41.6",
         "cross-env": "^7.0.3",
+        "echarts": "^5.6.0",
         "unplugin-auto-import": "^19.0.0",
         "unplugin-icons": "^22.0.0",
         "unplugin-vue-components": "^28.0.0",

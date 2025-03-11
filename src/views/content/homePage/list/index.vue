@@ -1,15 +1,24 @@
 <!-- 首页 -->
 <template>
+	<el-row style="margin-bottom: 10px">
+		<el-col :span="24">
+			<el-card :bordered="false">
+				<top-echars />
+			</el-card>
+		</el-col>
+	</el-row>
 	<el-row :gutter="20">
 		<el-col :span="16">
-			<div style="display: flex; justify-content: space-between">
-				<div style="line-height: 32px" class="new-cl">最新任务（近一个月）</div>
-				<el-button>更多</el-button>
-			</div>
-			<dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
+			<el-card :bordered="false">
+				<div style="display: flex; justify-content: space-between">
+					<div style="line-height: 32px" class="new-cl">最新任务（近一个月）</div>
+					<el-button>更多</el-button>
+				</div>
+				<dt-grid ref="tableRef" :onFetch="onFetch" :height="400"> </dt-grid>
+			</el-card>
 		</el-col>
 		<el-col :span="8" class="tips_warp">
-			<el-card :bordered="false" class="index-blk">
+			<el-card :bordered="false" class="index-blk" style="height: 100%; box-sizing: border-box">
 				<div>
 					<div style="text-align: left; display: flex; justify-content: space-between; line-height: 34px">
 						提醒信息
@@ -36,6 +45,7 @@
 </template>
 
 <script setup>
+	import topEchars from "./components/topEchars.vue";
 	import { listColumn } from "./opt/columns.js";
 	import apiMgr from "./biz/index";
 
@@ -62,51 +72,6 @@
 			title: "测试3",
 			datetime: "2025.02.05 14:00:00",
 			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
-		},
-		{
-			title: "测试3",
-			datetime: "2025.02.05 14:00:00",
-			description: "描述"
 		}
 	];
 	function fun() {}
@@ -122,7 +87,7 @@
 
 		return apiMgr.getUserListFun(params).then(res => {
 			console.log("🚀 ~ returnemployeeMgr.getUserListFun ~ res:", res.list.length);
-			return res;
+			return res.list;
 		});
 	}
 </script>
@@ -131,7 +96,7 @@
 		color: var(--el-color-primary);
 	}
 	.tips_warp {
-		max-height: calc(100vh - 120px);
+		height: 473px;
 		overflow-y: auto;
 	}
 	.tips_item {

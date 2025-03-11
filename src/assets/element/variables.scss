@@ -1,0 +1,252 @@
+// 默认主题变量 ｜ Light 主题变量
+
+:root {
+	// Theme color
+	--dt-primary: 93, 135, 255;
+	--dt-secondary: 73, 190, 255;
+	--dt-error: 250, 137, 107;
+	--dt-info: 83, 155, 255;
+	--dt-success: 19, 222, 185;
+	--dt-warning: 255, 174, 31;
+	--dt-danger: 255, 77, 79;
+
+	// Theme background color
+	--dt-bg-primary: 236, 242, 255;
+	--dt-bg-secondary: 232, 247, 255;
+	--dt-bg-success: 230, 255, 250;
+	--dt-bg-error: 253, 237, 232;
+	--dt-bg-info: 235, 243, 254;
+	--dt-bg-warning: 254, 245, 229;
+	--dt-bg-danger: 253, 237, 232;
+
+	--dt-hoverColor: 246, 249, 252;
+	--dt-grey100: 242, 246, 250;
+	--dt-grey200: 234, 239, 244;
+
+	--dt-color: #ffffff;
+	--dt-light: #f9f9f9;
+	--dt-dark: #1e2129;
+
+	// Background color | Hover color
+	--dt-text-muted: #99a1b7;
+	--dt-gray-100: #f9f9f9;
+	--dt-gray-100-rgb: 249, 249, 249;
+	--dt-gray-200: #f1f1f4;
+	--dt-gray-200-rgb: 241, 241, 244;
+	--dt-gray-300: #dbdfe9;
+	--dt-gray-300-rgb: 219, 223, 233;
+	--dt-gray-400: #c4cada;
+	--dt-gray-400-rgb: 196, 202, 218;
+	--dt-gray-500: #99a1b7;
+	--dt-gray-500-rgb: 153, 161, 183;
+	--dt-gray-600: #78829d;
+	--dt-gray-600-rgb: 120, 130, 157;
+	--dt-gray-700: #4b5675;
+	--dt-gray-700-rgb: 75, 86, 117;
+	--dt-gray-800: #252f4a;
+	--dt-gray-800-rgb: 37, 47, 74;
+	--dt-gray-900: #071437;
+	--dt-gray-900-rgb: 7, 20, 55;
+
+	// Text color
+	--dt-text-muted: #99a1b7;
+	--dt-text-gray-100: #f9f9f9;
+	--dt-text-gray-200: #f1f1f4;
+	--dt-text-gray-300: #dbdfe9;
+	--dt-text-gray-400: #c4cada;
+	--dt-text-gray-500: #99a1b7;
+	--dt-text-gray-600: #78829d;
+	--dt-text-gray-700: #4b5675;
+	--dt-text-gray-800: #252f4a;
+	--dt-text-gray-900: #071437;
+
+	// Border
+	--dt-border-color: #eaebf1;
+	--dt-border-dashed-color: #dbdfe9;
+	--dt-root-card-border-color: #f1f1f4;
+
+	// Shadow
+	--dt-box-shadow-xs: 0 0.1rem 0.75rem 0.25rem rgba(0, 0, 0, 0.05);
+	--dt-box-shadow-sm: 0 0.1rem 1rem 0.25rem rgba(0, 0, 0, 0.05);
+	--dt-box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, 0.075);
+	--dt-box-shadow-lg: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.1);
+
+	// Root card box、shadow
+	--dt-root-card-box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.03);
+	--dt-root-card-border-color: #f1f1f4;
+
+	// Theme background color
+	--dt-bg-color: #fafbfc; // 最底部背景颜色
+	--dt-main-bg-color: #ffffff;
+}
+
+// Dark 主题变量
+html.dark {
+	// Theme color
+	--dt-primary: 93, 135, 255;
+	--dt-secondary: 73, 190, 255;
+	--dt-error: 250, 137, 107;
+	--dt-info: 83, 155, 255;
+	--dt-success: 19, 222, 185;
+	--dt-warning: 255, 174, 31;
+	--dt-danger: 255, 77, 79;
+
+	// Theme background color
+	--dt-bg-primary: 37, 54, 98;
+	--dt-bg-secondary: 28, 69, 93;
+	--dt-bg-success: 27, 60, 72;
+	--dt-bg-error: 75, 49, 61;
+	--dt-bg-info: 34, 54, 98;
+	--dt-bg-warning: 77, 58, 42;
+	--dt-bg-danger: 100, 49, 61;
+
+	--dt-hoverColor: 51, 63, 85;
+	--dt-grey100: 51, 63, 85;
+	--dt-grey200: 70, 86, 112;
+
+	--dt-color: #000000;
+	--dt-light: #1b1c22;
+	--dt-dark: #272a34;
+
+	// Background color | Hover color
+	--dt-text-muted: #636674;
+	--dt-gray-100: #1b1c22;
+	--dt-gray-100-rgb: 27, 28, 34;
+	--dt-gray-200: #26272f;
+	--dt-gray-200-rgb: 38, 39, 47;
+	--dt-gray-300: #363843;
+	--dt-gray-300-rgb: 54, 56, 67;
+	--dt-gray-400: #464852;
+	--dt-gray-400-rgb: 70, 72, 82;
+	--dt-gray-500: #636674;
+	--dt-gray-500-rgb: 99, 102, 116;
+	--dt-gray-600: #808290;
+	--dt-gray-600-rgb: 128, 130, 144;
+	--dt-gray-700: #9a9cae;
+	--dt-gray-700-rgb: 154, 156, 174;
+	--dt-gray-800: #b5b7c8;
+	--dt-gray-800-rgb: 181, 183, 200;
+	--dt-gray-900: #f5f5f5;
+	--dt-gray-900-rgb: 245, 245, 245;
+
+	// Text color
+	--dt-text-muted: #636674;
+	--dt-text-gray-100: #1b1c22;
+	--dt-text-gray-200: #26272f;
+	--dt-text-gray-300: #363843;
+	--dt-text-gray-400: #464852;
+	--dt-text-gray-500: #636674;
+	--dt-text-gray-600: #808290;
+	--dt-text-gray-700: #9a9cae;
+	--dt-text-gray-800: #b5b7c8;
+	--dt-text-gray-900: #f5f5f5;
+
+	// Border
+	--dt-border-color: #26272f;
+	--dt-border-dashed-color: #363843;
+	--dt-root-card-border-color: #1e2027;
+
+	// Shadow
+	--dt-box-shadow-xs: 0 0.1rem 0.75rem 0.25rem rgba(0, 0, 0, 0.05);
+	--dt-box-shadow-sm: 0 0.1rem 1rem 0.25rem rgba(0, 0, 0, 0.05);
+	--dt-box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, 0.075);
+	--dt-box-shadow-lg: 0 1rem 2rem 1rem rgba(0, 0, 0, 0.1);
+
+	// Root card box、shadow
+	--dt-root-card-box-shadow: none;
+	--dt-root-card-border-color: #1e2027;
+
+	// Theme background color
+	--dt-bg-color: #070707;
+	--dt-main-bg-color: #161618;
+}
+
+// CSS 全局变量
+:root {
+	--console-margin: 20px; // 工作台盒子间距
+	--dt-card-border: rgba(var(--dt-gray-300-rgb), 0.7); // 卡片边框颜色
+	--dt-card-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04); // 卡片阴影
+}
+
+// 媒体查询-设备尺寸
+// notebook
+$device-notebook: 1600px;
+// ipad pro
+$device-ipad-pro: 1180px;
+// ipad
+$device-ipad: 800px;
+// ipad-竖屏
+$device-ipad-vertical: 900px;
+// mobile
+$device-phone: 500px;
+
+.bg-primary {
+	background-color: rgb(var(--dt-bg-primary)) !important;
+	color: rgb(var(--dt-primary)) !important;
+}
+
+.bg-secondary {
+	background-color: rgb(var(--dt-bg-secondary)) !important;
+	color: rgb(var(--dt-secondary)) !important;
+	border: 1px solid var(--dt-secondary);
+}
+
+.bg-warning {
+	background-color: rgb(var(--dt-bg-warning)) !important;
+	color: rgb(var(--dt-warning)) !important;
+}
+
+.bg-error {
+	background-color: rgb(var(--dt-bg-error)) !important;
+	color: rgb(var(--dt-error)) !important;
+}
+
+.bg-success {
+	background-color: rgb(var(--dt-bg-success)) !important;
+	color: rgb(var(--dt-success)) !important;
+}
+
+.bg-danger {
+	background-color: rgb(var(--dt-bg-danger)) !important;
+	color: rgb(var(--dt-danger)) !important;
+}
+
+.bg-grey100 {
+	background-color: rgb(var(--dt-grey100)) !important;
+}
+
+.bg-grey200 {
+	background-color: rgb(var(--dt-grey200)) !important;
+}
+
+.bg-hoverColor {
+	background-color: rgb(var(--dt-hoverColor)) !important;
+}
+
+.text-primary {
+	color: rgb(var(--dt-primary)) !important;
+}
+
+.text-secondary {
+	color: rgb(var(--dt-secondary)) !important;
+}
+
+.text-error {
+	color: rgb(var(--dt-error)) !important;
+}
+
+.text-danger {
+	color: rgb(var(--dt-danger)) !important;
+}
+
+.text-info {
+	color: rgb(var(--dt-info)) !important;
+}
+
+.text-success {
+	color: rgb(var(--dt-success)) !important;
+}
+
+.text-warning {
+	color: rgb(var(--dt-warning)) !important;
+}

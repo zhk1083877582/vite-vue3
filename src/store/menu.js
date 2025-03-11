@@ -25,6 +25,21 @@ export const menuStore = defineStore('menu', {
     },
     isRoot: (state) => {
       return state.type == 'root'
+    },
+    getMenuTheme() {
+      return {
+        theme: 'light',
+        background: '#FFFFFF',
+        systemNameColor: '#252f4a',
+        iconColor: '#6B6B6B',
+        textColor: '#29343D',
+        textActiveColor: '#3F8CFF',
+        iconActiveColor: '#333333',
+        tabBarBackground: '#FAFBFC',
+        systemBackground: '#FAFBFC',
+        leftLineColor: '#EDEEF0',
+        rightLineColor: '#EDEEF0'
+      }
     }
   },
   actions: {
@@ -64,6 +79,7 @@ export const menuStore = defineStore('menu', {
     },
     choiceRoot() {
       this.choiceType('root')
-    }
+    },
+
   }
 })

@@ -5,9 +5,9 @@ function getData(params) {
       {
         id: 84,
         posterUrl:
-          "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
+          "",
         originalUrl:
-          "https://images.tospurfang.com/hft/6f9f6dfb4437493f8c9c6d915e425589.jpg",
+          "",
         delFlag: false,
         delFlagName: "正常",
         createTime: "2024-07-03 14:25:47",
@@ -17,9 +17,9 @@ function getData(params) {
       {
         id: 83,
         posterUrl:
-          "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
+          "",
         originalUrl:
-          "https://images.tospurfang.com/hft/a2b9e3e20e7442f39cef88465d8c9d8d.jpg",
+          "",
         delFlag: false,
         delFlagName: "正常",
         createTime: "2024-07-03 11:36:23",
@@ -29,9 +29,9 @@ function getData(params) {
       {
         id: 82,
         posterUrl:
-          "https://images.tospurfang.com/hft/f8f59d1a347543b78ce7d722338adfde.jpg",
+          "",
         originalUrl:
-          "https://images.tospurfang.com/hft/51cbd149878e4828962a1c453f4a64ab.jpg",
+          "",
         delFlag: false,
         delFlagName: "正常",
         createTime: "2024-07-03 11:34:37",

@@ -8,7 +8,7 @@
 			}"
 		>
 			<!-- <sider /> -->
-			<el-menu v-if="menuStore().menuType == 'left'" />
+			<el-menu v-if="settingStore().menuType == 'LEFT'" />
 			<div
 				style="flex: 1"
 				:style="{
@@ -17,7 +17,7 @@
 				}"
 			>
 				<navigation />
-
+				<setting />
 				<!-- <tabs /> -->
 				<div class="contain" :style="{ height: contentHeight - 90 + 'px' }">
 					<!-- 面包屑 -->
@@ -41,9 +41,10 @@
 	// import sider from './components/sider.vue'
 	import navigation from "./components/navigation.vue";
 	import Breadcrumb from "./components/Breadcrumb/index.vue";
+	import setting from "./components/setting/index.vue";
 	import { nextTick, ref, watch } from "vue";
 	import router from "@/router";
-	import { menuStore } from "@/store/menu";
+	import { settingStore } from "@/store/setting";
 
 	const contentHeight = ref(window.innerHeight);
 	const contentWidth = ref(window.innerWidth);

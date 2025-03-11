@@ -1,17 +1,17 @@
 <template>
 	<div class="navigation">
-		<div v-show="menuStore().menuType == 'left'">
+		<div v-show="settingStore().menuType == 'LEFT'">
 			<div class="menu-collapse" style="text-align: center; padding-top: 5px; cursor: pointer">
-				<el-icon @click="showMenu" v-show="menuStore().menuIsCollapse" :size="25" color="#1e65ff">
+				<el-icon @click="showMenu" v-show="menuStore().menuIsCollapse" :size="25" color="#78829d">
 					<Expand />
 				</el-icon>
-				<el-icon @click="showMenu" v-show="!menuStore().menuIsCollapse" :size="25" color="#1e65ff">
+				<el-icon @click="showMenu" v-show="!menuStore().menuIsCollapse" :size="25" color="#78829d">
 					<Fold />
 				</el-icon>
 			</div>
 		</div>
 
-		<div v-show="menuStore().menuType == 'top'" style="display: flex">
+		<div v-show="settingStore().menuType == 'TOP'" style="display: flex">
 			<img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; margin: 8px 15px 0 0" />
 			<topMenu />
 		</div>
@@ -25,6 +25,7 @@
 	import topMenu from "./topMenu.vue";
 	import info from "./info.vue";
 	import { menuStore } from "@/store/menu";
+	import { settingStore } from "@/store/setting";
 	import Breadcrumb from "./Breadcrumb/index.vue";
 
 	const showMenu = () => {

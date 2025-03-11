@@ -1,23 +1,26 @@
 <template>
-	<el-menu
-		active-text-color="#ffd04b"
-		background-color="#1a202e"
-		text-color="#fff"
-		:default-active="current"
-		:unique-opened="true"
-		@select="onClick"
-		:class="menuStore().menuIsCollapse ? '' : 'my-menu'"
-		popper-class="custom-menu-popper"
-		:style="{
-			maxWidth: '200px',
-			overflowY: 'auto',
-			minHeight: menuHeight + 'px',
-			paddingBottom: '70px'
-		}"
-		:collapse="menuStore().menuIsCollapse"
-	>
-		<el-menu-sub v-for="i in menuStore().items" :key="i.name" :item="i" />
-	</el-menu>
+	<div>
+		<!-- <img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; padding: 10px" /> -->
+		<el-menu
+			:class="'el-menu-' + theme.theme"
+			:active-text-color="theme.textActiveColor"
+			:background-color="theme.background"
+			:text-color="theme.textColor"
+			:default-active="current"
+			:unique-opened="true"
+			@select="onClick"
+			popper-class="custom-menu-popper"
+			:style="{
+				maxWidth: '200px',
+				overflowY: 'auto',
+				minHeight: menuHeight + 'px',
+				paddingBottom: '70px'
+			}"
+			:collapse="menuStore().menuIsCollapse"
+		>
+			<el-menu-sub v-for="i in menuStore().items" :key="i.name" :item="i" />
+		</el-menu>
+	</div>
 </template>
 
 <script setup>
@@ -25,6 +28,8 @@
 	import elMenuSub from "./el-menu-sub.vue";
 	import { useRouter } from "vue-router";
 	import { menuStore } from "@/store/menu";
+	const theme = computed(() => menuStore().getMenuTheme);
+	console.log("🚀 ~ el-menu.vue:29 ~ theme:", theme);
 	const menuHeight = ref(window.innerHeight);
 	const router = useRouter();
 	let [current, opens] = [ref(), ref()];
@@ -86,9 +91,10 @@
 	.el-menu-vertical-demo:not(.el-menu--collapse) {
 		width: 200px;
 	}
-	.my-menu {
-		min-width: 200px;
+	.el-menu:not(.el-menu--collapse) {
+		width: 200px;
 	}
+
 	.custom-menu-popper {
 		max-height: 400px;
 		/* 设置最大高度 */
