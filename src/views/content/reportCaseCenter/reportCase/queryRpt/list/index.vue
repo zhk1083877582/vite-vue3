@@ -1,7 +1,7 @@
 <!-- 已报案查询 -->
 <template>
 	<div class="employee-list">
-		<dt-search ref="searchRef" :xl="8" :xlBtn="8"></dt-search>
+		<dt-search ref="searchRef" :xl="6" :xlBtn="6"></dt-search>
 		<dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
 		<!--新建员工-->
 		<dt-modal-edit ref="editRef" :title="editTitle" @ok="onOk" :label-width="120"></dt-modal-edit>

@@ -55,7 +55,6 @@ export const userStore = defineStore('user', {
       // return codeStore().canShowButton(code)
     },
     setElementThemeColor(color) {
-      console.log("🚀 ~ user.js:59 ~ setElementThemeColor ~ color:", color)
       const mixColor = '#ffffff'
       const elStyle = document.documentElement.style
 

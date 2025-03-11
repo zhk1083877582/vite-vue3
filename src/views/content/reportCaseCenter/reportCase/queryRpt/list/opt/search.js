@@ -22,7 +22,6 @@ export class searchOpt extends Opt {
               maxTagCount: 1,
             },
             load: (o) => {
-              console.log("🚀 ~ searchOpt ~ create ~ o:", o);
               o.select.options = this.getOrglist()
               // o.select.options = [
               //   { key: "-1", value: "全部" },

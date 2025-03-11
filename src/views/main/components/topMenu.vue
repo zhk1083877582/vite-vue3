@@ -22,29 +22,34 @@
 		<transition name="slide-fade">
 			<div v-show="showSubMenu && currentSubMenus.length" class="sub-menu-wrapper" @mouseenter="handleSubMenuEnter" @mouseleave="handleSubMenuLeave">
 				<div class="sub-menu">
-					<div class="sub-menu-group" v-for="subMenu in currentSubMenus" :key="subMenu.name">
-						<div class="group-title">
-							<!-- <Icon
-                                :type="subMenu.cOpImg"
-                                v-if="!subMenu.cOpImg?.includes('fa')"
-                            /> -->
-							<!-- <i :class="subMenu.cOpImg"></i> -->
-							{{ subMenu.title }}
-						</div>
-						<div class="group-items">
-							<div
-								v-for="item in subMenu.children"
-								:key="item.name"
-								class="menu-item"
-								:class="{
-									active: activeSubItem == item.name || activeSubItem == item.menuPath
-								}"
-								@click="handleItemClick(item)"
-							>
-								<!-- <Icon :type="item.cOpImg" v-if="!item.cOpImg?.includes('fa')" /> -->
-								<!-- <i :class="item.cOpImg"></i> -->
-								{{ item.title }}
+					<div :class="[subMenu.children ? 'sub-menu-group' : 'second-group']" v-for="subMenu in currentSubMenus" :key="subMenu.name">
+						<div v-if="subMenu.children">
+							<div class="group-title">
+								{{ subMenu.title }}
 							</div>
+							<div class="group-items">
+								<div
+									v-for="item in subMenu.children"
+									:key="item.name"
+									class="menu-item"
+									:class="{
+										active: activeSubItem == item.name || activeSubItem == item.menuPath
+									}"
+									@click="handleItemClick(item)"
+								>
+									{{ item.title }}
+								</div>
+							</div>
+						</div>
+						<div
+							v-else
+							class="menu-item"
+							:class="{
+								active: activeSubItem == subMenu.name || activeSubItem == subMenu.menuPath
+							}"
+							@click="handleItemClick(subMenu)"
+						>
+							{{ subMenu.title }}
 						</div>
 					</div>
 				</div>
@@ -197,43 +202,38 @@
 				// flex-direction: column;
 				flex-wrap: wrap;
 				justify-content: space-between;
-
-				.menu-item {
-					padding: 5px;
-					cursor: pointer;
-					border-radius: 4px;
-					display: flex;
-					align-items: center;
-					gap: 8px;
-					color: #fff;
-					transition: all 0.3s;
-					font-size: 13px;
-					flex: 1 1 50%; /* 使每个子元素占据容器宽度的50%，即每行两个 */
-					box-sizing: border-box; /* 确保padding和border不会影响宽度计算 */
-					i {
-						font-size: 13px;
-					}
-
-					&:hover {
-						// background: #e8eaec;
-						color: var(--el-color-primary);
-					}
-
-					&.active {
-						// background: #2d8cf0;
-						// color: #fff;
-						color: var(--el-color-primary);
-					}
-				}
 			}
 		}
-	}
+		.second-group {
+			width: 50%;
+		}
+		.menu-item {
+			padding: 5px;
+			cursor: pointer;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			color: #fff;
+			transition: all 0.3s;
+			font-size: 13px;
+			flex: 1 1 50%; /* 使每个子元素占据容器宽度的50%，即每行两个 */
+			box-sizing: border-box; /* 确保padding和border不会影响宽度计算 */
+			i {
+				font-size: 13px;
+			}
 
-	:deep(.ivu-menu-light.ivu-menu-horizontal .ivu-menu-item) {
-		border: 0;
-	}
-	:deep(.ivu-menu-light:after) {
-		width: 0;
+			&:hover {
+				// background: #e8eaec;
+				color: var(--el-color-primary);
+			}
+
+			&.active {
+				// background: #2d8cf0;
+				// color: #fff;
+				color: var(--el-color-primary);
+			}
+		}
 	}
 	// 过渡动画
 	.slide-fade-enter-active,

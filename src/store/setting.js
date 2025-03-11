@@ -23,7 +23,6 @@ export const settingStore = defineStore('setting', {
   actions: {
     initSettingState() {
       let sys = dt.storage.get('setting_info')
-      console.log("🚀 ~ setting.js:26 ~ initSettingState ~ sys:", sys)
       this.menuType = sys.menuType
       this.systemThemeColor = sys.systemThemeColor
       if (sys.systemThemeColor) {
@@ -48,7 +47,6 @@ export const settingStore = defineStore('setting', {
       this.saveSettingData()
     },
     setElementThemeColor(color) {
-      console.log("🚀 ~ user.js:59 ~ setElementThemeColor ~ color:", color)
       const mixColor = '#ffffff'
       const elStyle = document.documentElement.style
 

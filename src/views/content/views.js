@@ -1,3 +1,3 @@
 export default {
-  root: ['homePage', 'reportCaseCenter', 'claimsCenter', 'claimsAssist']
+  root: ['homePage', 'myPlatform', 'reportCaseCenter', 'claimsCenter', 'claimsAssist']
 }

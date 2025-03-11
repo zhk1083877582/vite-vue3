@@ -18,6 +18,7 @@
 			}"
 			:collapse="menuStore().menuIsCollapse"
 		>
+			<img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; padding: 10px" v-show="!menuStore().menuIsCollapse" />
 			<el-menu-sub v-for="i in menuStore().items" :key="i.name" :item="i" />
 		</el-menu>
 	</div>

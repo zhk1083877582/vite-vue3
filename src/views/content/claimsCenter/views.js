@@ -3,17 +3,17 @@ export default {
     root: {
       title: '理赔中心',
       code: '',
-      icon: 'liuchengshenpi',
+      icon: 'jigoumendianguanli',
       children: [
         {
           title: '调度中心',
           code: '',
-          icon: 'liuchengshenpi',
+          icon: 'jigoumendianguanli',
           children: ['dispatchCenter/dsptquery/list', 'dispatchCenter/taskquery/list']
         },
         {
           title: '查勘定损管理',
-          icon: 'liuchengshenpi',
+          icon: 'jigoumendianguanli',
           code: '',
           children: ['survey/newSurveylossList/list', 'survey/simpleCasePend/list']
         },

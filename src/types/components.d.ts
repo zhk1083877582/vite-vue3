@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ContentWarp: typeof import('./../components/com/contentWarp/index.vue')['default']
-    copy: typeof import('./../components/com/preview/index copy.vue')['default']
     DtFilter: typeof import('./../components/com/table/dt-filter.vue')['default']
     DtGrid: typeof import('./../components/com/table/dt-grid.vue')['default']
     DtHeader: typeof import('./../components/com/table/dt-header.vue')['default']
@@ -28,9 +27,8 @@ declare module 'vue' {
     DtTable: typeof import('./../components/com/table/dt-table.vue')['default']
     DtTableHeader: typeof import('./../components/com/table/dt-table-header.vue')['default']
     DtTreeIcon: typeof import('./../components/com/table/dt-tree-icon.vue')['default']
+    ElAffix: typeof import('element-plus/es')['ElAffix']
     ElAutoResizer: typeof import('element-plus/es')['ElAutoResizer']
-    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
-    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCascader: typeof import('element-plus/es')['ElCascader']
@@ -76,7 +74,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SortHeader: typeof import('./../components/com/sortHeader/index.vue')['default']
-    UnitOrgdep: typeof import('./../components/com/orgModal/unit-orgdep.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

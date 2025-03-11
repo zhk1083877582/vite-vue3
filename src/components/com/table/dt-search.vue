@@ -3,14 +3,14 @@
 	<div class="dt-search">
 		<el-form ref="formRef" :model="info" :label-width="labelWidth" :label-colon="true" @submit.native.prevent>
 			<el-row :gutter="12" :key="rowKey">
-				<el-col v-for="(opt, index) in options" :key="index" :xl="opt.xl || xl" :sm="12" :md="8" :lg="8">
+				<el-col v-for="(opt, index) in options" :key="index" :xl="opt.xl || xl" :sm="12" :md="opt.xl || xl" :lg="opt.xl || xl">
 					<div v-if="opt.visible != false" style="width: 100%">
 						<dt-info-item ref="itemRef" :option="opt" :info="info" @change="onChange" />
 					</div>
 				</el-col>
 
 				<!-- 按钮 -->
-				<el-col :xl="xlBtn" :sm="20" :md="10" :lg="10">
+				<el-col :xl="xlBtn" :sm="xlBtn || 20" :md="xlBtn || 10" :lg="xlBtn || 10">
 					<el-form-item :label-width="5" class="handle-btn">
 						<el-button @click="reset">重置</el-button>
 						<el-button type="primary" @click="onSearch">搜索</el-button>

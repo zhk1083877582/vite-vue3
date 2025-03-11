@@ -3,17 +3,17 @@ export default {
     root: {
       title: '理赔辅助服务',
       code: '',
-      icon: 'liuchengshenpi',
+      icon: 'yewubaobiao',
       children: [
         {
           title: '撤销案管理',
           code: '',
-          icon: 'liuchengshenpi',
+          icon: 'yewubaobiao',
           children: ['cancel/cancelapp/list', 'cancel/cancelrecover/list', 'cancel/removeCase/list', 'cancel/cancelList/list']
         },
         {
           title: '打假挤虚',
-          icon: 'liuchengshenpi',
+          icon: 'yewubaobiao',
           code: '',
           children: ['playFakes/playFakesApply/list', 'playFakes/playFakesAudit/list']
         },
