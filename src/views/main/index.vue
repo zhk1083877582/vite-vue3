@@ -1,33 +1,19 @@
 <template>
-	<div>
-		<div
-			style="background: white; display: flex"
-			:style="{
-				height: contentHeight + 'px',
-				width: contentWidth + 'px'
-			}"
-		>
-			<el-menu v-if="settingStore().menuType == 'LEFT'" />
-			<div
-				style="flex: 1"
-				:style="{
-					height: contentHeight + 'px',
-					width: contentWidth - 200 + 'px'
-				}"
-			>
-				<navigation />
-				<setting />
-				<div class="contain" :style="{ height: contentHeight - 90 + 'px' }">
-					<RouterView v-slot="{ Component }">
-						<component :is="Component" v-if="!meta.keep" :key="meta.name" />
-						<KeepAlive>
-							<component :is="Component" v-if="meta.keep" :key="meta.name" />
-						</KeepAlive>
-					</RouterView>
-				</div>
+	<div class="page-cl" :style="{ height: contentHeight + 'px', width: contentWidth + 'px' }">
+		<el-menu v-if="settingStore().menuType == 'LEFT'" />
+		<div :style="{ flex: 1, height: contentHeight + 'px', width: contentWidth - 200 + 'px' }">
+			<navigation />
+			<div class="contain" :style="{ height: contentHeight - 90 + 'px' }">
+				<RouterView v-slot="{ Component }">
+					<component :is="Component" v-if="!meta.keep" :key="meta.name" />
+					<KeepAlive>
+						<component :is="Component" v-if="meta.keep" :key="meta.name" />
+					</KeepAlive>
+				</RouterView>
 			</div>
 		</div>
 	</div>
+	<setting />
 </template>
 
 <script setup>
@@ -57,11 +43,16 @@
 </script>
 <style lang="scss" scoped>
 	@import url("@/assets/css/sider.scss");
-	.contain {
-		padding: 10px;
-		flex: 1;
-		overflow: hidden;
-		overflow-y: auto;
-		box-sizing: border-box;
+
+	.page-cl {
+		background: white;
+		display: flex;
+		.contain {
+			padding: 10px;
+			flex: 1;
+			overflow: hidden;
+			overflow-y: auto;
+			box-sizing: border-box;
+		}
 	}
 </style>

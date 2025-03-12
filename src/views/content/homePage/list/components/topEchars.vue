@@ -1,7 +1,7 @@
 <template>
 	<div class="custom-card art-custom-card total-revenue">
 		<div class="custom-card-header">
-			<span class="title custom-text">任务统计图</span>
+			<div class="title custom-text">任务统计图</div>
 		</div>
 		<div class="custom-card-body">
 			<div ref="chartRef" style="height: 300px"></div>
@@ -14,12 +14,6 @@
 	import { useECharts } from "@/utils/echarts/useECharts.ts";
 	import { settingStore } from "@/store/setting";
 	import { menuStore } from "@/store/menu";
-	// import { useI18n } from 'vue-i18n'
-
-	// const { t } = useI18n()
-
-	// const store = useSettingStore()
-	// const isDark = computed(() => store.isDark)
 
 	const chartRef = ref(null);
 	const { setOptions, removeResize, resize } = useECharts(chartRef);
@@ -43,22 +37,22 @@
 			}
 		},
 		grid: {
-			top: 20,
-			right: 3,
-			bottom: 40,
-			left: 3,
+			top: "15%",
+			left: "3%",
+			right: "1%",
+			bottom: "1%",
 			containLabel: true
 		},
 		legend: {
+			orient: "horizontal",
 			data: ["超时案件", "大额赔案", "涉诉赔案", "预付案件"],
-			bottom: 0,
-			icon: "circle",
+			top: 0,
+			right: 30,
 			itemWidth: 10,
 			itemHeight: 10,
 			itemGap: 15,
 			textStyle: {
-				fontSize: 12,
-				color: "#222B45"
+				color: "#FFF"
 			}
 		},
 		xAxis: {
@@ -71,7 +65,7 @@
 				show: false
 			},
 			axisLabel: {
-				color: "#7B91B0"
+				color: "#FFF"
 			}
 		},
 		yAxis: {
@@ -84,14 +78,14 @@
 					width: 0.8
 				}
 			},
-			axisLabel: { color: "#7B91B0" }
+			axisLabel: { color: "#FFF" }
 		},
 		series: [
 			{
 				name: "超时案件",
 				type: "bar",
 				data: [8423, 1323, 534, 1555, 1065, 1534, 182],
-				barWidth: "30",
+				barWidth: "10",
 				itemStyle: {
 					color: "#FA9D3E",
 					borderRadius: [4, 4, 4, 4]
@@ -101,7 +95,7 @@
 				name: "大额赔案",
 				type: "bar",
 				data: [1230, 1341, 4550, 523, 1551, 1663, 1220],
-				barWidth: "30",
+				barWidth: "10",
 				itemStyle: {
 					color: "#00E096",
 					borderRadius: [4, 4, 4, 4]
@@ -111,7 +105,7 @@
 				name: "涉诉赔案",
 				type: "bar",
 				data: [1220, 1331, 2440, 5555, 1661, 1773, 820],
-				barWidth: "30",
+				barWidth: "10",
 				itemStyle: {
 					color: "#F19AC0",
 					borderRadius: [4, 4, 4, 4]
@@ -121,7 +115,7 @@
 				name: "预付案件",
 				type: "bar",
 				data: [1022, 1133, 2440, 5555, 1431, 1345, 1230],
-				barWidth: "30",
+				barWidth: "10",
 				itemStyle: {
 					color: "#9D98F2",
 					borderRadius: [4, 4, 4, 4]
@@ -142,15 +136,6 @@
 		initChart();
 	});
 
-	// 监听暗黑模式变化
-	// watch(
-	//   isDark,
-	//   () => {
-	//     initChart()
-	//   },
-	//   { immediate: true }
-	// )
-
 	onUnmounted(() => {
 		removeResize();
 	});
@@ -158,10 +143,19 @@
 
 <style lang="scss" scoped>
 	.custom-card {
-		height: 400px;
-
 		&-body {
 			padding: 20px;
+		}
+		.custom-card-header {
+			position: absolute;
+			left: 20px;
+			top: 30px;
+			z-index: 99;
+			text-align: center;
+			padding: 5px 10px;
+			border-radius: 4px;
+			background-color: var(--el-color-primary);
+			font-size: 14px;
 		}
 	}
 </style>

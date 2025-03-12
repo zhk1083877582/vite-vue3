@@ -10,7 +10,6 @@
 				</el-icon>
 			</div>
 		</div>
-
 		<div v-show="settingStore().menuType == 'TOP'" style="display: flex">
 			<img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; margin: 8px 15px 0 0" />
 			<topMenu />

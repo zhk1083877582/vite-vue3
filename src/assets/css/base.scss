@@ -4,75 +4,76 @@ ul,
 li,
 p,
 button {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    border: 0;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: 0;
 }
 
 html,
-body,#app {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+body,
+#app {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	// zoom: 0.9; /* 这将影响body内的所有内容 */
 }
 li {
-    list-style: none;
+	list-style: none;
 }
 
 a,
 input:focus,
 textarea:focus {
-    outline: none;
+	outline: none;
 }
 
 a,
 a:hover,
 a:active,
 a:focus {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .hand {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .noHand {
-    cursor: not-allowed;
+	cursor: not-allowed;
 }
 
 .ell {
-    margin: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    /*不换行*/
-    text-overflow: ellipsis;
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	/*不换行*/
+	text-overflow: ellipsis;
 }
 
 .text-center {
-    text-align: center;
+	text-align: center;
 }
 
 .text-right {
-    text-align: right;
+	text-align: right;
 }
-
 
 /*清除浮动*/
 
 .clearfix {
-    zoom: 1;
+	zoom: 1;
 }
 
 .clearfix:after {
-    display: block;
-    clear: both;
-    overflow: hidden;
-    visibility: hidden;
-    height: 0;
-    content: '';
+	display: block;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+	height: 0;
+	content: "";
 }
 
 .opacity-0 {
-    opacity: 0;
+	opacity: 0;
 }

@@ -12,8 +12,7 @@
 					:width="100"
 					:hide-after="0"
 					:offset="20"
-					trigger="hover"
-					:show-arrow="false"
+					trigger="click"
 					popper-class="user-menu-popover"
 					popper-style="border: 1px solid var(--art-border-dashed-color); border-radius: calc(var(--custom-radius) / 2 + 4px); padding: 5px 16px; 5px 16px;"
 				>
@@ -23,8 +22,11 @@
 					<template #default>
 						<div class="user-menu-box">
 							<ul class="user-menu">
+								<li @click="changePasswordFun">
+									<el-icon class="menu-icon iconfont-sys"><Edit /></el-icon>
+									<span class="menu-txt">修改密码</span>
+								</li>
 								<li @click="logout">
-									<!-- <i class="menu-icon iconfont-sys">&#xe780;</i> -->
 									<el-icon class="menu-icon iconfont-sys"><SwitchButton /></el-icon>
 									<span class="menu-txt">退出登录</span>
 								</li>
@@ -34,13 +36,18 @@
 				</el-popover>
 			</div>
 		</div>
+		<el-select v-model="userInfoOrg" style="width: 200px; padding: 8px">
+			<el-option v-for="item in options" :key="item.key" :label="item.value" :value="item.key"> </el-option>
+		</el-select>
+		<change-password ref="changePasswordRef" />
 	</div>
 </template>
 
 <script setup>
 	import dt from "@/config/dt";
 	import router from "@/router";
-	import { onMounted } from "vue";
+	import changePassword from "./changePassword/index.vue";
+	const [changePasswordRef] = [ref()];
 	const logout = () => {
 		dt.session.remove("dt_auth");
 		router.replace("/login");
@@ -48,6 +55,20 @@
 	const choiceType = () => {
 		dt.notify.emit("openSetting");
 	};
+	let userInfoOrg = ref(1);
+	const options = ref([
+		{
+			key: 1,
+			value: "总公司"
+		},
+		{
+			key: 2,
+			value: "山东分公司"
+		}
+	]);
+	function changePasswordFun() {
+		changePasswordRef.value.show();
+	}
 	onMounted(() => {});
 </script>
 
@@ -115,14 +136,15 @@
 				li {
 					display: flex;
 					align-items: center;
-					padding: 8px;
+					padding: 5px;
 					margin-bottom: 10px;
 					cursor: pointer;
 					user-select: none;
-					border-radius: 6px;
+					border-bottom: 1px solid #e0e0e0;
 
 					&:last-of-type {
 						margin-bottom: 0;
+						border-bottom: 0;
 					}
 
 					i {

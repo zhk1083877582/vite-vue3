@@ -1,9 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 3948573 */
-  src: url('iconfont.woff2?t=1702266049158') format('woff2'),
-       url('iconfont.woff?t=1702266049158') format('woff'),
-       url('iconfont.ttf?t=1702266049158') format('truetype'),
-       url('iconfont.svg?t=1702266049158#iconfont') format('svg');
+  font-family: "iconfont"; /* Project id 4854435 */
+  src: url('iconfont.woff2?t=1741741531092') format('woff2'),
+       url('iconfont.woff?t=1741741531092') format('woff'),
+       url('iconfont.ttf?t=1741741531092') format('truetype');
 }
 
 .iconfont {
@@ -14,40 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.yongjin:before {
-  content: "\e61c";
+.time:before {
+  content: "\e834";
 }
 
-.liuchengshenhe:before {
-  content: "\e618";
+.loading:before {
+  content: "\e83d";
 }
 
-.liuchengshenpi:before {
-  content: "\e619";
-}
-
-.yewubaobiao:before {
-  content: "\e61a";
-}
-
-.xiaoshouguanli:before {
-  content: "\e61b";
-}
-
-.fangyuanbaobei:before {
-  content: "\e614";
-}
-
-.houtaiguanli:before {
-  content: "\e615";
-}
-
-.a-yingxiaogongju_hc3x:before {
-  content: "\e616";
-}
-
-.jigoumendianguanli:before {
-  content: "\e617";
+.success:before {
+  content: "\e843";
 }
 
 .baobeiguanli:before {
@@ -76,5 +51,41 @@
 
 .dianzihetongguanli:before {
   content: "\e613";
+}
+
+.fangyuanbaobei:before {
+  content: "\e614";
+}
+
+.houtaiguanli:before {
+  content: "\e615";
+}
+
+.a-yingxiaogongju_hc3x:before {
+  content: "\e616";
+}
+
+.jigoumendianguanli:before {
+  content: "\e617";
+}
+
+.liuchengshenhe:before {
+  content: "\e618";
+}
+
+.liuchengshenpi:before {
+  content: "\e619";
+}
+
+.yewubaobiao:before {
+  content: "\e61a";
+}
+
+.xiaoshouguanli:before {
+  content: "\e61b";
+}
+
+.yongjin:before {
+  content: "\e61c";
 }
 

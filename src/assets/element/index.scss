@@ -83,3 +83,9 @@
 .el-menu-item.is-active {
 	color: var(--el-color-primary) !important;
 }
+
+.modal-body {
+	max-height: 60vh;
+	overflow: hidden;
+	overflow-y: auto;
+}

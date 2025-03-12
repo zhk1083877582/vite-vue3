@@ -1,0 +1,124 @@
+$--bg-color: var(--el-color-primary);
+.subbanner {
+	width: 100%;
+	position: relative;
+	margin-top: 0;
+	background: url("@/assets/images/bannerbg0.jpg") no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 20px 0;
+	color: #fff;
+	.banner-right {
+		background: rgba(255, 255, 255, 0.1);
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
+		height: 310px;
+		padding: 10px 15px;
+		color: #333;
+		.sub-title {
+			font-size: 16px;
+			font-weight: 400;
+			margin: 0 0 5px;
+			text-align: left;
+			color: #fff;
+		}
+		.banner-task-inner {
+			font-size: 13px;
+			position: relative;
+			height: 130px;
+
+			.banner-task-detail {
+				position: absolute;
+				width: 100%;
+				z-index: 999;
+			}
+			.more {
+				color: #fff;
+				background: rgba(0, 0, 0, 0.1);
+				float: right;
+				margin-right: 5px;
+				padding: 0 3px;
+			}
+			.sub-title2 {
+				color: #fff;
+				background: rgba(0, 0, 0, 0.2);
+				font-size: 14px;
+				font-weight: 400;
+				height: 31px;
+				line-height: 31px;
+				padding: 0 0 0 10px;
+				position: relative;
+				margin-bottom: 0;
+				.flag-icon {
+					position: absolute;
+					right: 0;
+					top: 0;
+					width: 35px;
+					height: 30px;
+					display: block;
+					// background: url("@/assets/images/index_tri.png") no-repeat;
+					background: linear-gradient(45deg, transparent, transparent 50%, $--bg-color 50%, $--bg-color 100%);
+					color: #fff;
+					text-align: center;
+					font-size: 20px;
+					// padding: 0 0 0 15px;
+					line-height: 20px;
+					.iconfont {
+						padding-left: 14px;
+					}
+				}
+			}
+			a.opera {
+				color: #fff;
+				display: block;
+				padding: 3px 0 2px 10px;
+				background: #7b82a0;
+				.num {
+					float: right;
+					text-align: right;
+					margin-right: 5px;
+				}
+			}
+			a.opera:hover {
+				background: #8288a3;
+			}
+			p {
+				color: #fff;
+				padding: 0 0 5px 10px;
+				background: #8288a3;
+			}
+		}
+		.index-search {
+			padding-top: 5px;
+			border-top: 1px dotted rgba(255, 255, 255, 0.8);
+			margin: 10px 0 0;
+			.ipt {
+				float: left;
+				width: 65%;
+				margin: 0;
+				input {
+					display: block;
+					width: 90%;
+					height: 40px;
+					padding: 0 10px;
+					background: rgba(0, 0, 0, 0.2);
+					-webkit-border-radius: 0;
+					-moz-border-radius: 0;
+					border-radius: 2px;
+					border: none !important;
+					color: #ffffff;
+					outline: none;
+				}
+				input::-webkit-input-placeholder {
+					color: #ffffff;
+				}
+			}
+			button {
+				margin: 0 0 0 5%;
+				width: 30%;
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				border-radius: 0;
+			}
+		}
+	}
+}

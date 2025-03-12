@@ -1,11 +1,11 @@
 <!-- 首页 -->
 <template>
-	<el-row style="margin-bottom: 10px">
-		<el-col :span="24">
-			<el-card :bordered="false">
-				<top-echars />
-			</el-card>
+	<el-row style="margin-bottom: 10px" class="subbanner">
+		<el-col :span="9">
+			<top-echars />
 		</el-col>
+		<el-col :span="6"> <caseNum /> </el-col>
+		<el-col :span="9"><myTask /> </el-col>
 	</el-row>
 	<el-row :gutter="20">
 		<el-col :span="16">
@@ -26,8 +26,8 @@
 					</div>
 					<ul class="index_msg">
 						<li class="flex tips_item" v-for="(data, index) in tableNoticeCnt" :key="index">
-							<div style="width: 40px; height: 40px; border: 1px solid #ccc; border-radius: 50%; margin-right: 10px">
-								<el-icon style="font-size: 28px; width: 100%; height: 100%"><CollectionTag /></el-icon>
+							<div class="icon-warp">
+								<el-icon style="font-size: 22px; width: 100%; height: 100%; color: #fff"><Message /></el-icon>
 							</div>
 							<div class="width-100 flex-1">
 								<div style="font-size: 13px" class="flex flex-horizontal-between">
@@ -46,6 +46,8 @@
 
 <script setup>
 	import topEchars from "./components/topEchars.vue";
+	import caseNum from "./components/caseNum.vue";
+	import myTask from "./components/myTask.vue";
 	import { listColumn } from "./opt/columns.js";
 	import apiMgr from "./biz/index";
 
@@ -92,6 +94,16 @@
 	}
 </script>
 <style scoped lang="scss">
+	.subbanner {
+		width: 100%;
+		position: relative;
+		margin-top: 0;
+		background: url("@/assets/images/bannerbg0.jpg") no-repeat;
+		background-size: cover;
+		background-position: center;
+		padding: 20px 0;
+		color: #fff;
+	}
 	.new-cl {
 		color: var(--el-color-primary);
 	}
@@ -101,5 +113,13 @@
 	}
 	.tips_item {
 		margin-top: 10px;
+		.icon-warp {
+			width: 40px;
+			height: 40px;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+			margin-right: 10px;
+			background-color: var(--el-color-primary);
+		}
 	}
 </style>

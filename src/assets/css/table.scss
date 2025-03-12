@@ -8,17 +8,21 @@
 }
 .el-table-v2__header {
 	color: #606266 !important;
-	background-color: #f8f8f9 !important;
+	background-color: var(--el-color-primary-light-9) !important//#e4f0f4 !important;
 }
 
 .el-table-v2__header-cell {
 	color: #606266 !important;
-	background-color: #f8f8f9 !important;
+	background-color: var(--el-color-primary-light-9) !important//#e4f0f4 !important;
+}
+.el-table-v2__row:hover {
+	// background-color: var(--el-color-primary-light-8) !important;
 }
 
 .dt-table-header-title {
 	font-weight: 700;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)), -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)),
+		-webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
 	background-repeat: no-repeat;
 	background-size: 1px 100%, 100% 1px;
 	background-position: right top, right bottom;
@@ -26,7 +30,8 @@
 
 .el-table-v2__header-cell,
 .el-table-v2__row-cell {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)), -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec)),
+		-webkit-gradient(linear, left top, left bottom, from(#e8eaec), to(#e8eaec));
 	background-repeat: no-repeat;
 	background-size: 1px 100%, 100% 1px;
 	background-position: right top, right bottom;

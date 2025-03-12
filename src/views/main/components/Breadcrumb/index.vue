@@ -41,9 +41,9 @@
 		margin-left: 10px;
 		ul {
 			display: flex;
-			padding: 10px;
 			li {
 				font-size: 13px;
+				padding: 10px;
 
 				display: flex;
 				align-items: center;
