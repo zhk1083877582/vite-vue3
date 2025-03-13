@@ -1,5 +1,5 @@
 <template>
-	<div class="custom-card art-custom-card total-revenue">
+	<div class="custom-card">
 		<div class="custom-card-header">
 			<div class="title custom-text">任务统计图</div>
 		</div>
@@ -45,7 +45,7 @@
 		},
 		legend: {
 			orient: "horizontal",
-			data: ["超时案件", "大额赔案", "涉诉赔案", "预付案件"],
+			data: ["待处理", "处理中", "已处理", "退回", "上报"],
 			top: 0,
 			right: 30,
 			itemWidth: 10,
@@ -57,7 +57,7 @@
 		},
 		xAxis: {
 			type: "category",
-			data: ["2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03"],
+			data: ["1月", "2月", "3月", "4月", "5月", "6月"],
 			axisLine: {
 				show: false
 			},
@@ -82,7 +82,7 @@
 		},
 		series: [
 			{
-				name: "超时案件",
+				name: "待处理",
 				type: "bar",
 				data: [8423, 1323, 534, 1555, 1065, 1534, 182],
 				barWidth: "10",
@@ -92,32 +92,42 @@
 				}
 			},
 			{
-				name: "大额赔案",
+				name: "处理中",
 				type: "bar",
 				data: [1230, 1341, 4550, 523, 1551, 1663, 1220],
 				barWidth: "10",
 				itemStyle: {
-					color: "#00E096",
+					color: "#62d4b1",
 					borderRadius: [4, 4, 4, 4]
 				}
 			},
 			{
-				name: "涉诉赔案",
+				name: "已处理",
 				type: "bar",
 				data: [1220, 1331, 2440, 5555, 1661, 1773, 820],
 				barWidth: "10",
 				itemStyle: {
-					color: "#F19AC0",
+					color: "#f19ac0",
 					borderRadius: [4, 4, 4, 4]
 				}
 			},
 			{
-				name: "预付案件",
+				name: "退回",
 				type: "bar",
 				data: [1022, 1133, 2440, 5555, 1431, 1345, 1230],
 				barWidth: "10",
 				itemStyle: {
-					color: "#9D98F2",
+					color: "#9d98f2",
+					borderRadius: [4, 4, 4, 4]
+				}
+			},
+			{
+				name: "上报",
+				type: "bar",
+				data: [23, 444, 545, 464, 675, 789, 345],
+				barWidth: "10",
+				itemStyle: {
+					color: "#97AACA",
 					borderRadius: [4, 4, 4, 4]
 				}
 			}
@@ -143,8 +153,10 @@
 
 <style lang="scss" scoped>
 	.custom-card {
+		background: rgba(255, 255, 255, 0.1);
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
 		&-body {
-			padding: 20px;
+			padding: 15px;
 		}
 		.custom-card-header {
 			position: absolute;

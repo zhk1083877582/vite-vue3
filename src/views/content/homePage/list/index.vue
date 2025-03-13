@@ -11,7 +11,7 @@
 		<el-col :span="16">
 			<el-card :bordered="false">
 				<div style="display: flex; justify-content: space-between">
-					<div style="line-height: 32px" class="new-cl">最新任务（近一个月）</div>
+					<div style="line-height: 32px">最新任务（近一个月）</div>
 					<el-button class="to_more">更多</el-button>
 				</div>
 				<dt-grid ref="tableRef" :onFetch="onFetch" :height="400"> </dt-grid>
@@ -24,7 +24,7 @@
 						提醒信息
 						<el-button class="to_more">更多</el-button>
 					</div>
-					<ul class="index_msg">
+					<ul class="index_msg" v-if="tableNoticeCnt.length">
 						<li class="flex tips_item" v-for="(data, index) in tableNoticeCnt" :key="index">
 							<div class="icon-warp">
 								<el-icon style="font-size: 22px; width: 100%; height: 100%; color: #fff"><Message /></el-icon>
@@ -38,6 +38,9 @@
 							</div>
 						</li>
 					</ul>
+					<div v-else>
+						<el-empty :image-size="200" />
+					</div>
 				</div>
 			</el-card>
 		</el-col>
@@ -101,11 +104,8 @@
 		background: url("@/assets/images/bannerbg0.jpg") no-repeat;
 		background-size: cover;
 		background-position: center;
-		padding: 20px 0;
+		padding: 20px 10px;
 		color: #fff;
-	}
-	.new-cl {
-		color: var(--el-color-primary);
 	}
 	.tips_warp {
 		height: 473px;

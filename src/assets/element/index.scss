@@ -26,6 +26,8 @@
 }
 
 .el-menu-light {
+	border-right: 1px solid var(--dt-border-color) !important;
+
 	.el-sub-menu__title,
 	.el-menu-item {
 		width: 100%;
@@ -65,7 +67,6 @@
 	.el-menu-item:not(.is-active):hover {
 		background: var(--el-color-primary-100) !important;
 	}
-	border-right: 1px solid #9a9cae !important;
 }
 
 .el-menu-light.el-menu--collapse {
@@ -84,6 +85,9 @@
 	color: var(--el-color-primary) !important;
 }
 
+.el-input-number--small {
+	width: 100%;
+}
 .modal-body {
 	max-height: 60vh;
 	overflow: hidden;

@@ -4,14 +4,22 @@
 		<el-row :gutter="20">
 			<el-col :span="20">
 				<div class="flex-1">
-					<el-tabs v-model="tabsValue" type="card" @tab-remove="removeTab" @tab-change="changeTab">
-						<el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-							<!-- {{ item.content }} -->
-						</el-tab-pane>
-					</el-tabs>
-					<report-msg ref="reportMsgRef" v-show="tabsValue == 'reportMsg'" />
-					<underwrite-msg ref="underwriteMsgRef" v-show="tabsValue == 'underwriteMsg'" />
-					<case-explain ref="caseExplainRef" v-show="tabsValue == 'caseExplain'" />
+					<el-affix :offset="46">
+						<el-tabs v-model="tabsValue" type="card" @tab-remove="removeTab" @tab-change="changeTab" style="width: 100%; background-color: #fff">
+							<el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+								<!-- {{ item.content }} -->
+							</el-tab-pane>
+						</el-tabs>
+					</el-affix>
+					<div v-show="tabsValue == 'reportMsg'">
+						<report-msg ref="reportMsgRef" />
+					</div>
+					<div v-show="tabsValue == 'underwriteMsg'">
+						<underwrite-msg ref="underwriteMsgRef" />
+					</div>
+					<div v-show="tabsValue == 'caseExplain'">
+						<case-explain ref="caseExplainRef" />
+					</div>
 				</div>
 			</el-col>
 			<el-col :span="4">
@@ -34,7 +42,7 @@
 	import underwriteMsg from "./components/underwriteMsg.vue";
 	import caseExplain from "./components/caseExplain.vue";
 	const [reportMsgRef, underwriteMsgRef, caseExplainRef] = [ref(), ref(), ref()];
-	let tabsValue = ref("reportMsg");
+	let tabsValue = ref("underwriteMsg");
 	const editableTabs = ref([
 		{ title: "报案信息", name: "reportMsg", content: "reportMsg" },
 		{ title: "承保信息", name: "underwriteMsg", content: "underwriteMsg" },
@@ -46,7 +54,9 @@
 		router.go(-1);
 	};
 	onMounted(() => {
+		console.log("🚀 ~ index.vue:52 ~ onMounted ~ onMounted: ");
 		reportMsgRef.value.init();
+		underwriteMsgRef.value.init();
 	});
 </script>
 <style scoped lang="scss">

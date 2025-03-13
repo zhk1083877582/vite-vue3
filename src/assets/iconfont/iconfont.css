@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4854435 */
-  src: url('iconfont.woff2?t=1741741531092') format('woff2'),
-       url('iconfont.woff?t=1741741531092') format('woff'),
-       url('iconfont.ttf?t=1741741531092') format('truetype');
+  src: url('iconfont.woff2?t=1741830491249') format('woff2'),
+       url('iconfont.woff?t=1741830491249') format('woff'),
+       url('iconfont.ttf?t=1741830491249') format('truetype');
 }
 
 .iconfont {
@@ -13,79 +13,79 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.time:before {
+.claim-icon-time:before {
   content: "\e834";
 }
 
-.loading:before {
+.claim-icon-loading:before {
   content: "\e83d";
 }
 
-.success:before {
+.claim-icon-success:before {
   content: "\e843";
 }
 
-.baobeiguanli:before {
+.claim-icon-baobeiguanli:before {
   content: "\e60d";
 }
 
-.xiangmuguanli:before {
+.claim-icon-xiangmuguanli:before {
   content: "\e60e";
 }
 
-.xiangmubaobei:before {
+.claim-icon-xiangmubaobei:before {
   content: "\e60f";
 }
 
-.xiangmumingcheng:before {
+.claim-icon-xiangmumingcheng:before {
   content: "\e610";
 }
 
-.renyuanguanli:before {
+.claim-icon-renyuanguanli:before {
   content: "\e611";
 }
 
-.fangyuanguanli:before {
+.claim-icon-fangyuanguanli:before {
   content: "\e612";
 }
 
-.dianzihetongguanli:before {
+.claim-icon-dianzihetongguanli:before {
   content: "\e613";
 }
 
-.fangyuanbaobei:before {
+.claim-icon-fangyuanbaobei:before {
   content: "\e614";
 }
 
-.houtaiguanli:before {
+.claim-icon-houtaiguanli:before {
   content: "\e615";
 }
 
-.a-yingxiaogongju_hc3x:before {
+.claim-icon-a-yingxiaogongju_hc3x:before {
   content: "\e616";
 }
 
-.jigoumendianguanli:before {
+.claim-icon-jigoumendianguanli:before {
   content: "\e617";
 }
 
-.liuchengshenhe:before {
+.claim-icon-liuchengshenhe:before {
   content: "\e618";
 }
 
-.liuchengshenpi:before {
+.claim-icon-liuchengshenpi:before {
   content: "\e619";
 }
 
-.yewubaobiao:before {
+.claim-icon-yewubaobiao:before {
   content: "\e61a";
 }
 
-.xiaoshouguanli:before {
+.claim-icon-xiaoshouguanli:before {
   content: "\e61b";
 }
 
-.yongjin:before {
+.claim-icon-yongjin:before {
   content: "\e61c";
 }
 

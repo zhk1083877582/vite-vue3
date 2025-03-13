@@ -7,7 +7,7 @@
 				<div class="banner-task-inner">
 					<div class="banner-task-detail">
 						<h4 class="sub-title2">
-							未处理<span class="flag-icon"><i class="iconfont time"></i></span>
+							未处理<span class="flag-icon"><i class="iconfont claim-icon-time"></i></span>
 						</h4>
 						<div v-for="(item, i) in staticTask" :key="i">
 							<a class="opera" v-if="i <= 2"
@@ -31,7 +31,7 @@
 				<div class="banner-task-inner">
 					<div class="banner-task-detail">
 						<h4 class="sub-title2">
-							处理中<span class="flag-icon"><i class="iconfont loading"></i></span>
+							处理中<span class="flag-icon"><i class="iconfont claim-icon-loading"></i></span>
 						</h4>
 						<div v-for="(item, i) in staticHandle" :key="i">
 							<a class="opera" v-if="i <= 2"
@@ -55,7 +55,7 @@
 				<div class="banner-task-inner">
 					<div class="banner-task-detail">
 						<h4 class="sub-title2">
-							已处理<span class="flag-icon"><i class="iconfont success"></i></span>
+							已处理<span class="flag-icon"><i class="iconfont claim-icon-success"></i></span>
 						</h4>
 						<div v-for="(item, i) in staticComplete" :key="i">
 							<a class="opera" v-if="i <= 2"

@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<!-- <img src="@/assets/images/IsoftstoneLogo_2.png" style="max-height: 27px; padding: 10px" /> -->
 		<el-menu
 			:class="'el-menu-' + theme.theme"
 			:active-text-color="theme.textActiveColor"
@@ -13,9 +12,7 @@
 			popper-class="custom-menu-popper"
 			:style="{
 				maxWidth: '200px',
-				overflowY: 'auto',
-				minHeight: menuHeight + 'px',
-				paddingBottom: '70px'
+				overflowY: 'auto'
 			}"
 			:collapse="menuStore().menuIsCollapse"
 		>
@@ -32,7 +29,6 @@
 	import { menuStore } from "@/store/menu";
 	const theme = computed(() => menuStore().getMenuTheme);
 	console.log("🚀 ~ el-menu.vue:34 ~ theme:", theme);
-	const menuHeight = ref(window.innerHeight);
 	const router = useRouter();
 	let [current, opens] = [ref(), ref()];
 	function onClick(name) {
@@ -56,17 +52,9 @@
 							roots.push(roots.length > 0 ? roots[roots.length - 1] + "/" + r : r);
 						});
 						opens.value = roots;
-						// nextTick(() => {
-						// 	menuRef.value.updateOpened();
-						// 	menuRef.value.updateActiveName();
-						// });
 					} else {
 						let roots = [item.title];
 						opens.value = roots;
-						// nextTick(() => {
-						// 	menuRef.value.updateOpened();
-						// 	menuRef.value.updateActiveName();
-						// });
 					}
 				}
 			} else {
@@ -90,8 +78,9 @@
 </script>
 
 <style lang="scss" scoped>
-	.el-menu-vertical-demo:not(.el-menu--collapse) {
-		width: 200px;
+	.el-menu {
+		height: 100%;
+		overflow-x: hidden;
 	}
 	.el-menu:not(.el-menu--collapse) {
 		width: 200px;

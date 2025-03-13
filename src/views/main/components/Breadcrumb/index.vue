@@ -3,7 +3,7 @@
 	<nav class="breadcrumb" aria-label="breadcrumb">
 		<ul>
 			<li v-for="(item, index) in breadList" :key="item.path">
-				<div>
+				<div class="item-cl">
 					<span>
 						<!-- {{ getMetaMenuTitle(item) === 'iframe' ? getIframeTitle() : getMetaMenuTitle(item) }} -->
 						{{ item }}
@@ -43,10 +43,12 @@
 			display: flex;
 			li {
 				font-size: 13px;
-				padding: 10px;
 
 				display: flex;
 				align-items: center;
+				.item-cl {
+					padding: 10px 3px;
+				}
 				span {
 					font-size: 13px;
 				}

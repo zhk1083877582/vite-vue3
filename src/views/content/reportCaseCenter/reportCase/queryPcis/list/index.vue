@@ -24,7 +24,7 @@
 	let searchInfo = ref({});
 	let fun = {
 		onEdit: () => {
-			// router.goRoot("reportCaseCenter/reportCase/queryPcis/detail", { id: "123123" });
+			router.goRoot("reportCaseCenter/reportCase/queryPcis/detail", { id: "123123" });
 		}
 	};
 

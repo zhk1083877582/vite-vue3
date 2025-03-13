@@ -7,7 +7,7 @@
 				<div class="banner-task-inner">
 					<div class="banner-task-detail">
 						<h4 class="sub-title2">
-							已核案件数<span class="flag-icon"><i class="iconfont time"></i></span>
+							已核案件数<span class="flag-icon"><i class="iconfont claim-icon-time"></i></span>
 						</h4>
 						<div v-for="(item, i) in staticChk" :key="i">
 							<a class="opera" v-if="i <= 2">
@@ -32,7 +32,7 @@
 				<div class="banner-task-inner">
 					<div class="banner-task-detail">
 						<h4 class="sub-title2">
-							未核案件数<span class="flag-icon"><i class="iconfont loading"></i></span>
+							未核案件数<span class="flag-icon"><i class="iconfont claim-icon-loading"></i></span>
 						</h4>
 						<div v-for="(item, i) in staticNotChk" :key="i">
 							<a class="opera" v-if="i <= 2"

@@ -23,7 +23,7 @@
 
 <script setup>
 	import topMenu from "./topMenu.vue";
-	import info from "./info.vue";
+	import info from "./info/index.vue";
 	import { menuStore } from "@/store/menu";
 	import { settingStore } from "@/store/setting";
 	import Breadcrumb from "./Breadcrumb/index.vue";
@@ -37,12 +37,11 @@
 	.navigation {
 		display: flex;
 		justify-content: space-between;
-		background-color: #fff;
-		border-bottom: 1px solid #ccc;
+		background-color: #f2f2f2;
+		border-bottom: 1px solid var((--dt-border-color));
 		position: relative;
 		padding-left: 30px;
 		height: 46px;
-		background: #f2f2f2;
 	}
 	.menu-collapse {
 		position: absolute;

@@ -115,6 +115,7 @@
 				this.$refs.form.resetFields();
 			},
 			update() {
+				console.log("🚀 ~ dt-info.vue:118 ~ update ~ update:");
 				this.isClear = false;
 				let items = this.$refs.item;
 				if (items) {
@@ -138,6 +139,7 @@
 				}
 			},
 			resetValidate(tarKeyArr) {
+				console.log("🚀 ~ dt-info.vue:142 ~ resetValidate ~ tarKeyArr:", tarKeyArr);
 				this.$nextTick(() => {
 					// 重置部分表单验证
 					for (let item of this.$refs.form.fields) {

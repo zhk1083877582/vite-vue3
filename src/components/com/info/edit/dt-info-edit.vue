@@ -23,6 +23,7 @@
 			:parser="value => value.replace(/\$\s?|(,*)/g, '')"
 			:placeholder="option.placeholder"
 			:disabled="option.disabled"
+			:controls="option.input.controls || false"
 			@update:model-value="onChange"
 			:style="option.input.error ? 'border-color: #ed4014;' : ''"
 			@on-focus="option.input.focus ? option.input.focus(val, option) : func"
