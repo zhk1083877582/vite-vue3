@@ -90,7 +90,7 @@
 <style lang="scss" scoped>
 	.login-container {
 		display: flex;
-		justify-content: end;
+		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
 		// background: linear-gradient(135deg, #2d8cf0 0%, #2b85e4 100%);

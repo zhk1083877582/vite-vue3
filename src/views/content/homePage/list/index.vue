@@ -12,7 +12,7 @@
 			<el-card :bordered="false">
 				<div style="display: flex; justify-content: space-between">
 					<div style="line-height: 32px" class="new-cl">最新任务（近一个月）</div>
-					<el-button>更多</el-button>
+					<el-button class="to_more">更多</el-button>
 				</div>
 				<dt-grid ref="tableRef" :onFetch="onFetch" :height="400"> </dt-grid>
 			</el-card>
@@ -121,5 +121,8 @@
 			margin-right: 10px;
 			background-color: var(--el-color-primary);
 		}
+	}
+	.to_more {
+		align-self: center;
 	}
 </style>

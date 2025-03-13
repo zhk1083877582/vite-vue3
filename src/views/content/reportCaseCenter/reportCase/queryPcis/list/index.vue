@@ -1,24 +1,30 @@
-<!-- 我的工作 -->
+<!-- 报案列表 -->
 <template>
 	<div class="">
-		<dt-search ref="searchRef" :xlBtn="6" :labelWidth="110">
-			<el-button @click="changeAdvanced" type="primary">{{ isShowAdvanced ? "关闭" : "展开" }}高级搜索</el-button>
-		</dt-search>
-		<dt-grid ref="tableRef" :onFetch="onFetch" page> </dt-grid>
+		<dt-search ref="searchRef" :xlBtn="6" :labelWidth="110"> </dt-search>
+		<dt-grid ref="tableRef" :onFetch="onFetch" page>
+			<!-- <template #btn>
+				<div class="flex btn-content">
+					<el-button type="primary"> gridBtn1 </el-button>
+					<el-button type="primary"> gridBtn1 </el-button>
+				</div>
+			</template> -->
+		</dt-grid>
+		<dt-org-modal ref="orgModalRef" @selectOrg="getOrglist" />
 	</div>
 </template>
 
 <script setup>
-	import router from "@/router";
 	import { searchOpt } from "./opt/search";
 	import { listColumn } from "./opt/columns.js";
 	import employeeMgr from "./biz/index";
-	const [tableRef, searchRef] = [ref(), ref()];
-	let isShowAdvanced = ref(false);
+	import router from "@/router";
+	const [tableRef, searchRef, orgModalRef] = [ref(), ref(), ref()];
+	let orglist = ref([]);
 	let searchInfo = ref({});
 	let fun = {
 		onEdit: () => {
-			router.goRoot("reportCaseCenter/reportCase/queryPcis/detail", { id: "123123" });
+			// router.goRoot("reportCaseCenter/reportCase/queryPcis/detail", { id: "123123" });
 		}
 	};
 
@@ -26,24 +32,29 @@
 		let params = {
 			...data
 		};
-		console.log("🚀 ~ onFetch ~ params:", params);
 
 		return employeeMgr.getUserListFun(params).then(res => {
-			console.log("🚀 ~ returnemployeeMgr.getUserListFun ~ res:", res.list.length);
 			return res;
 		});
 	}
-	let searchFun = {
-		showAdvanced: () => {
-			return isShowAdvanced.value;
+	const searchFun = {
+		showOrgModal: () => {
+			orgModalRef.value.show();
+		},
+		getOrglist: () => {
+			return orglist.value;
 		}
 	};
-	function changeAdvanced() {
-		isShowAdvanced.value = !isShowAdvanced.value;
-		searchRef.value.update(new searchOpt(searchFun), searchInfo.value);
+
+	function getOrglist(data) {
+		let list = [{ key: data.id, value: data.name }];
+		orglist.value = list;
+		nextTick(() => {
+			searchInfo.value.orgId = data.id;
+			searchRef.value.update(new searchOpt(searchFun), searchInfo.value);
+		});
 	}
 	onMounted(() => {
-		console.log(123123);
 		searchRef.value.init(tableRef.value, new searchOpt(searchFun), searchInfo.value);
 		tableRef.value.init(new listColumn(fun));
 		tableRef.value.fetch();

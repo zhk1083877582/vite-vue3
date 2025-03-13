@@ -11,7 +11,6 @@
 	import { searchOpt } from "./opt/search";
 	import { listColumn } from "./opt/columns.js";
 	import employeeMgr from "./biz/index";
-	import date from "../../../../option/date.js";
 	const [tableRef, searchRef, orgModalRef] = [ref(), ref(), ref()];
 	let [flag, flagList] = [ref(), ref()];
 	let optionsList = ref({ orgList1: [], orgList2: [] });

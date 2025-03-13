@@ -2,10 +2,11 @@
 	<div class="navigation">
 		<div v-show="settingStore().menuType == 'LEFT'">
 			<div class="menu-collapse" style="text-align: center; padding-top: 5px; cursor: pointer">
-				<el-icon @click="showMenu" v-show="menuStore().menuIsCollapse" :size="25" color="#78829d">
+				<el-icon @click="showMenu" v-show="menuStore().menuIsCollapse" :size="25" color="var(--el-color-primary-light-3)">
+					<!-- #78829d -->
 					<Expand />
 				</el-icon>
-				<el-icon @click="showMenu" v-show="!menuStore().menuIsCollapse" :size="25" color="#78829d">
+				<el-icon @click="showMenu" v-show="!menuStore().menuIsCollapse" :size="25" color="var(--el-color-primary-light-3)">
 					<Fold />
 				</el-icon>
 			</div>

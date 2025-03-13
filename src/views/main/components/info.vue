@@ -36,9 +36,12 @@
 				</el-popover>
 			</div>
 		</div>
-		<el-select v-model="userInfoOrg" style="width: 200px; padding: 8px">
-			<el-option v-for="item in options" :key="item.key" :label="item.value" :value="item.key"> </el-option>
-		</el-select>
+		<div style="display: flex; width: 200px">
+			<el-select v-model="userInfoOrg" style="align-self: center" size="default">
+				<el-option v-for="item in options" :key="item.key" :label="item.value" :value="item.key"> </el-option>
+			</el-select>
+		</div>
+
 		<change-password ref="changePasswordRef" />
 	</div>
 </template>

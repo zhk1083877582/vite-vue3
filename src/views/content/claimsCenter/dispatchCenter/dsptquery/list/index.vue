@@ -89,7 +89,6 @@
 	function onPreview(index) {
 		preview.value.images = listData.value.map(item => item.originalUrl);
 		preview.value.showIndex = index;
-		console.log("🚀 ~ onPreview ~ preview:", preview);
 		nextTick(() => {
 			previewRef.value.show(true);
 		});
@@ -104,7 +103,8 @@
 				{ fieldValue: "海报状态", fieldId: "delFlag", disabled: false }
 			],
 			title: "调整表头显示字段及排序",
-			tips: "您可将需在“机会列表”中显示的字段添加至界面右侧，并通过点击上下箭头的方式，调整字段在“机会列表”中的显示位置"
+			tips: "调整表头显示字段及排序tips"
+			// 您可将需在“列表”中显示的字段添加至界面右侧，并通过点击上下箭头的方式，调整字段在“列表”中的显示位置
 		});
 	}
 	function onSortSuccess(data) {

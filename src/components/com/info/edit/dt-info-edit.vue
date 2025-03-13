@@ -118,7 +118,13 @@
 			:no-data-text="option.select.noDataText || '暂无数据'"
 			:no-match-text="option.select.noMatchText || '无匹配数据'"
 		>
-			<el-option v-for="item in option.select.options || dictInfoKey(option.select.key)" :key="item.key" :value="toString(item.key)" :label="item.value" :disabled="item.disabled" />
+			<el-option
+				v-for="item in option.select.options || dictInfoKey(option.select.key)"
+				:key="item.key"
+				:value="toString(item.key)"
+				:label="item.value"
+				:disabled="item.disabled"
+			/>
 		</el-select>
 		<div class="tips" v-html="option.tips"></div>
 	</div>
@@ -143,7 +149,7 @@
 			</el-radio>
 		</el-radio-group>
 	</div>
-	<div v-else-if="option.checkbox">
+	<div v-else-if="option.checkbox" :style="option.style">
 		<el-checkbox-group :model-value="val || []" @change="onChange">
 			<el-checkbox v-for="item in option.checkbox.options" :value="item.key" :key="item.key" :disabled="item.disabled || option.disabled">
 				<span style="marginleft: 5px">{{ item.value }}</span>
@@ -184,7 +190,12 @@
 		<div class="upload_img_line">
 			<el-upload
 				style="width: 100px; height: 100px; border: 1px solid #ccc; border-radius: 5px; margin-right: 5px"
-				v-show="!info || !info[option.key] || !option.uploadImg.maxlength || (option.uploadImg.maxlength && info[option.key].length < option.uploadImg.maxlength)"
+				v-show="
+					!info ||
+					!info[option.key] ||
+					!option.uploadImg.maxlength ||
+					(option.uploadImg.maxlength && info[option.key].length < option.uploadImg.maxlength)
+				"
 				ref="uploadImg"
 				v-model:file-list="option.uploadImg.files"
 				:format="option.uploadImg.format"
@@ -220,7 +231,10 @@
 					:draggable="option.uploadImg.drag ? true : false"
 				>
 					<div class="demo_upload_list">
-						<img style="object-fit: cover" :src="isVideoUrl(item.url) ? item.url + '?x-oss-process=video/snapshot,t_0,m_fast' : item.url + '?x-oss-process=image/resize,w_350'" />
+						<img
+							style="object-fit: cover"
+							:src="isVideoUrl(item.url) ? item.url + '?x-oss-process=video/snapshot,t_0,m_fast' : item.url + '?x-oss-process=image/resize,w_350'"
+						/>
 						<div
 							class="demo_upload_list_cover"
 							:style="{
@@ -281,7 +295,13 @@
 		</div>
 	</div>
 
-	<el-cascader v-else-if="option.cascader" :model-value="val || []" :props="option.cascader" :options="option.cascader.options" @change="onChange"></el-cascader>
+	<el-cascader
+		v-else-if="option.cascader"
+		:model-value="val || []"
+		:props="option.cascader"
+		:options="option.cascader.options"
+		@change="onChange"
+	></el-cascader>
 
 	<div v-else-if="option.switch">
 		<el-switch
@@ -331,7 +351,14 @@
                         :src="item.url + '?x-oss-process=image/resize,w_350'"
                         :alt="item.alt"
                     /> -->
-					<el-image style="width: 100px; height: 100px" :src="item.url + '?x-oss-process=image/resize,w_350'" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" fit="cover">
+					<el-image
+						style="width: 100px; height: 100px"
+						:src="item.url + '?x-oss-process=image/resize,w_350'"
+						:zoom-rate="1.2"
+						:max-scale="7"
+						:min-scale="0.2"
+						fit="cover"
+					>
 						<template #error>
 							<div class="image-slot">
 								<el-icon><Picture /></el-icon>
@@ -477,7 +504,10 @@
 				// 编辑数据（数据较全）
 				let editValue = this.option.cascader || this.option.tree ? data : val;
 				// 处理日期
-				if ((this.option.date && this.option.date.type == "daterange" && this.option.date.type != "datetimerange") || (this.option.dtTime && !this.option.dtTime.dateType)) {
+				if (
+					(this.option.date && this.option.date.type == "daterange" && this.option.date.type != "datetimerange") ||
+					(this.option.dtTime && !this.option.dtTime.dateType)
+				) {
 					editValue = dt.tool.handleDateRange(editValue);
 				}
 				// 处理选择框

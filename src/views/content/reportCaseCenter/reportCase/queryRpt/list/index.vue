@@ -23,7 +23,7 @@
 	import { payOpt } from "./opt/pay";
 
 	const [tableRef, editRef, searchRef, infoRef, orgModalRef] = [ref(), ref(), ref(), ref(), ref()];
-	let orglist = ref({});
+	let orglist = ref([]);
 	let searchInfo = ref({
 		orgId: "",
 		roleIds: "-1",
@@ -101,10 +101,8 @@
 		let params = {
 			...data
 		};
-		console.log("🚀 ~ onFetch ~ params:", params);
 
 		return employeeMgr.getUserListFun(params).then(res => {
-			console.log("🚀 ~ returnemployeeMgr.getUserListFun ~ res:", res.list.length);
 			return res;
 		});
 	}
@@ -128,7 +126,6 @@
 	const funpay = {};
 	function showDtInfo() {
 		infoRef.value.show(new payOpt(funpay), detailInfo.value);
-		console.log("🚀 ~ showDtInfo ~ infoRef.value:", infoRef.value);
 	}
 	function handelClick() {
 		dt.ui.Message.success({ msg: "1111" });
@@ -144,7 +141,6 @@
 		orglist.value = list;
 		nextTick(() => {
 			searchInfo.value.orgId = data.id;
-			console.log("🚀 ~ index.vue:151 ~ nextTick ~ searchInfo.value:", searchInfo.value);
 			searchRef.value.update(new searchOpt(searchFun), searchInfo.value);
 		});
 	}

@@ -10,7 +10,7 @@
 </script>
 
 <template>
-	<el-config-provider :locale="zhCn">
+	<el-config-provider :size="'small'" :locale="zhCn">
 		<RouterView />
 	</el-config-provider>
 </template>

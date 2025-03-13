@@ -8,6 +8,7 @@
 			:text-color="theme.textColor"
 			:default-active="current"
 			:unique-opened="true"
+			popper-effect="dark"
 			@select="onClick"
 			popper-class="custom-menu-popper"
 			:style="{
@@ -30,7 +31,7 @@
 	import { useRouter } from "vue-router";
 	import { menuStore } from "@/store/menu";
 	const theme = computed(() => menuStore().getMenuTheme);
-	console.log("🚀 ~ el-menu.vue:29 ~ theme:", theme);
+	console.log("🚀 ~ el-menu.vue:34 ~ theme:", theme);
 	const menuHeight = ref(window.innerHeight);
 	const router = useRouter();
 	let [current, opens] = [ref(), ref()];

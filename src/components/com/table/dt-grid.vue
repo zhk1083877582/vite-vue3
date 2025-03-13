@@ -4,14 +4,22 @@
 		:style="{
 			justifyContent: filterItems.length > 0 ? 'space-between' : 'flex-end'
 		}"
-		v-if="filterItems.length > 0"
+		v-if="filterItems.length > 0 || $slots.btn"
 	>
 		<dt-filter v-model="filterInfo" ref="filterRef" @filter="search" :filter="filter" />
 		<slot name="btn"></slot>
 	</div>
 
 	<div ref="contentRef" style="position: relative; overflow: hidden; box-sizing: content-box" :key="keyIdx">
-		<dt-table ref="tableRef" v-loading="loading" :height="tableHeight" :widthWarp="tableWidth" :checkbox="checkbox" :row-class="rowClass ? rowClass : fun()" @sort="onSort" />
+		<dt-table
+			ref="tableRef"
+			v-loading="loading"
+			:height="tableHeight"
+			:widthWarp="tableWidth"
+			:checkbox="checkbox"
+			:row-class="rowClass ? rowClass : fun()"
+			@sort="onSort"
+		/>
 		<!-- <Spin fix v-show="loading">
             <Icon type="ios-loading" size="20" class="dt-loading"></Icon>
             <div>Loading</div>
@@ -48,7 +56,7 @@
 		(n, o) => {
 			if (n != o || typeof n == "object") {
 				if (n) {
-					if (!pageOpt.value) pageOpt.value = { rows: 50 };
+					if (!pageOpt.value) pageOpt.value = { rows: 10 };
 					if (typeof n == "number") pageOpt.value.rows = n;
 					else if (typeof n == "object") Object.assign(pageOpt.value, n);
 				} else if (pageOpt.value) pageOpt.value = null;
@@ -70,7 +78,7 @@
 	function fixSize() {
 		nextTick(() => {
 			if (props.height) tableHeight.value = props.height;
-			else tableHeight.value = Math.max(window.innerHeight - top - 120, 200);
+			else tableHeight.value = Math.max(window.innerHeight - top - 70, 200);
 			tableWidth.value = contentRef.value?.offsetWidth;
 		});
 	}

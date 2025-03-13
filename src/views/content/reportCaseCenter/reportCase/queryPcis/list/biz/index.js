@@ -1,371 +1,363 @@
-// import server from "@/config/server/dt";
+import server from "@/config/server";
 
-// const api = {
-//     getUserList: server
-//         .api()
-//         .post("/hft-portal/v1/dictionary/noToken/list")
-//         .auth(false)
-//         .config(true),
-//     getDtUserByWorkNoReturn: server
-//         .api()
-//         .get("/api/v1/bd/getDtUserByWorkNoReturn"),
-//     update: server.api().post("/api/v1/sysUser/update"),
-//     insert: server.api().post("/api/v1/sysUser/insert"),
-//     disableUsers: server.api().post("/api/v1/sysUser/disableUsers"), //禁用用户
-// };
+const api = {
+	getUserList: server.api().post("/123123").auth(false).config(false),
+	getDtUserByWorkNoReturn: server.api().get("/api/v1/bd/getDtUserByWorkNoReturn"),
+	update: server.api().post("/api/v1/sysUser/update"),
+	insert: server.api().post("/api/v1/sysUser/insert"),
+	disableUsers: server.api().post("/api/v1/sysUser/disableUsers") //禁用用户
+};
 
 function getUserListFun(info) {
-  return Promise.resolve({
-    list: [
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-        sealUrl:
-          "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg",
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-        sealUrl:
-          "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg",
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-      {
-        orgName: "123",
-        workNo: "qwe",
-        userName: "21312",
-        phone: "12312312312",
-        roleNames: "asdasdsa",
-        authOrgNames: "qweqweqweqwe",
-        positionStatus: 1,
-        state: 1,
-      },
-    ],
-    total: 200,
-    pageNum: 1,
-    pageSize: 50,
-    pages: 1,
-    size: 8,
-  });
-  // return api.getUserList.fetch(info).then((res) => {
-  //     res.list.forEach((item) => {
-  //         // item.authOrg = item.authOrg.split(',')
-  //         console.log("zhk ~ res.list.forEach ~ item.authOrg:", item.authOrg);
-  //         item.authOrg = item.authOrg ? item.authOrg.split(",") : "";
-  //     });
-  //     console.log("zhk ~ returnapi.getUserList.fetch ~ res:", res);
+	return Promise.resolve({
+		list: [
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1,
+				sealUrl: "https://images.tospurfang.com/hft/fafa46b7ea0642768e2014c8018be699.jpg"
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1,
+				sealUrl: "https://images.tospurfang.com/hft/7a8703795cf541f989e24a27b10a899b.jpg"
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			},
+			{
+				orgName: "123",
+				workNo: "qwe",
+				userName: "21312",
+				phone: "12312312312",
+				roleNames: "asdasdsa",
+				authOrgNames: "qweqweqweqwe",
+				positionStatus: 1,
+				state: 1
+			}
+		],
+		total: 200,
+		pageNum: 1,
+		pageSize: 50,
+		pages: 1,
+		size: 8
+	});
+	// return api.getUserList.fetch(info).then(res => {
+	// 	res.list.forEach(item => {
+	// 		// item.authOrg = item.authOrg.split(',')
+	// 		console.log("zhk ~ res.list.forEach ~ item.authOrg:", item.authOrg);
+	// 		item.authOrg = item.authOrg ? item.authOrg.split(",") : "";
+	// 	});
+	// 	console.log("zhk ~ returnapi.getUserList.fetch ~ res:", res);
 
-  //     return res;
-  // });
+	// 	return res;
+	// });
 }
 function getDtUserByWorkNoReturnFun(info) {
-  return api.getDtUserByWorkNoReturn.fetch(info);
+	return api.getDtUserByWorkNoReturn.fetch(info);
 }
 
 function userFun(info) {
-  if (info.modalType == "edit") {
-    return api.update.fetch(info);
-  } else {
-    return api.insert.fetch(info);
-  }
+	if (info.modalType == "edit") {
+		return api.update.fetch(info);
+	} else {
+		return api.insert.fetch(info);
+	}
 }
 function disableUsers(info) {
-  return api.disableUsers.fetch(info);
+	return api.disableUsers.fetch(info);
 }
 export default {
-  getUserListFun,
-  getDtUserByWorkNoReturnFun,
-  userFun,
-  disableUsers,
+	getUserListFun,
+	getDtUserByWorkNoReturnFun,
+	userFun,
+	disableUsers
 };

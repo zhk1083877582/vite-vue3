@@ -40,11 +40,18 @@
 		},
 		{ immediate: true }
 	);
+	onMounted(() => {
+		// var t = window.devicePixelRatio; // 获取下载的缩放 125% -> 1.25    150% -> 1.5
+		// let domPage = document.querySelector('.page-cl')
+		// domPage.style.zoom = 1 / t; // 就去修改页面的缩放比例
+	});
 </script>
 <style lang="scss" scoped>
 	@import url("@/assets/css/sider.scss");
 
 	.page-cl {
+		height: 100%;
+		width: 100%;
 		background: white;
 		display: flex;
 		.contain {

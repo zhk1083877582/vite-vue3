@@ -37,7 +37,7 @@
 				if (n.total == null) n.total = 0;
 				if (n.show == null) n.show = true;
 				if (n.current == null) n.current = 1;
-				if (n.rows == null) n.rows = 50;
+				if (n.rows == null) n.rows = 10;
 				if (n.options == null) n.options = [10, 20, 30, 40, 50];
 			}
 		},
